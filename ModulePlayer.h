@@ -3,6 +3,8 @@
 #include "p2List.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "Kicker.h"
+
 #include "SDL\include\SDL.h"
 
 struct Flipper
@@ -10,12 +12,6 @@ struct Flipper
 	PhysBody* Rect;
 	PhysBody* Circle;
 	bool rightSide;
-};
-
-struct Kicker
-{
-	PhysBody* pivot;
-	PhysBody* mobile;
 };
 
 class ModulePlayer : public Module
@@ -33,8 +29,8 @@ public:
 
 	SDL_Texture* playerText;
 
-	p2List<PhysBody*> circles;
-	SDL_Rect circleSect = { 127, 317, 19, 21 };
+	PhysBody* ball;
+	SDL_Rect ballSect = { 127, 317, 19, 21 };
 	int ballCount = 2;
 	bool onceInit = true;
 	bool isDead = false;
@@ -42,9 +38,9 @@ public:
 	p2List<Flipper*> flippers;
 	SDL_Rect rectSect = { 48, 250, 64, 20 };
 
-	Kicker kicker;
-	SDL_Rect kickerSect = { 302,706,22,96 };
-	SDL_Rect kickerSectBonus = { 1002,706,22,96 };
+	//Kicker
+	//SDL_Rect kickerSect = { 302,706,22,96 };
+	//SDL_Rect kickerSectBonus = { 1002,706,22,96 };
 
 	uint clickFx;
 	uint kickerFx;
