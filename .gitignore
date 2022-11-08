@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+#Not Ignore Box2D
+!/Box2D
+!/Box2D/*
