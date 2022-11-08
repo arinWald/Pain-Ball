@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
+#include <iostream>
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -47,12 +48,25 @@ bool ModuleSceneIntro::Start()
 
 	//Colliders - Bumpers
 
+	PhysBody* circle;
+	circle = App->physics->CreateCircle(250, 150, 10, b2_dynamicBody);
+
+	Bumper triangulo{ "triangulo", circle };
+	
+	std::cout << triangulo.name << std::endl;
+
+	bumpersList.add(&triangulo);
+
+	
+
 	return ret;
 }
 
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
+
+	bumpersList.clear();
 
 	return true;
 }

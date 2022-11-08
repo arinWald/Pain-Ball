@@ -3,8 +3,15 @@
 #include "p2List.h"
 #include "p2Point.h"
 #include "Globals.h"
+#include <string>
 
 class PhysBody;
+
+struct Bumper
+{
+	std::string name;
+	PhysBody* bumper;
+};
 
 class ModuleSceneIntro : public Module
 {
@@ -27,6 +34,8 @@ public:
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> ricks;
 
+	p2List<Bumper*> bumpersList;
+	
 	// Lower ground sensor (will kill all objects passig through it)
 	PhysBody* lower_ground_sensor;
 	bool sensed;
