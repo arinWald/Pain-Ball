@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include <memory>
 
 class Ball : public Module
 {
@@ -14,5 +15,8 @@ public:
 	bool CleanUp();
 
 public:
+
+	//std::unique_ptr<PhysBody*> ball;
+	PhysBody* ball;
 
 };

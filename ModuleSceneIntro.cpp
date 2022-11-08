@@ -44,6 +44,9 @@ bool ModuleSceneIntro::Start()
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
 	//lower_ground_sensor->listener = this;
 
+
+	//Colliders - Bumpers
+
 	return ret;
 }
 
