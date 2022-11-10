@@ -17,7 +17,7 @@ Ball::~Ball()
 bool Ball::Start()
 {
 	//*ball.get() = App->physics->CreateCircle(303, 767, 10, b2_dynamicBody);
-	ball= App->physics->CreateCircle(194, 263, 10, b2_dynamicBody);
+	ball= App->physics->CreateCircle(194, 263, 7, b2_dynamicBody);
 	LOG("Loading Ball");
 	return true;
 }

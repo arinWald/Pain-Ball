@@ -27,7 +27,7 @@ bool ModulePlayer::Start()
 
 	// Flippers --------------------------------------------------------------
 	Flipper* f = new Flipper;
-	f->Circle = App->physics->CreateCircle(140, 374, 4, b2_staticBody);
+	f->Circle = App->physics->CreateCircle(140, 382, 4, b2_staticBody);
 	f->Rect = App->physics->CreateRectangle(140 + rectSect.w / 2, 374 + rectSect.h / 2, rectSect.w, rectSect.h - 10, b2_dynamicBody);
 	f->rightSide = false;
 	App->physics->CreateRevoluteJoint(f->Rect, a, f->Circle, b, 35.0f);
@@ -36,7 +36,7 @@ bool ModulePlayer::Start()
 	a = { 0.44,0 };
 
 	Flipper* f2 = new Flipper;
-	f2->Circle = App->physics->CreateCircle(245, 374, 4, b2_staticBody);
+	f2->Circle = App->physics->CreateCircle(245, 382, 4, b2_staticBody);
 	f2->Rect = App->physics->CreateRectangle(245 - rectSect.w / 2, 374 + rectSect.h / 2, rectSect.w, rectSect.h - 10, b2_dynamicBody);
 	f2->rightSide = true;
 	App->physics->CreateRevoluteJoint(f2->Rect, a, f2->Circle, b, 35.0f);
