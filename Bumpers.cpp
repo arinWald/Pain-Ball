@@ -18,7 +18,7 @@ bool Bumpers::Start()
 {
 	//Bumpers - Big Circles
 	PhysBody* pbodyBC1;
-	pbodyBC1 = App->physics->CreateCircle(112, 43, 10, b2_staticBody);
+	pbodyBC1 = App->physics->CreateCircle(112, 43, 7, b2_staticBody);
 	PhysBody* pbodyBC2;
 	pbodyBC2 = App->physics->CreateCircle(215, 90, 10, b2_staticBody);
 	PhysBody* pbodyBC3;

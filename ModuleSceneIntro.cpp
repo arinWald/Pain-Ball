@@ -88,56 +88,58 @@ update_status ModuleSceneIntro::Update()
 	}
 
 	// If user presses 3, create a new RickHead object
-	if(App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 	{
-		// Pivot 1, 0
-		int pinball[92] = {
-			375, 417,
-			304, 0,
-			82, -1,
-			13, 416,
-			119, 415,
-			120, 395,
-			62, 349,
-			57, 382,
-			34, 381,
-			50, 277,
-			68, 256,
-			108, 252,
-			110, 207,
-			87, 156,
-			76, 127,
-			77, 96,
-			90, 67,
-			101, 55,
-			87, 43,
-			89, 29,
-			99, 21,
-			111, 18,
-			132, 18,
-			146, 32,
-			158, 26,
-			180, 23,
-			208, 21,
-			241, 26,
-			263, 35,
-			280, 48,
-			300, 67,
-			308, 95,
-			322, 178,
-			352, 358,
-			359, 408,
-			334, 408,
-			327, 356,
-			304, 170,
-			299, 173,
-			325, 384,
-			308, 384,
-			303, 375,
-			303, 369,
-			268, 395,
-			270, 425,
-			374, 419
+		// Pivot 0, 0
+		int pinball[96] = {
+			374, 417,
+			303, 0,
+			81, 0,
+			12, 416,
+			118, 415,
+			119, 395,
+			61, 349,
+			56, 382,
+			33, 381,
+			49, 277,
+			67, 256,
+			107, 252,
+			109, 207,
+			86, 156,
+			75, 127,
+			76, 96,
+			91, 68,
+			95, 64,
+			99, 60,
+			87, 52,
+			85, 39,
+			88, 29,
+			98, 21,
+			110, 18,
+			131, 18,
+			145, 26,
+			159, 23,
+			181, 20,
+			207, 21,
+			240, 26,
+			262, 35,
+			279, 48,
+			299, 67,
+			307, 95,
+			321, 178,
+			351, 358,
+			358, 408,
+			333, 408,
+			326, 356,
+			303, 170,
+			298, 173,
+			324, 384,
+			307, 384,
+			302, 375,
+			302, 369,
+			267, 395,
+			269, 425,
+			373, 419
 		};
 
 		// Pivot 0, 0
@@ -184,13 +186,60 @@ update_status ModuleSceneIntro::Update()
 			296, 333
 		};
 
+		// Pivot 0, 0
+		int pinball4[10] = {
+			126, 364,
+			67, 318,
+			70, 280,
+			76, 280,
+			73, 320
+		};
 
+		//Pivot 0, 0
+		int upLeftPiece[10] = {
+			157, 42,
+			137, 55,
+			140, 70,
+			167, 56,
+			166, 46
+		};
 
+		// Pivot 0, 0
+		int leftBounceTriangle[6] = {
+			113, 280,
+			136, 346,
+			108, 327
+		};
+
+		// Pivot 0, 0
+		int rightBounceTriangle[6] = {
+			250, 345,
+			272, 281,
+			277, 326
+		};
+
+		// Pivot 0, 0
+		int upLeftLeftPiece[18] = {
+			95, 93,
+			92, 115,
+			97, 135,
+			113, 159,
+			142, 145,
+			139, 139,
+			104, 122,
+			97, 112,
+			98, 93
+		};
 
 
 		ricks.add(App->physics->CreateChain(0, 0, pinball, 92));
 		ricks.add(App->physics->CreateChain(0, 0, pinball2, 62));
 		ricks.add(App->physics->CreateChain(0, 0, pinball3, 10));
+		ricks.add(App->physics->CreateChain(0, 0, pinball4, 10));
+		ricks.add(App->physics->CreateChain(0, 0, upLeftPiece, 10));
+		ricks.add(App->physics->CreateChain(0, 0, leftBounceTriangle, 6));
+		ricks.add(App->physics->CreateChain(0, 0, rightBounceTriangle, 6));
+		ricks.add(App->physics->CreateChain(0, 0, upLeftLeftPiece, 18));
 	}
 
 	// Prepare for raycast ------------------------------------------------------

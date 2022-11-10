@@ -1,0 +1,13 @@
+// Pivot 0, 0
+int rightBounceTriangle[6] = {
+	250, 345,
+	272, 281,
+	277, 326
+};
+
+// Pivot 0.000000, 0.000000
+float rightBounceTriangle[6] = {
+	0.416667f, 0.829327f,
+	0.453333f, 0.675481f,
+	0.461667f, 0.783654f
+};
