@@ -48,16 +48,6 @@ bool ModuleSceneIntro::Start()
 
 	//Colliders - Bumpers
 
-	PhysBody* circle;
-	circle = App->physics->CreateCircle(250, 150, 7, b2_dynamicBody);
-
-	Bumper triangulo{ "triangulo", circle };
-	
-	std::cout << triangulo.name << std::endl;
-
-	bumpersList.add(&triangulo);
-
-	
 
 	return ret;
 }
@@ -65,9 +55,6 @@ bool ModuleSceneIntro::Start()
 bool ModuleSceneIntro::CleanUp()
 {
 	LOG("Unloading Intro scene");
-
-	bumpersList.clear();
-
 	return true;
 }
 

@@ -80,6 +80,9 @@
     <ClInclude Include="Kicker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Bumpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -137,6 +140,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Kicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bumpers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
