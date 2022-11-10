@@ -7,11 +7,7 @@
 
 class PhysBody;
 
-struct Bumper
-{
-	std::string name;
-	PhysBody* bumper;
-};
+
 
 class ModuleSceneIntro : public Module
 {
@@ -33,8 +29,6 @@ public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> ricks;
-
-	p2List<Bumper*> bumpersList;
 	
 	// Lower ground sensor (will kill all objects passig through it)
 	PhysBody* lower_ground_sensor;

@@ -14,6 +14,7 @@ class ModuleSceneIntro;
 class ModulePhysics;
 class Ball;
 class Kicker;
+class Bumpers;
 
 class Application
 {
@@ -28,6 +29,7 @@ public:
 	ModulePhysics* physics;
 	Ball* ball;
 	Kicker* kicker;
+	Bumpers* bumpers;
 
 private:
 

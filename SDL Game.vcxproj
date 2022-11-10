@@ -74,6 +74,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Bumpers.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Kicker.h" />
     <ClInclude Include="ModulePhysics.h" />
@@ -98,6 +99,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Bumpers.cpp" />
     <ClCompile Include="Kicker.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />
