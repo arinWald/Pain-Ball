@@ -25,5 +25,4 @@ public:
 
 	//std::unique_ptr<PhysBody*> ball;
 	p2List<BumperElement*> bumpersList;
-
 };
