@@ -54,7 +54,9 @@ public:
 
 	// Create basic physics objects
 	PhysBody* CreateCircle(int x, int y, int radius, b2BodyType type = b2_dynamicBody);
+	PhysBody* CreateCircleWithBounciness(int x, int y, int radius, float bounciness, b2BodyType type);
 	PhysBody* CreateRectangle(int x, int y, int width, int height, b2BodyType type = b2_dynamicBody);
+	PhysBody* CreateRectangleWithBounciness(int x, int y, int width, int height, float bounciness, float angle = 0, b2BodyType type = b2_dynamicBody);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
 
