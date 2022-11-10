@@ -288,7 +288,6 @@ PhysBody* ModulePhysics::CreateCircle(int x, int y, int radius, b2BodyType type)
 	b2FixtureDef fixture;
 	fixture.shape = &shape;
 	fixture.density = 1.0f;
-
 	b->CreateFixture(&fixture);
 
 	PhysBody* pbody = new PhysBody();
