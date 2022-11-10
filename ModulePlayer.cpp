@@ -67,7 +67,7 @@ update_status ModulePlayer::Update()
 		{
 			if (f->data->rightSide == false)
 			{
-				f->data->Rect->body->ApplyForce({ -50,0 }, { 0,0 }, true);
+				f->data->Rect->body->ApplyForce({ -25,0 }, { 0,0 }, true);
 			}
 			f = f->next;
 		}
@@ -92,7 +92,7 @@ update_status ModulePlayer::Update()
 		{
 			if (f->data->rightSide == true)
 			{
-				f->data->Rect->body->ApplyForce({ 50,0 }, { 0,0 }, true);
+				f->data->Rect->body->ApplyForce({ 25,0 }, { 0,0 }, true);
 			}
 			f = f->next;
 		}

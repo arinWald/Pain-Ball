@@ -313,8 +313,8 @@ PhysBody* ModulePhysics::CreateCircleWithBounciness(int x, int y, int radius, fl
 	fixture.shape = &shape;
 	fixture.density = 1.0f;
 
-	b->CreateFixture(&fixture);
 	fixture.restitution = bounciness;
+	b->CreateFixture(&fixture);
 
 	PhysBody* pbody = new PhysBody();
 	pbody->body = b;
@@ -364,8 +364,8 @@ PhysBody* ModulePhysics::CreateRectangleWithBounciness(int x, int y, int width, 
 	fixture.shape = &box;
 	fixture.density = 1.0f;
 
-	b->CreateFixture(&fixture);
 	fixture.restitution = bounciness;
+	b->CreateFixture(&fixture);
 
 	PhysBody* pbody = new PhysBody();
 	pbody->body = b;
