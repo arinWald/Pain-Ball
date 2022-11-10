@@ -49,7 +49,7 @@ bool ModuleSceneIntro::Start()
 	//Colliders - Bumpers
 
 	PhysBody* circle;
-	circle = App->physics->CreateCircle(250, 150, 10, b2_dynamicBody);
+	circle = App->physics->CreateCircle(250, 150, 7, b2_dynamicBody);
 
 	Bumper triangulo{ "triangulo", circle };
 	
@@ -85,9 +85,9 @@ update_status ModuleSceneIntro::Update()
 	}
 
 	// If user presses 1, create a new circle object
-	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_DOWN)
+	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_REPEAT)
 	{
-		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 25));
+		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 7));
 
 		// Add this module (ModuleSceneIntro) as a "listener" interested in collisions with circles.
 		// If Box2D detects a collision with this last generated circle, it will automatically callback the function ModulePhysics::BeginContact()
@@ -103,43 +103,107 @@ update_status ModuleSceneIntro::Update()
 	// If user presses 3, create a new RickHead object
 	if(App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
 	{
-		// Pivot 0, 0
-		int rick_head[64] = {
-			14, 36,
-			42, 40,
-			40, 0,
-			75, 30,
-			88, 4,
-			94, 39,
-			111, 36,
-			104, 58,
-			107, 62,
-			117, 67,
-			109, 73,
-			110, 85,
-			106, 91,
-			109, 99,
-			103, 104,
-			100, 115,
-			106, 121,
-			103, 125,
-			98, 126,
-			95, 137,
-			83, 147,
-			67, 147,
-			53, 140,
-			46, 132,
-			34, 136,
-			38, 126,
-			23, 123,
-			30, 114,
-			10, 102,
-			29, 90,
-			0, 75,
-			30, 62
+		// Pivot 1, 0
+		int pinball[92] = {
+			375, 417,
+			304, 0,
+			82, -1,
+			13, 416,
+			119, 415,
+			120, 395,
+			62, 349,
+			57, 382,
+			34, 381,
+			50, 277,
+			68, 256,
+			108, 252,
+			110, 207,
+			87, 156,
+			76, 127,
+			77, 96,
+			90, 67,
+			101, 55,
+			87, 43,
+			89, 29,
+			99, 21,
+			111, 18,
+			132, 18,
+			146, 32,
+			158, 26,
+			180, 23,
+			208, 21,
+			241, 26,
+			263, 35,
+			280, 48,
+			300, 67,
+			308, 95,
+			322, 178,
+			352, 358,
+			359, 408,
+			334, 408,
+			327, 356,
+			304, 170,
+			299, 173,
+			325, 384,
+			308, 384,
+			303, 375,
+			303, 369,
+			268, 395,
+			270, 425,
+			374, 419
 		};
 
-		ricks.add(App->physics->CreateChain(App->input->GetMouseX(), App->input->GetMouseY(), rick_head, 64));
+		// Pivot 0, 0
+		int pinball2[62] = {
+			285, 225,
+			284, 214,
+			268, 211,
+			266, 173,
+			284, 130,
+			287, 108,
+			282, 88,
+			268, 67,
+			241, 47,
+			227, 52,
+			235, 62,
+			251, 75,
+			259, 84,
+			262, 99,
+			262, 122,
+			248, 136,
+			241, 133,
+			253, 106,
+			253, 89,
+			236, 66,
+			222, 58,
+			220, 47,
+			231, 41,
+			251, 48,
+			266, 58,
+			279, 73,
+			292, 99,
+			297, 153,
+			281, 164,
+			289, 227,
+			286, 228
+		};
+
+		// Pivot 0, 0
+		int pinball3[10] = {
+			260, 365,
+			299, 334,
+			296, 283,
+			292, 283,
+			296, 333
+		};
+
+
+
+
+
+		ricks.add(App->physics->CreateChain(0, 0, pinball, 92));
+		ricks.add(App->physics->CreateChain(0, 0, pinball2, 62));
+		ricks.add(App->physics->CreateChain(0, 0, pinball3, 10));
 	}
 
 	// Prepare for raycast ------------------------------------------------------
