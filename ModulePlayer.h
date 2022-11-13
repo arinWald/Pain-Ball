@@ -4,6 +4,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "Kicker.h"
+#include "Animation.h"
 
 #include "SDL\include\SDL.h"
 
@@ -28,6 +29,9 @@ public:
 public:
 
 	SDL_Texture* playerText;
+	Animation* currentAnimation;
+	Animation* rightflipperAnimation;
+	Animation* leftflipperAnimation;
 
 	PhysBody* ball;
 	SDL_Rect ballSect = { 127, 317, 19, 21 };

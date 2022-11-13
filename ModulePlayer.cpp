@@ -11,7 +11,7 @@
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
-
+	//rightflipperAnimation->PushBack({ 0,0,43,35 });
 }
 
 ModulePlayer::~ModulePlayer()
@@ -21,6 +21,8 @@ ModulePlayer::~ModulePlayer()
 bool ModulePlayer::Start()
 {
 	LOG("Loading player");
+
+	//playerText = App->textures->Load("Game/Assets/SpriteSheet-Flippers.png");
 
 	b2Vec2 a = { -0.44, 0 };
 	b2Vec2 b = { 0, 0 };
@@ -97,6 +99,19 @@ update_status ModulePlayer::Update()
 			f = f->next;
 		}
 	}
+
+	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT) {
+	//	p2List_item<Flipper*>* f = flippers.getFirst();
+	//	while (f != NULL)
+	//	{
+	//		int x, y;
+	//		f->data->Rect->GetPosition(x, y);
+
+	//		App->renderer->Blit(playerText, x, y - 5, &rectSect, f->data->rightSide, 1.0f, f->data->Rect->GetRotation());
+
+	//		f = f->next;
+	//	}
+	//}
 
 	return UPDATE_CONTINUE;
 }
