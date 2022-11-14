@@ -16,7 +16,7 @@ public:
 
 public:
 
-	//std::unique_ptr<PhysBody*> ball;
-	PhysBody* ball;
+	std::unique_ptr<PhysBody> ball;
+	//PhysBody* ball;
 
 };
