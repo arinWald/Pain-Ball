@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
+#include "Ball.h"
 #include <iostream>
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -48,6 +49,160 @@ bool ModuleSceneIntro::Start()
 
 	//Colliders - Bumpers
 
+	//Colliders Pista EDGES
+	//
+			// Pivot 0, 0
+	{int pinball[96] = {
+		374, 417,
+		303, 0,
+		81, 0,
+		12, 416,
+		118, 415,
+		119, 395,
+		61, 349,
+		56, 382,
+		33, 381,
+		49, 277,
+		67, 256,
+		107, 252,
+		109, 207,
+		86, 156,
+		75, 127,
+		76, 96,
+		91, 68,
+		95, 64,
+		99, 60,
+		87, 52,
+		85, 39,
+		88, 29,
+		98, 21,
+		110, 18,
+		131, 18,
+		145, 26,
+		159, 23,
+		181, 20,
+		207, 21,
+		240, 26,
+		262, 35,
+		279, 48,
+		299, 67,
+		307, 95,
+		321, 178,
+		351, 358,
+		358, 408,
+		333, 408,
+		326, 356,
+		303, 170,
+		298, 173,
+		324, 384,
+		307, 384,
+		302, 375,
+		302, 369,
+		267, 395,
+		269, 425,
+		373, 419
+	};
+
+	// Pivot 0, 0
+	int pinball2[62] = {
+		285, 225,
+		284, 214,
+		268, 211,
+		266, 173,
+		284, 130,
+		287, 108,
+		282, 88,
+		268, 67,
+		241, 47,
+		227, 52,
+		235, 62,
+		251, 75,
+		259, 84,
+		262, 99,
+		262, 122,
+		248, 136,
+		241, 133,
+		253, 106,
+		253, 89,
+		236, 66,
+		222, 58,
+		220, 47,
+		231, 41,
+		251, 48,
+		266, 58,
+		279, 73,
+		292, 99,
+		297, 153,
+		281, 164,
+		289, 227,
+		286, 228
+	};
+
+	// Pivot 0, 0
+	int pinball3[10] = {
+		248, 373,
+		299, 334,
+		296, 283,
+		292, 283,
+		296, 333
+	};
+
+	// Pivot 0, 0
+	int pinball4[10] = {
+		134, 369,
+		67, 318,
+		70, 280,
+		76, 280,
+		73, 320
+	};
+
+	//Pivot 0, 0
+	int upLeftPiece[10] = {
+		157, 42,
+		137, 55,
+		140, 70,
+		167, 56,
+		166, 46
+	};
+
+	// Pivot 0, 0
+	int leftBounceTriangle[6] = {
+		113, 280,
+		136, 346,
+		108, 327
+	};
+
+	// Pivot 0, 0
+	int rightBounceTriangle[6] = {
+		250, 345,
+		272, 281,
+		277, 326
+	};
+
+	// Pivot 0, 0
+	int upLeftLeftPiece[18] = {
+		95, 93,
+		92, 115,
+		97, 135,
+		113, 159,
+		142, 145,
+		139, 139,
+		104, 122,
+		97, 112,
+		98, 93
+	};
+
+
+	ricks.add(App->physics->CreateChain(0, 0, pinball, 92));
+	ricks.add(App->physics->CreateChain(0, 0, pinball2, 62));
+	ricks.add(App->physics->CreateChain(0, 0, pinball3, 10));
+	ricks.add(App->physics->CreateChain(0, 0, pinball4, 10));
+	ricks.add(App->physics->CreateChain(0, 0, upLeftPiece, 10));
+	ricks.add(App->physics->CreateChain(0, 0, leftBounceTriangle, 6));
+	ricks.add(App->physics->CreateChain(0, 0, rightBounceTriangle, 6));
+	ricks.add(App->physics->CreateChain(0, 0, upLeftLeftPiece, 18));
+	}
+
 
 	return ret;
 }
@@ -87,160 +242,6 @@ update_status ModuleSceneIntro::Update()
 		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50));
 	}
 
-	// If user presses 3, create a new RickHead object
-	if (App->input->GetKey(SDL_SCANCODE_3) == KEY_DOWN)
-	{
-		// Pivot 0, 0
-		int pinball[96] = {
-			374, 417,
-			303, 0,
-			81, 0,
-			12, 416,
-			118, 415,
-			119, 395,
-			61, 349,
-			56, 382,
-			33, 381,
-			49, 277,
-			67, 256,
-			107, 252,
-			109, 207,
-			86, 156,
-			75, 127,
-			76, 96,
-			91, 68,
-			95, 64,
-			99, 60,
-			87, 52,
-			85, 39,
-			88, 29,
-			98, 21,
-			110, 18,
-			131, 18,
-			145, 26,
-			159, 23,
-			181, 20,
-			207, 21,
-			240, 26,
-			262, 35,
-			279, 48,
-			299, 67,
-			307, 95,
-			321, 178,
-			351, 358,
-			358, 408,
-			333, 408,
-			326, 356,
-			303, 170,
-			298, 173,
-			324, 384,
-			307, 384,
-			302, 375,
-			302, 369,
-			267, 395,
-			269, 425,
-			373, 419
-		};
-
-		// Pivot 0, 0
-		int pinball2[62] = {
-			285, 225,
-			284, 214,
-			268, 211,
-			266, 173,
-			284, 130,
-			287, 108,
-			282, 88,
-			268, 67,
-			241, 47,
-			227, 52,
-			235, 62,
-			251, 75,
-			259, 84,
-			262, 99,
-			262, 122,
-			248, 136,
-			241, 133,
-			253, 106,
-			253, 89,
-			236, 66,
-			222, 58,
-			220, 47,
-			231, 41,
-			251, 48,
-			266, 58,
-			279, 73,
-			292, 99,
-			297, 153,
-			281, 164,
-			289, 227,
-			286, 228
-		};
-
-		// Pivot 0, 0
-		int pinball3[10] = {
-			260, 365,
-			299, 334,
-			296, 283,
-			292, 283,
-			296, 333
-		};
-
-		// Pivot 0, 0
-		int pinball4[10] = {
-			126, 364,
-			67, 318,
-			70, 280,
-			76, 280,
-			73, 320
-		};
-
-		//Pivot 0, 0
-		int upLeftPiece[10] = {
-			157, 42,
-			137, 55,
-			140, 70,
-			167, 56,
-			166, 46
-		};
-
-		// Pivot 0, 0
-		int leftBounceTriangle[6] = {
-			113, 280,
-			136, 346,
-			108, 327
-		};
-
-		// Pivot 0, 0
-		int rightBounceTriangle[6] = {
-			250, 345,
-			272, 281,
-			277, 326
-		};
-
-		// Pivot 0, 0
-		int upLeftLeftPiece[18] = {
-			95, 93,
-			92, 115,
-			97, 135,
-			113, 159,
-			142, 145,
-			139, 139,
-			104, 122,
-			97, 112,
-			98, 93
-		};
-
-
-		ricks.add(App->physics->CreateChain(0, 0, pinball, 92));
-		ricks.add(App->physics->CreateChain(0, 0, pinball2, 62));
-		ricks.add(App->physics->CreateChain(0, 0, pinball3, 10));
-		ricks.add(App->physics->CreateChain(0, 0, pinball4, 10));
-		ricks.add(App->physics->CreateChain(0, 0, upLeftPiece, 10));
-		ricks.add(App->physics->CreateChain(0, 0, leftBounceTriangle, 6));
-		ricks.add(App->physics->CreateChain(0, 0, rightBounceTriangle, 6));
-		ricks.add(App->physics->CreateChain(0, 0, upLeftLeftPiece, 18));
-	}
 
 	// Prepare for raycast ------------------------------------------------------
 	

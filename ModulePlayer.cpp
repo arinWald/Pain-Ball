@@ -8,6 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
 #include "Kicker.h"
+#include "Ball.h"
 
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -30,7 +31,7 @@ bool ModulePlayer::Start()
 	// Flippers --------------------------------------------------------------
 	Flipper* f = new Flipper;
 	f->Circle = App->physics->CreateCircle(140, 382, 4, b2_staticBody);
-	f->Rect = App->physics->CreateRectangle(140 + rectSect.w / 2, 374 + rectSect.h / 2, rectSect.w, rectSect.h - 10, b2_dynamicBody);
+	f->Rect = App->physics->CreateRectangle(140 + rectSect.w / 2, 374 + rectSect.h / 2, rectSect.w - 20, rectSect.h - 10, b2_dynamicBody);
 	f->rightSide = false;
 	App->physics->CreateRevoluteJoint(f->Rect, a, f->Circle, b, 35.0f);
 	flippers.add(f);
@@ -39,7 +40,7 @@ bool ModulePlayer::Start()
 
 	Flipper* f2 = new Flipper;
 	f2->Circle = App->physics->CreateCircle(245, 382, 4, b2_staticBody);
-	f2->Rect = App->physics->CreateRectangle(245 - rectSect.w / 2, 374 + rectSect.h / 2, rectSect.w, rectSect.h - 10, b2_dynamicBody);
+	f2->Rect = App->physics->CreateRectangle(245 - rectSect.w / 2, 374 + rectSect.h / 2, rectSect.w - 20, rectSect.h - 10, b2_dynamicBody);
 	f2->rightSide = true;
 	App->physics->CreateRevoluteJoint(f2->Rect, a, f2->Circle, b, 35.0f);
 	flippers.add(f2);
@@ -98,6 +99,12 @@ update_status ModulePlayer::Update()
 			}
 			f = f->next;
 		}
+	}
+
+
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	{
+		App->ball->ball->body->ApplyLinearImpulse({ 0,-7 }, { 0,0 }, true);
 	}
 
 	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT) {
