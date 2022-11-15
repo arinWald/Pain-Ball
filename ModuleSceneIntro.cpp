@@ -67,11 +67,11 @@ bool ModuleSceneIntro::Start()
 		32, 381,
 		69, 177,
 		76, 120,
-		76, 99,
+		78, 100,
 		83, 80,
-		100, 58,
-		87, 48,
-		86, 35,
+		96, 65,
+		85, 50,
+		84, 35,
 		89, 27,
 		101, 20,
 		116, 17,
@@ -83,7 +83,7 @@ bool ModuleSceneIntro::Start()
 		210, 21,
 		241, 25,
 		271, 39,
-		293, 63,
+		296, 63,
 		308, 97,
 		314, 143,
 		357, 382,
@@ -104,13 +104,26 @@ bool ModuleSceneIntro::Start()
 	};
 
 	// Pivot 0, 0
-	int obstacleMigDreta[10] = {
-		278, 148,
+	int obstacleMigDreta[12] = {
+		289, 121,
 		266, 175,
 		270, 211,
-		286, 226,
-		281, 166
+		288, 225,
+		282, 164,
+		298, 148
 	};
+
+	// Pivot 0, 0
+	int obstacleMigEsquerra[12] = {
+		78, 130,
+		112, 207,
+		106, 251,
+		76, 254,
+		52, 273,
+		70, 130
+	};
+
+
 
 	// Pivot 0, 0
 	int obstacleSuperiorDreta[32] = {
@@ -119,26 +132,26 @@ bool ModuleSceneIntro::Start()
 		255, 100,
 		252, 86,
 		240, 69,
-		226, 58,
+		225, 58,
 		220, 60,
 		218, 47,
 		230, 44,
-		242, 47,
-		232, 53,
-		244, 63,
-		257, 75,
-		267, 92,
+		235, 45,
+		228, 56,
+		243, 66,
+		254, 77,
+		264, 92,
 		267, 114,
 		249, 135
 	};
 
 	// Pivot 0, 0
 	int obstacleSuperiorEsquerra[18] = {
-		95, 92,
-		91, 108,
-		96, 132,
+		96, 92,
+		94, 112,
+		98, 132,
 		114, 160,
-		143, 145,
+		145, 147,
 		141, 137,
 		104, 122,
 		99, 109,
@@ -157,7 +170,7 @@ bool ModuleSceneIntro::Start()
 
 	// Pivot 0, 0
 	int rallaFlipperLeft[10] = {
-		134, 370,
+		135, 371,
 		65, 317,
 		67, 288,
 		73, 288,
@@ -166,7 +179,7 @@ bool ModuleSceneIntro::Start()
 
 	// Pivot 0, 0
 	int rallaFlipperRight[10] = {
-		252, 369,
+		250, 372,
 		301, 335,
 		297, 279,
 		290, 286,
@@ -220,22 +233,23 @@ bool ModuleSceneIntro::Start()
 	int tubSortida[24] = {
 		328, 378,
 		292, 102,
-		278, 72,
-		264, 59,
-		248, 48,
-		228, 43,
+		278, 75,
+		260, 59,
+		246, 50,
+		226, 44,
 		224, 45,
 		247, 50,
 		265, 63,
 		277, 79,
 		287, 107,
-		288, 122
+		294, 126
 	};
 
 	ricks.add(App->physics->CreateChain(0, 0, base, 8));
 	ricks.add(App->physics->CreateChain(0, 0, exterior, 64));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleMig, 8));
-	ricks.add(App->physics->CreateChain(0, 0, obstacleMigDreta, 10));
+	ricks.add(App->physics->CreateChain(0, 0, obstacleMigEsquerra, 12));
+	ricks.add(App->physics->CreateChain(0, 0, obstacleMigDreta, 12));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorDreta, 32));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorEsquerra, 18));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorMig, 10));
