@@ -49,7 +49,7 @@ bool ModuleSceneIntro::Start()
 
 	//Colliders - Bumpers
 
-	//Colliders Pista EDGES
+	//Colliders Pista EDGES 1r PIS
 	// Pivot 0, 0
 	{int base[8] = {
 		105, 408,
@@ -146,17 +146,22 @@ bool ModuleSceneIntro::Start()
 	};
 
 	// Pivot 0, 0
-	int obstacleSuperiorEsquerra[18] = {
+	int obstacleSuperiorEsquerra[26] = {
 		96, 92,
 		94, 112,
 		98, 132,
 		114, 160,
-		145, 147,
-		141, 137,
-		104, 122,
-		99, 109,
-		100, 92
+		124, 158,
+		138, 192,
+		140, 184,
+		161, 177,
+		168, 184,
+		143, 141,
+		107, 125,
+		98, 109,
+		101, 92
 	};
+
 
 	// Pivot 0, 0
 	int obstacleSuperiorMig[10] = {
@@ -245,13 +250,73 @@ bool ModuleSceneIntro::Start()
 		294, 126
 	};
 
+	// Pivot 0, 0
+	int colliderEspecialLeft[12] = {
+		49, 257,
+		75, 258,
+		88, 155,
+		75, 134,
+		66, 152,
+		50, 248
+	};
+
+	// Pivot 0, 0
+	int colliderEspecialRight[8] = {
+		284, 164,
+		298, 152,
+		289, 120,
+		277, 145
+	};
+
+	// Pivot 0, 0
+	int segonPis[72] = {
+		137, 192,
+		130, 167,
+		119, 154,
+		111, 150,
+		100, 149,
+		92, 150,
+		86, 154,
+		84, 160,
+		86, 166,
+		90, 169,
+		98, 174,
+		105, 182,
+		107, 203,
+		103, 247,
+		91, 261,
+		87, 290,
+		82, 298,
+		74, 297,
+		67, 291,
+		69, 266,
+		60, 258,
+		50, 244,
+		62, 155,
+		69, 143,
+		80, 134,
+		92, 131,
+		110, 130,
+		123, 133,
+		134, 140,
+		145, 150,
+		154, 160,
+		162, 175,
+		166, 182,
+		180, 171,
+		172, 242,
+		122, 203
+	};
+
+
+
 	ricks.add(App->physics->CreateChain(0, 0, base, 8));
 	ricks.add(App->physics->CreateChain(0, 0, exterior, 64));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleMig, 8));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleMigEsquerra, 12));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleMigDreta, 12));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorDreta, 32));
-	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorEsquerra, 18));
+	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorEsquerra, 26));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorMig, 10));
 	ricks.add(App->physics->CreateChain(0, 0, rallaFlipperLeft, 10));
 	ricks.add(App->physics->CreateChain(0, 0, rallaFlipperRight, 10));
@@ -262,6 +327,34 @@ bool ModuleSceneIntro::Start()
 	ricks.add(App->physics->CreateChain(0, 0, triangleLeft, 6));
 	ricks.add(App->physics->CreateChain(0, 0, triangleRight, 6));
 	ricks.add(App->physics->CreateChain(0, 0, tubSortida, 24));
+
+	/*ricks.add(App->physics->CreateChain(0, 0, colliderEspecialLeft, 12));
+	ricks.add(App->physics->CreateChain(0, 0, colliderEspecialRight, 8));*/
+	/*ricks.add(App->physics->CreateChain(0, 0, segonPis, 72));*/
+
+	
+	//INACABAT!!!!!!
+	//Remove colliders 1r pis i crear els de 2n pis
+	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
+	{
+		//Remove colliders 1r pis
+		p2List_item<PhysBody*>* item;
+		item = ricks.getFirst();
+
+		while (item != nullptr)
+		{
+			delete item->data;
+			item = item->next;
+		}
+
+		ricks.clear();
+
+		ricks.add(App->physics->CreateChain(0, 0, colliderEspecialLeft, 12));
+		ricks.add(App->physics->CreateChain(0, 0, colliderEspecialRight, 8));
+		ricks.add(App->physics->CreateChain(0, 0, segonPis, 72));
+
+	}
+
 	}
 	return ret;
 }

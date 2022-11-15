@@ -37,11 +37,11 @@ bool Bumpers::Start()
 
 	//Bumpers - Small Circles
 	PhysBody* pbodySC1;
-	pbodySC1 = App->physics->CreateCircleWithBounciness(63, 217, 8, 2.0f, b2_staticBody);
+	pbodySC1 = App->physics->CreateCircleWithBounciness(63, 217, 5, 1.5f, b2_staticBody);
 	PhysBody* pbodySC2;
-	pbodySC2 = App->physics->CreateCircleWithBounciness(95, 227, 8, 2.0f, b2_staticBody);
+	pbodySC2 = App->physics->CreateCircleWithBounciness(95, 227, 5, 1.5f, b2_staticBody);
 	PhysBody* pbodySC3;
-	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 8, 2.0f, b2_staticBody);
+	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.5f, b2_staticBody);
 
 	BumperElement smallCircle1{ "smallCircle1", pbodySC1 };
 	bumpersList.add(&smallCircle1);
