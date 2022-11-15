@@ -46,7 +46,8 @@ update_status Ball::Update()
 	if (App->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
 	{
 		ball = nullptr;
-		auto* ball2 = App->physics->CreateCircle(334, 352, 7, b2_dynamicBody);
+		//auto* ball2 = App->physics->CreateCircle(334, 352, 7, b2_dynamicBody);
+		auto* ball2 = App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 7, b2_dynamicBody);
 		ball = std::make_unique<PhysBody>(*ball2);
 
 		ball->body->GetFixtureList()->SetDensity(10.0f);
