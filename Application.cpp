@@ -30,7 +30,6 @@ Application::Application()
 	kicker = new Kicker(this);
 	bumpers = new Bumpers(this);
 	ingameUI = new ModuleInGameUI(this);
-	fonts = new ModuleFonts(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -41,7 +40,6 @@ Application::Application()
 	AddModule(physics);
 	AddModule(renderer);
 	AddModule(ingameUI);
-	AddModule(fonts);
 	AddModule(textures);
 	AddModule(input);
 	AddModule(audio);

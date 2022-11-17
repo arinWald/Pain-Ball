@@ -31,7 +31,7 @@ bool ModuleInGameUI::Start()
 {
 	puntos = 5;
 	char lookupTable1[] = { "0123456789 " };
-	scoreFont = App->fonts->Load("Assets/ScoreFont.png", lookupTable1, 0);
+	scoreFont = App->fonts->Load("Assets/ScoreFont.png", lookupTable1, 1);
 
 	return true;
 }
@@ -46,7 +46,7 @@ update_status ModuleInGameUI::Update()
 // Update: draw background
 update_status ModuleInGameUI::PostUpdate()
 {
-	sprintf_s(scoreText, 20, "%2d", puntos);
+	sprintf_s(scoreText, 10, "%2d", puntos);
 	for (int i = 0; i < 50; i++)
 	{
 		App->fonts->BlitText(10+(i*10), 10 + (i * 10), scoreFont, scoreText);
