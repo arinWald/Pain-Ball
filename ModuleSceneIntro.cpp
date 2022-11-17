@@ -495,7 +495,7 @@ update_status ModuleSceneIntro::Update()
 	//Kicker inicial
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
-		if (ballPushForce < 1000) { //max 100 de potència
+		if (ballPushForce < 500) { //max 100 de potència
 			ballPushForce += 10;
 			//App->audio->PlayFx(carga_fx);
 		}
@@ -510,17 +510,12 @@ update_status ModuleSceneIntro::Update()
 		App->renderer->Blit(barraCarga, 385, 335, NULL);
 		App->renderer->DrawQuad({ 385,335,21,cargablack }, 0, 0, 0);
 		if (cargablack > 0)
-			cargablack -= 2;
+			cargablack -= 1;
 	}
 	else
 	{
 		if (cargablack < 50)
-			cargablack += 2;
-	}
-
-	if (App->input->GetKey(SDL_SCANCODE_9) == KEY_UP)
-	{
-		
+			cargablack += 5;
 	}
 
 	cout << "BallPushForce " << ballPushForce << endl;
