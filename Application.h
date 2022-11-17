@@ -16,6 +16,7 @@ class Ball;
 class Kicker;
 class Bumpers;
 class ModuleInGameUI;
+class ModuleFonts;
 
 class Application
 {
@@ -32,6 +33,7 @@ public:
 	Kicker* kicker;
 	Bumpers* bumpers;
 	ModuleInGameUI* ingameUI;
+	ModuleFonts* fonts;
 
 private:
 

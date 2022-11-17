@@ -34,11 +34,11 @@ public:
 
 public:
 	
-	SDL_Texture* scoreFont = nullptr;
+	int numFont = -1;
+	char scoreText[10] = { "\0" };
 	
-	int fontPositionX, fontPositionY;
-
-	SDL_Rect r0, r1, r2, r3, r4, r5, r6, r7, r8, r9;
+	int alphabetFont = -1;
+	
 };
 
 #endif

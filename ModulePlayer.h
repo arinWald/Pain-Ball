@@ -54,5 +54,7 @@ public:
 	int previousScore;
 	int highScore = 0;
 
-	int puntuacion = 0;
+	// puntuacion del player
+	uint score = 000;
+
 };

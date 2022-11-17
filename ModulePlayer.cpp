@@ -10,6 +10,8 @@
 #include "Kicker.h"
 #include "Ball.h"
 
+#include "ModuleFonts.h"
+
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	//rightflipperAnimation->PushBack({ 0,0,43,35 });
@@ -44,7 +46,6 @@ bool ModulePlayer::Start()
 	f2->rightSide = true;
 	App->physics->CreateRevoluteJoint(f2->Rect, a, f2->Circle, b, 35.0f);
 	flippers.add(f2);
-
 
 
 	return true;
@@ -119,6 +120,8 @@ update_status ModulePlayer::Update()
 	//		f = f->next;
 	//	}
 	//}
+
+	
 
 	return UPDATE_CONTINUE;
 }

@@ -12,6 +12,7 @@
 #include "Kicker.h"
 #include "Bumpers.h"
 #include "ModuleInGameUI.h"
+#include "ModuleFonts.h"
 
 #include "Application.h"
 
@@ -29,6 +30,7 @@ Application::Application()
 	kicker = new Kicker(this);
 	bumpers = new Bumpers(this);
 	ingameUI = new ModuleInGameUI(this);
+	fonts = new ModuleFonts(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -37,7 +39,7 @@ Application::Application()
 	// Main Modules
 	AddModule(window);
 	AddModule(physics);
-	AddModule(renderer);
+	
 	AddModule(ingameUI);
 	AddModule(textures);
 	AddModule(input);
@@ -53,9 +55,11 @@ Application::Application()
 	AddModule(ball);
 	AddModule(bumpers);
 	
-
 	//Kicker
 	AddModule(kicker);
+
+	AddModule(renderer);
+	AddModule(fonts);
 }
 
 Application::~Application()
