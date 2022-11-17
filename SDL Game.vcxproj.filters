@@ -86,6 +86,12 @@
     <ClInclude Include="Animation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFonts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInGameUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -146,6 +152,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Bumpers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFonts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInGameUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

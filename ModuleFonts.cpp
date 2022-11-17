@@ -6,7 +6,7 @@
 
 #include<string.h>
 
-ModuleFonts::ModuleFonts(bool isEnabled) : Module(isEnabled)
+ModuleFonts::ModuleFonts(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 
 }
@@ -115,7 +115,7 @@ void ModuleFonts::BlitText(int x, int y, int font_id, const char* text) const
 		spriteRect.x = spriteRect.w * (charIndex % font->columns);
 		spriteRect.y = spriteRect.h * (charIndex / font->columns);
 
-		App->render->Blit(font->texture, x, y, &spriteRect, 0.0f, false);
+		App->renderer->Blit(font->texture, x, y, &spriteRect, 0.0f, false);
 
 		// Advance the position where we blit the next character
 		x += spriteRect.w;
