@@ -3,6 +3,13 @@
 #include "Globals.h"
 #include "p2Point.h"
 
+struct transformPosition {
+	float posX;
+	float posY;
+	bool turn;
+
+};
+
 class Ball : public Module
 {
 public:
@@ -13,8 +20,12 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	void ChangePosition(int x, int y);
+
 public:
 
 	PhysBody* ball;
+
+	transformPosition teleport;
 
 };

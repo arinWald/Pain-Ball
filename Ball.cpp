@@ -27,6 +27,8 @@ bool Ball::Start()
 
 	/*ball->body->SetGravityScale(2.0f);*/
 
+	teleport.turn = false;
+
 	LOG("Loading Ball");
 	return true;
 }
@@ -37,6 +39,15 @@ bool Ball::CleanUp()
 	LOG("Unloading Ball");
 
 	return true;
+}
+
+void Ball::ChangePosition(int x, int y)
+{
+
+	teleport.posX = x;
+	teleport.posY = y;
+	teleport.turn = true;
+
 }
 
 // Update: draw background
@@ -68,6 +79,22 @@ update_status Ball::Update()
 	{
 		float32 actualFriction = ball->body->GetFixtureList()->GetFriction();
 		ball->body->GetFixtureList()->SetFriction(actualFriction - 1.0f);
+	}
+
+	
+	if (App->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN)
+	{
+		ChangePosition(334, 352);
+	}
+
+
+
+	if (teleport.turn == true)
+	{
+		b2Vec2 resetPos = b2Vec2(PIXEL_TO_METERS(teleport.posX), PIXEL_TO_METERS(teleport.posY));
+		ball->body->SetTransform(resetPos, 0);
+
+		teleport.turn = false;
 	}
 
 	
