@@ -15,6 +15,7 @@ class ModulePhysics;
 class Ball;
 class Kicker;
 class Bumpers;
+class ModuleInGameUI;
 
 class Application
 {
@@ -30,6 +31,7 @@ public:
 	Ball* ball;
 	Kicker* kicker;
 	Bumpers* bumpers;
+	ModuleInGameUI* ingameUI;
 
 private:
 

@@ -32,11 +32,11 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	// Load textures
-	circle = App->textures->Load("pinball/wheel.png"); 
-	box = App->textures->Load("pinball/crate.png");
-	rick = App->textures->Load("pinball/rick_head.png");
-	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
-	backgroundTexture = App->textures->Load("Assets/pinball.png");
+	//circle = App->textures->Load("pinball/wheel.png"); 
+	//box = App->textures->Load("pinball/crate.png");
+	//rick = App->textures->Load("pinball/rick_head.png");
+	//bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+	//backgroundTexture = App->textures->Load("Assets/pinball.png");
 
 	// Create a big red sensor on the bottom of the screen.
 	// This sensor will not make other objects collide with it, but it can tell if it is "colliding" with something else
@@ -308,6 +308,14 @@ bool ModuleSceneIntro::Start()
 		122, 203
 	};
 
+	// Pivot 0, 0
+	int puntetDreta[8] = {
+		286, 262,
+		285, 254,
+		294, 253,
+		294, 261
+	};
+
 
 
 	ricks.add(App->physics->CreateChain(0, 0, base, 8));
@@ -327,6 +335,7 @@ bool ModuleSceneIntro::Start()
 	ricks.add(App->physics->CreateChain(0, 0, triangleLeft, 6));
 	ricks.add(App->physics->CreateChain(0, 0, triangleRight, 6));
 	ricks.add(App->physics->CreateChain(0, 0, tubSortida, 24));
+	ricks.add(App->physics->CreateChain(0, 0, puntetDreta, 8));
 
 	/*ricks.add(App->physics->CreateChain(0, 0, colliderEspecialLeft, 12));
 	ricks.add(App->physics->CreateChain(0, 0, colliderEspecialRight, 8));*/

@@ -8,9 +8,11 @@
 #include "ModulePlayer.h"
 #include "ModulePhysics.h"
 #include "ModuleSceneIntro.h"
+#include "ModuleFonts.h"
 #include "Ball.h"
 #include "Kicker.h"
 #include "Bumpers.h"
+#include "ModuleInGameUI.h"
 
 #include "Application.h"
 
@@ -27,6 +29,7 @@ Application::Application()
 	ball = new Ball(this);
 	kicker = new Kicker(this);
 	bumpers = new Bumpers(this);
+	ingameUI = new ModuleInGameUI(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -36,6 +39,7 @@ Application::Application()
 	AddModule(window);
 	AddModule(physics);
 	AddModule(renderer);
+	AddModule(ingameUI);
 	AddModule(textures);
 	AddModule(input);
 	AddModule(audio);
