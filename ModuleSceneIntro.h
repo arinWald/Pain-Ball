@@ -29,6 +29,8 @@ public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> ricks;
+
+	PhysBody* tubeSensor;
 	
 	// Lower ground sensor (will kill all objects passig through it)
 	PhysBody* lower_ground_sensor;

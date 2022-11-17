@@ -41,6 +41,8 @@ bool ModuleSceneIntro::Start()
 
 	barraCarga = App->textures->Load("Assets/carga.png");
 
+	tubeSensor = App->physics->CreateRectangleSensor(290, 573, 20, 40);
+
 
 	// Create a big red sensor on the bottom of the screen.
 	// This sensor will not make other objects collide with it, but it can tell if it is "colliding" with something else
