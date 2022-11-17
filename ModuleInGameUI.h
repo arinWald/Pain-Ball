@@ -33,9 +33,7 @@ public:
 
 public:
 	
-	int puntos;
-	int scoreFont;
-	char scoreText[10] = { "\0" };
+	SDL_Texture* scoreFont;
 
 };
 

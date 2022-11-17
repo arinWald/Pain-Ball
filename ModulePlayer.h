@@ -53,4 +53,6 @@ public:
 	int currentScore = 0;
 	int previousScore;
 	int highScore = 0;
+
+	int puntuacion = 0;
 };
