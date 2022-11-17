@@ -39,9 +39,14 @@ public:
 	SDL_Texture* box;
 	SDL_Texture* rick;
 	SDL_Texture* backgroundTexture = nullptr;
+	SDL_Texture* barraCarga;
 
 	// FX
 	uint bonus_fx;
+
+	//Kicker
+	int ballPushForce = 0;
+	int cargablack = 50;
 
 	// Raycast
 	p2Point<int> ray;

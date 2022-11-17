@@ -16,11 +16,7 @@ public:
 
 public:
 
-	PhysBody* pivot;
-	PhysBody* mobile;
-
-	SDL_Rect kickerSect = { 302,706,22,96 };
-	SDL_Rect kickerSectBonus = { 1002,706,22,96 };
+	int ballPushForce = 0;
 
 	uint kickerFx;
 };

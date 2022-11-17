@@ -61,8 +61,8 @@ update_status Ball::Update()
 		ball->body->ResetMassData();
 	}
 
-	std::cout << "Mouse X - " << App->input->GetMouseX() << std::endl;
-	std::cout << "Mouse Y - " << App->input->GetMouseY() << std::endl;
+	/*std::cout << "Mouse X - " << App->input->GetMouseX() << std::endl;
+	std::cout << "Mouse Y - " << App->input->GetMouseY() << std::endl;*/
 	//cout << ball->body->GetMass() << endl;
 
 	//Aumentar la fricción de la ball
