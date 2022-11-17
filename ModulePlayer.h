@@ -35,7 +35,6 @@ public:
 
 	PhysBody* ball;
 	SDL_Rect ballSect = { 127, 317, 19, 21 };
-	int ballCount = 2;
 	bool onceInit = true;
 	bool isDead = false;
 
@@ -53,6 +52,8 @@ public:
 	int currentScore = 0;
 	int previousScore;
 	int highScore = 0;
+
+	int ballCounter = 3;
 
 	// puntuacion del player
 	uint score = 000;

@@ -27,6 +27,8 @@ public:
 
 	PhysBody* ball;
 
+	bool ballReset;
+
 	//p2DynArray<PhysBody*> ballsContainer;
 
 	transformPosition teleport;

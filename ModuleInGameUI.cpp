@@ -50,23 +50,27 @@ update_status ModuleInGameUI::Update()
 update_status ModuleInGameUI::PostUpdate()
 {
 	
-	//para printar algun numero de alguna variable
-	sprintf_s(scoreText, 10, "%7d", App->player->score);
-	App->fonts->BlitText(58, 248, numFont, scoreText);
-
 	//App->fonts->BlitText(440, 208, scoreFont, "0");
-	//App->fonts->BlitText(440, 228, scoreFont, "1");
-	//App->fonts->BlitText(440, 248, scoreFont, "2");
-	//App->fonts->BlitText(440, 268, scoreFont, "3");
-	//App->fonts->BlitText(440, 288, scoreFont, "4");
-	//App->fonts->BlitText(440, 308, scoreFont, "5");
-	//App->fonts->BlitText(440, 328, scoreFont, "6");
-	//App->fonts->BlitText(440, 348, scoreFont, "7");
-	//App->fonts->BlitText(440, 368, scoreFont, "8");
-	//App->fonts->BlitText(440, 388, scoreFont, "9");
 
-	//para printar texto directamente o numeros directamente
-	App->fonts->BlitText(10, 300, alphabetFont, "Matricitas jeje");
+	switch (App->gameManager->gameState)
+	{
+	case(NONE):
+		break;
+	case(START):
+		App->fonts->BlitText(400, 217, alphabetFont, "Press P to");
+		App->fonts->BlitText(400, 247, alphabetFont, "play");
+		break;
+	case(PLAYING):
+		sprintf_s(scoreText, 10, "%7d", App->player->score);
+		App->fonts->BlitText(400, 217, numFont, scoreText);
+		break;
+	case(END):
+
+		break;
+	default:
+		break;
+	}
+
 
 
 	return UPDATE_CONTINUE;

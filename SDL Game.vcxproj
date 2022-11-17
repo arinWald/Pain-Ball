@@ -76,6 +76,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Bumpers.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Kicker.h" />
     <ClInclude Include="ModuleFonts.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bumpers.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Kicker.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />

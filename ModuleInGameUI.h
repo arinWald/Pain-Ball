@@ -5,6 +5,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "p2Point.h"
+#include "GameManager.h"
 
 struct SDL_Texture;
 

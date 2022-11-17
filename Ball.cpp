@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "Ball.h"
 #include "ModulePhysics.h"
+#include "ModulePlayer.h"
 #include "ModuleInput.h"
 #include "SDL\include\SDL.h"
 #include <iostream>
@@ -28,6 +29,7 @@ bool Ball::Start()
 	/*ball->body->SetGravityScale(2.0f);*/
 
 	teleport.turn = false;
+	ballReset = false;
 
 	LOG("Loading Ball");
 	return true;
@@ -63,7 +65,7 @@ update_status Ball::Update()
 
 	std::cout << "Mouse X - " << App->input->GetMouseX() << std::endl;
 	std::cout << "Mouse Y - " << App->input->GetMouseY() << std::endl;
-	//cout << ball->body->GetMass() << endl;
+	//cout << ball->body->GetMass() << endl;  
 
 	//Aumentar la fricción de la ball
 	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT)
@@ -81,23 +83,29 @@ update_status Ball::Update()
 		ball->body->GetFixtureList()->SetFriction(actualFriction - 1.0f);
 	}
 
+
+	b2Vec2 ballPosition = ball->body->GetPosition();
+	int ballPositionYInPixels = METERS_TO_PIXELS(ballPosition.y);
 	
-	if (App->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN)
+	if (ballPositionYInPixels > 400/*415*/ && !ballReset)
+	{
+		App->player->ballCounter--;
+		ballReset = true;
+	}
+
+	
+	if (App->input->GetKey(SDL_SCANCODE_T) == KEY_DOWN || ballReset)
 	{
 		ChangePosition(334, 352);
 	}
-
-
 
 	if (teleport.turn == true)
 	{
 		b2Vec2 resetPos = b2Vec2(PIXEL_TO_METERS(teleport.posX), PIXEL_TO_METERS(teleport.posY));
 		ball->body->SetTransform(resetPos, 0);
-
 		teleport.turn = false;
+		ballReset = false;
 	}
-
-	
 	return UPDATE_CONTINUE;
 }
 
