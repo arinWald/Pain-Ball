@@ -8,7 +8,7 @@
 
 #include "SDL/include/SDL.h"
 
-#include <stdio.h>
+#include <iostream>
 
 
 
@@ -31,6 +31,14 @@ bool ModuleInGameUI::Start()
 	fontPositionX = 430;
 	fontPositionY = 240;
 
+	//inicializamos la posicion de cada rectangulo
+	r0 = { 0,0,13,19 };
+	r0 = { 0,0,5,5 };
+	r0 = { 0,0,5,5 };
+	r0 = { 0,0,5,5 };
+	r0 = { 0,0,5,5 };
+
+
 	return true;
 }
 
@@ -45,7 +53,8 @@ update_status ModuleInGameUI::Update()
 update_status ModuleInGameUI::PostUpdate()
 {
 	
-	
+
+	App->renderer->Blit(scoreFont, fontPositionX, fontPositionY, &r0);
 
 	return UPDATE_CONTINUE;
 }
