@@ -27,7 +27,9 @@ ModuleInGameUI::~ModuleInGameUI()
 // Load assets
 bool ModuleInGameUI::Start()
 {
-
+	scoreFont = App->textures->Load("Assets/ScoreFont.png");
+	fontPositionX = 430;
+	fontPositionY = 240;
 
 	return true;
 }
@@ -42,7 +44,8 @@ update_status ModuleInGameUI::Update()
 // Update: draw background
 update_status ModuleInGameUI::PostUpdate()
 {
-
+	
+	
 
 	return UPDATE_CONTINUE;
 }

@@ -32,11 +32,11 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	// Load textures
-	//circle = App->textures->Load("pinball/wheel.png"); 
-	//box = App->textures->Load("pinball/crate.png");
-	//rick = App->textures->Load("pinball/rick_head.png");
-	//bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
-	//backgroundTexture = App->textures->Load("Assets/pinball.png");
+	circle = App->textures->Load("pinball/wheel.png"); 
+	box = App->textures->Load("pinball/crate.png");
+	rick = App->textures->Load("pinball/rick_head.png");
+	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+	backgroundTexture = App->textures->Load("Assets/pinball.png");
 
 	// Create a big red sensor on the bottom of the screen.
 	// This sensor will not make other objects collide with it, but it can tell if it is "colliding" with something else

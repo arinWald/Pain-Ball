@@ -4,6 +4,7 @@
 
 #include "Module.h"
 #include "Animation.h"
+#include "p2Point.h"
 
 struct SDL_Texture;
 
@@ -33,8 +34,11 @@ public:
 
 public:
 	
-	SDL_Texture* scoreFont;
+	SDL_Texture* scoreFont = nullptr;
+	
+	int fontPositionX, fontPositionY;
 
+	SDL_Rect rect
 };
 
 #endif
