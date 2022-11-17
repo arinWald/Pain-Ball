@@ -2,7 +2,6 @@
 #include "Module.h"
 #include "Globals.h"
 #include "p2Point.h"
-#include <memory>
 
 class Ball : public Module
 {
@@ -16,7 +15,6 @@ public:
 
 public:
 
-	std::unique_ptr<PhysBody> ball;
-	//PhysBody* ball;
+	PhysBody* ball;
 
 };

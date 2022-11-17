@@ -30,7 +30,7 @@ template<class tdata>
 class p2List
 {
 
-private:
+public:
 
 	p2List_item<tdata>*   start;
 	p2List_item<tdata>*   end;

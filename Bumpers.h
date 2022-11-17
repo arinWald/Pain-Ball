@@ -9,6 +9,7 @@ struct BumperElement
 {
 	std::string name;
 	PhysBody* bumper;
+
 };
 
 class Bumpers : public Module
@@ -24,5 +25,5 @@ public:
 public:
 
 	//std::unique_ptr<PhysBody*> ball;
-	p2List<BumperElement*> bumpersList;
+	p2List<BumperElement*> bumpersList;	
 };
