@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "p2DynArray.h"
 
 struct transformPosition {
 	float posX;
@@ -25,6 +26,8 @@ public:
 public:
 
 	PhysBody* ball;
+
+	//p2DynArray<PhysBody*> ballsContainer;
 
 	transformPosition teleport;
 
