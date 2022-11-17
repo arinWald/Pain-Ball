@@ -50,7 +50,7 @@ update_status ModuleInGameUI::Update()
 update_status ModuleInGameUI::PostUpdate()
 {
 	
-
+	//para printar algun numero de alguna variable
 	sprintf_s(scoreText, 10, "%7d", App->player->score);
 	App->fonts->BlitText(58, 248, numFont, scoreText);
 
@@ -65,6 +65,7 @@ update_status ModuleInGameUI::PostUpdate()
 	//App->fonts->BlitText(440, 368, scoreFont, "8");
 	//App->fonts->BlitText(440, 388, scoreFont, "9");
 
+	//para printar texto directamente o numeros directamente
 	App->fonts->BlitText(10, 300, alphabetFont, "Matricitas jeje");
 
 
