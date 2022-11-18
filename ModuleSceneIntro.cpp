@@ -51,12 +51,14 @@ bool ModuleSceneIntro::Start()
 
 	//Colliders Pista EDGES 1r PIS
 	// Pivot 0, 0
-	{int base[8] = {
-		105, 408,
-		104, 456,
-		287, 459,
-		285, 412
-	};
+	{int base[12] = {
+		105, 406,
+		104, 467,
+		287, 470,
+		285, 412,
+		283, 453,
+		109, 453
+		};
 
 	// Pivot 0, 0
 	int exterior[64] = {
@@ -166,9 +168,9 @@ bool ModuleSceneIntro::Start()
 	// Pivot 0, 0
 	int obstacleSuperiorMig[10] = {
 		138, 55,
-		156, 41,
-		167, 45,
-		169, 58,
+		158, 42,
+		166, 47,
+		166, 60,
 		138, 68
 	};
 
@@ -318,7 +320,7 @@ bool ModuleSceneIntro::Start()
 
 
 
-	ricks.add(App->physics->CreateChain(0, 0, base, 8));
+	ricks.add(App->physics->CreateChain(0, 0, base, 12));
 	ricks.add(App->physics->CreateChain(0, 0, exterior, 64));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleMig, 8));
 	ricks.add(App->physics->CreateChain(0, 0, obstacleMigEsquerra, 12));
