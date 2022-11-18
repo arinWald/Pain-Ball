@@ -30,6 +30,9 @@ bool Ball::Start()
 
 	teleport.turn = false;
 	ballReset = false;
+	
+	ball->listener = this;
+	ball->ctype = ColliderType::BALL;
 
 	LOG("Loading Ball");
 	return true;
@@ -107,8 +110,35 @@ update_status Ball::Update()
 		teleport.turn = false;
 		ballReset = false;
 	}
+
+	
+
 	return UPDATE_CONTINUE;
 }
 
+void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
+{
+	switch (bodyB->ctype)
+	{
+	case(ColliderType::BUMPSMALLCIRCLE):
+
+		App->player->currentScore += 150;
+
+		break;
+
+	case(ColliderType::BUMPBIGCIRCLE):
+		App->player->currentScore += 100;
+
+		break;
+
+	case(ColliderType::TRIANGLE):
+		App->player->currentScore += 50;
+
+		break;
+
+	default:
+		break;
+	}
+}
 
 

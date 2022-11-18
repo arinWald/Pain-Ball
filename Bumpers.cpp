@@ -19,12 +19,20 @@ bool Bumpers::Start()
 	//Bumpers - Big Circles
 	PhysBody* pbodyBC1 = new PhysBody();
 	pbodyBC1 = App->physics->CreateCircleWithBounciness(112, 43, 10, 1.0f, b2_staticBody);
-	PhysBody* pbodyBC2 = new PhysBody();
+	pbodyBC1->ctype = ColliderType::BUMPBIGCIRCLE; 
+
+	PhysBody* pbodyBC2 = new PhysBody(); 
 	pbodyBC2 = App->physics->CreateCircleWithBounciness(215, 90, 10, 1.0f, b2_staticBody);
+	pbodyBC2->ctype = ColliderType::BUMPBIGCIRCLE;
+
 	PhysBody* pbodyBC3 = new PhysBody();
 	pbodyBC3 = App->physics->CreateCircleWithBounciness(191, 123, 10, 1.0f, b2_staticBody);
+	pbodyBC3->ctype = ColliderType::BUMPBIGCIRCLE;
+
 	PhysBody* pbodyBC4 = new PhysBody();
 	pbodyBC4 = App->physics->CreateCircleWithBounciness(173, 96, 10, 1.0f, b2_staticBody);
+	pbodyBC4->ctype = ColliderType::BUMPBIGCIRCLE;
+
 
 	BumperElement* bigCircle1 = new BumperElement{ "bigCircle1", pbodyBC1 };
 	bumpersList.add(bigCircle1);
@@ -36,13 +44,20 @@ bool Bumpers::Start()
 	bumpersList.add(bigCircle4);
 
 
+
 	//Bumpers - Small Circles
 	PhysBody* pbodySC1 = new PhysBody();
 	pbodySC1 = App->physics->CreateCircleWithBounciness(63, 217, 5, 1.5f, b2_staticBody);
+	pbodySC1->ctype = ColliderType::BUMPSMALLCIRCLE;
+
 	PhysBody* pbodySC2 = new PhysBody();
 	pbodySC2 = App->physics->CreateCircleWithBounciness(95, 227, 5, 1.5f, b2_staticBody);
+	pbodySC2->ctype = ColliderType::BUMPSMALLCIRCLE;
+
 	PhysBody* pbodySC3 = new PhysBody();
 	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.5f, b2_staticBody);
+	pbodySC3->ctype = ColliderType::BUMPSMALLCIRCLE;
+
 
 	BumperElement* smallCircle1 = new BumperElement{ "smallCircle1", pbodySC1 };
 	bumpersList.add(smallCircle1);
@@ -52,11 +67,15 @@ bool Bumpers::Start()
 	bumpersList.add(smallCircle3);
 
 
+
 	//Bumpers - Triangles
 	PhysBody* pbodyT1 = new PhysBody();
 	pbodyT1 = App->physics->CreateRectangleWithBounciness(260, 310, 3, 63, 3.0f, 9.75f, b2_staticBody);
+	pbodyT1->ctype = ColliderType::TRIANGLE;
+
 	PhysBody* pbodyT2 = new PhysBody();
 	pbodyT2 = App->physics->CreateRectangleWithBounciness(126, 310, 3, 63, 3.0f, -9.75f, b2_staticBody);
+	pbodyT2->ctype = ColliderType::TRIANGLE;
 
 	BumperElement* triangleDret = new BumperElement{ "triangleDret", pbodyT1 };
 	bumpersList.add(triangleDret);

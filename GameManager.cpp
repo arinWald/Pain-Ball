@@ -37,6 +37,14 @@ update_status GameManager::Update()
 		}
 		else if (gameState == END)
 		{
+			if (firstGame)
+			{
+				App->player->previouScore = 0;
+			}
+			else
+			{
+				App->player->previouScore = App->player->currentScore;
+			}
 			gameState = PLAYING;
 			App->player->ballCounter = 3;
 			App->player->currentScore = 0;
@@ -70,13 +78,10 @@ update_status GameManager::Update()
 		{
 			App->player->highestScore = App->player->currentScore;
 		}
-		if (!firstGame)
-		{
-			App->player->previouScore = App->player->currentScore;
-		}
 
 		if (firstGame == true)
 			firstGame = false;
+	
 		
 
 		break;

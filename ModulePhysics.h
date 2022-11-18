@@ -16,6 +16,15 @@
 #define RAD_TO_DEG(r) ((float) RAD_PER_DEG * r)
 #define DEG_TO_RAD(r) ((float) DEG_PER_RAD * r)
 
+enum class ColliderType {
+	BALL,
+	BUMPSMALLCIRCLE,
+	BUMPBIGCIRCLE,
+	TRIANGLE,
+	UNKNOWN
+	// ..
+};
+
 // Small class to return to other modules to track position and rotation of physics bodies
 class PhysBody
 {
@@ -32,6 +41,7 @@ public:
 	int width, height;
 	b2Body* body;
 	Module* listener;
+	ColliderType ctype;
 };
 
 // Module --------------------------------------

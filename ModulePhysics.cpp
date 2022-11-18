@@ -498,7 +498,7 @@ void ModulePhysics::BeginContact(b2Contact* contact)
 
 // PHYS BODY FUNCTIONS -------------------------------------------------------------------------------
 
-PhysBody::PhysBody() : listener(NULL), body(NULL)
+PhysBody::PhysBody() : listener(NULL), body(NULL), ctype(ColliderType::UNKNOWN)
 {
 	// Initialize all internal class variables
 	width = height = 0;

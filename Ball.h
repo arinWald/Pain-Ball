@@ -23,6 +23,8 @@ public:
 
 	void ChangePosition(int x, int y);
 
+	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
+
 public:
 
 	PhysBody* ball;
