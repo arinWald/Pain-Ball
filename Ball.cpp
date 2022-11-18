@@ -87,7 +87,8 @@ update_status Ball::Update()
 	b2Vec2 ballPosition = ball->body->GetPosition();
 	int ballPositionYInPixels = METERS_TO_PIXELS(ballPosition.y);
 	
-	if (ballPositionYInPixels > 400/*415*/ && !ballReset)
+	//Resetear la ball y disminuir una ball (de las 3 posibles que puede jugar el player en una partida) si la pelota cae al vacío
+	if (ballPositionYInPixels > 400/*415*/ && !ballReset) 
 	{
 		App->player->ballCounter--;
 		ballReset = true;

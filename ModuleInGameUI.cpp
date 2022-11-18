@@ -56,17 +56,33 @@ update_status ModuleInGameUI::PostUpdate()
 	{
 	case(NONE):
 		break;
+
 	case(START):
 		App->fonts->BlitText(400, 217, alphabetFont, "Press P to");
 		App->fonts->BlitText(400, 247, alphabetFont, "play");
 		break;
-	case(PLAYING):
-		sprintf_s(scoreText, 10, "%7d", App->player->score);
-		App->fonts->BlitText(400, 217, numFont, scoreText);
-		break;
-	case(END):
 
+	case(PLAYING)://mostrando la currentpuntuación en real-time
+		sprintf_s(scoreText, 10, "%7d", App->player->currentScore);
+		App->fonts->BlitText(432, 356, numFont, scoreText);
 		break;
+
+	case(END): //Mostrando current, previous y highest score al acabar una partida
+		App->fonts->BlitText(400, 217, alphabetFont, "C ");
+		sprintf_s(scoreText, 10, "%7d", App->player->currentScore);
+		App->fonts->BlitText(432, 217, numFont, scoreText);
+
+		App->fonts->BlitText(400, 247, alphabetFont, "P ");
+		sprintf_s(scoreText, 10, "%7d", App->player->previouScore);
+		App->fonts->BlitText(432, 247, numFont, scoreText);
+
+		App->fonts->BlitText(400, 277, alphabetFont, "H ");
+		sprintf_s(scoreText, 10, "%7d", App->player->highestScore);
+		App->fonts->BlitText(432, 277, numFont, scoreText);
+
+		App->fonts->BlitText(400, 356, alphabetFont, "P to play");
+		break;
+
 	default:
 		break;
 	}

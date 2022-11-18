@@ -14,7 +14,7 @@ struct transformPosition {
 class Ball : public Module
 {
 public:
-	Ball(Application* app, bool start_enabled = true);
+	Ball(Application* app, bool start_enabled = false);
 	virtual ~Ball();
 
 	bool Start();

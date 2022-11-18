@@ -49,13 +49,15 @@ public:
 	uint kickerFx;
 
 	bool onceBall = true;
-	int currentScore = 0;
+	//int currentScore = 0;
 	int previousScore;
 	int highScore = 0;
 
 	int ballCounter = 3;
 
 	// puntuacion del player
-	uint score = 000;
+	uint currentScore = 000;
+	uint previouScore = 000;
+	uint highestScore = 000;
 
 };

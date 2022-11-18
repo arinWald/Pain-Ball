@@ -19,6 +19,6 @@ public:
 	update_status Update();
 public:
 	
-
+	bool firstGame = false;
 	int gameState;
 };

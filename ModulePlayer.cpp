@@ -9,6 +9,7 @@
 #include "ModulePhysics.h"
 #include "Kicker.h"
 #include "Ball.h"
+#include "GameManager.h"
 
 #include "ModuleFonts.h"
 
@@ -103,7 +104,7 @@ update_status ModulePlayer::Update()
 	}
 
 
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->gameManager->gameState ==PLAYING)
 	{
 		App->ball->ball->body->ApplyLinearImpulse({ 0,-7 }, { 0,0 }, true);
 	}
