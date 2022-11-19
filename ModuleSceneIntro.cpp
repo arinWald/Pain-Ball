@@ -42,6 +42,15 @@ bool ModuleSceneIntro::Start()
 
 	tubeSensor = App->physics->CreateRectangleSensor(290, 573, 20, 40);
 
+	PhysBody* pbodySC3 = new PhysBody();
+	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.2f, b2_staticBody);
+	pbodySC3->ctype = ColliderType::BUMPSMALLCIRCLE;
+
+	RSalvaVides = App->physics->CreateRectangleSensor(310, 380, 10, 10);
+	RSalvaVides->ctype = ColliderType::SALVAVIDES;
+
+	LSalvaVides = App->physics->CreateRectangleSensor(40, 380, 10, 10);
+	LSalvaVides->ctype = ColliderType::SALVAVIDES;
 
 	// Create a big red sensor on the bottom of the screen.
 	// This sensor will not make other objects collide with it, but it can tell if it is "colliding" with something else
@@ -416,9 +425,6 @@ update_status ModuleSceneIntro::Update()
 		}
 		primerPis = true;
 	}
-
-
-	
 
 	// Prepare for raycast ------------------------------------------------------
 	

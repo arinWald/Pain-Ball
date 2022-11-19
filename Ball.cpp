@@ -4,6 +4,7 @@
 #include "ModulePhysics.h"
 #include "ModulePlayer.h"
 #include "ModuleInput.h"
+#include "ModuleSceneIntro.h"
 #include "SDL\include\SDL.h"
 #include <iostream>
 using namespace std;
@@ -102,6 +103,10 @@ update_status Ball::Update()
 	{
 		ChangePosition(334, 352);
 	}
+	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	{
+		ChangePosition(App->input->GetMouseX(), App->input->GetMouseY());
+	}
 
 	if (teleport.turn == true)
 	{
@@ -111,6 +116,26 @@ update_status Ball::Update()
 		ballReset = false;
 	}
 
+
+	//SALVA VIDES LEFT I RIGHT
+	if (salvaVidesOn)
+	{
+		if (stoppedTimer < 100)
+		{
+			++stoppedTimer;
+			ball->body->SetLinearVelocity({ 0,0 });
+			ball->body->SetGravityScale(0.0f);
+		}
+		else if (stoppedTimer == 100)
+		{
+			ball->body->SetGravityScale(1.0f);
+			ball->body->ApplyForceToCenter(b2Vec2(0, -500), true);
+			stoppedTimer = 0;
+			salvaVidesOn = false;
+		}
+	}
+
+	cout << stoppedTimer << endl;
 	
 
 	return UPDATE_CONTINUE;
@@ -134,6 +159,9 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	case(ColliderType::TRIANGLE):
 		App->player->currentScore += 50;
 
+		break;
+	case(ColliderType::SALVAVIDES):
+		salvaVidesOn = true;
 		break;
 
 	default:

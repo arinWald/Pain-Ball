@@ -1,6 +1,7 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
+#include "ModulePhysics.h"
 #include "p2Point.h"
 #include "p2DynArray.h"
 
@@ -34,5 +35,9 @@ public:
 	//p2DynArray<PhysBody*> ballsContainer;
 
 	transformPosition teleport;
+
+	int stoppedTimer = 0;
+	bool salvaVidesOn = false;
+
 
 };
