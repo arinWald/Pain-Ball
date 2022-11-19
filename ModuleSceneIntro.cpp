@@ -7,6 +7,7 @@
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
 #include "Ball.h"
+#include "Kicker.h"
 #include <iostream>
 using namespace std;
 
@@ -494,7 +495,7 @@ update_status ModuleSceneIntro::Update()
 
 	App->renderer->Blit(backgroundTexture, 0, 0, NULL);
 
-	//Kicker inicial
+	////Kicker inicial
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{
 		if (ballPushForce < 500) { //max 100 de potència
@@ -517,9 +518,8 @@ update_status ModuleSceneIntro::Update()
 	else
 	{
 		if (cargablack < 50)
-			cargablack += 5;
+			cargablack += 10;
 	}
-
 	cout << "BallPushForce " << ballPushForce << endl;
 
 	// Keep playing
