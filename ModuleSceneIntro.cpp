@@ -46,6 +46,16 @@ bool ModuleSceneIntro::Start()
 	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.2f, b2_staticBody);
 	pbodySC3->ctype = ColliderType::BUMPSMALLCIRCLE;
 
+	u1Sensor = App->physics->CreateRectangleSensor(177, 55, 5, 5);
+	u1Sensor->ctype = ColliderType::SENSORU1;
+	u2Sensor = App->physics->CreateRectangleSensor(193, 55, 5, 5);
+	u2Sensor->ctype = ColliderType::SENSORU2;
+	u3Sensor = App->physics->CreateRectangleSensor(210, 55, 5, 5);
+	u3Sensor->ctype = ColliderType::SENSORU3;
+
+	culdesacSensor = App->physics->CreateRectangleSensor(245, 55, 10, 10);
+	culdesacSensor->ctype = ColliderType::CULDESAC;
+
 	RSalvaVides = App->physics->CreateRectangleSensor(310, 380, 10, 10);
 	RSalvaVides->ctype = ColliderType::SALVAVIDES;
 

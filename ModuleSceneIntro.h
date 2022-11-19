@@ -31,6 +31,10 @@ public:
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> ricks;
 
+	PhysBody* u1Sensor;
+	PhysBody* u2Sensor;
+	PhysBody* u3Sensor;
+	PhysBody* culdesacSensor;
 	PhysBody* RSalvaVides;
 	PhysBody* LSalvaVides;
 

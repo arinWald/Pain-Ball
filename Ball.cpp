@@ -116,6 +116,24 @@ update_status Ball::Update()
 		ballReset = false;
 	}
 
+	//CUL DE SAC
+	if (culdesac)
+	{
+		if (stoppedTimer < 100)
+		{
+			++stoppedTimer;
+			ball->body->SetLinearVelocity({ 0,0 });
+			ball->body->SetGravityScale(0.0f);
+		}
+		else if (stoppedTimer == 100)
+		{
+			ball->body->SetGravityScale(1.0f);
+			ball->body->ApplyForceToCenter(b2Vec2(0, 1000), true);
+			stoppedTimer = 0;
+			culdesac = false;
+		}
+	}
+
 
 	//SALVA VIDES LEFT I RIGHT
 	if (salvaVidesOn)
@@ -162,6 +180,22 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		break;
 	case(ColliderType::SALVAVIDES):
 		salvaVidesOn = true;
+		break;
+
+	case(ColliderType::CULDESAC):
+		culdesac = true;
+		break;
+
+	case(ColliderType::SENSORU1):
+		
+		break;
+
+	case(ColliderType::SENSORU2):
+		
+		break
+
+	case(ColliderType::SENSORU3):
+		
 		break;
 
 	default:
