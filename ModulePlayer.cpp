@@ -53,6 +53,7 @@ bool ModulePlayer::Start()
 
 	barraCarga = App->textures->Load("Assets/carga.png");
 	playerText = App->textures->Load("Assets/Flipper.png");
+	ballText = App->textures->Load("Assets/Ball.png");
 
 	return true;
 }
@@ -125,7 +126,9 @@ update_status ModulePlayer::Update()
 
 			f = f->next;
 		}
-	
+		int x, y;
+
+	/*	App->renderer->Blit(ballText, x, y, NULL);*/
 
 	////Kicker inicial
 	if (App->gameManager->gameState == GameState::PLAYING && App->ball->bolaATub)

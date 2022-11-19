@@ -38,6 +38,8 @@ public:
 	bool onceInit = true;
 	bool isDead = false;
 
+	SDL_Texture* ballText;
+
 	p2List<Flipper*> flippers;
 	SDL_Rect rectSect = { 48, 250, 64, 20 };
 

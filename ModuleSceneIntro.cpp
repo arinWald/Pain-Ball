@@ -499,7 +499,7 @@ update_status ModuleSceneIntro::Update()
 			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
 	}
 
-	//App->renderer->Blit(backgroundTexture, 0, 0, NULL);
+	App->renderer->Blit(backgroundTexture, 0, 0, NULL);
 
 	// Keep playing
 	return UPDATE_CONTINUE;

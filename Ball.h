@@ -4,6 +4,7 @@
 #include "ModulePhysics.h"
 #include "p2Point.h"
 #include "p2DynArray.h"
+#include "Animation.h"
 
 struct transformPosition {
 	float posX;
@@ -28,16 +29,19 @@ public:
 
 public:
 
+	
 	PhysBody* ball;
-
+	
 	bool ballReset;
-
+	
 	//p2DynArray<PhysBody*> ballsContainer;
+
 
 	transformPosition teleport;
 
 	int stoppedTimer = 0;
 	bool salvaVidesOn = false;
 	bool bolaATub = true;
+	
 
 };

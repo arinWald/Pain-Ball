@@ -3,9 +3,11 @@
 #include "Ball.h"
 #include "ModulePhysics.h"
 #include "ModulePlayer.h"
+#include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleSceneIntro.h"
 #include "SDL\include\SDL.h"
+#include "ModuleRender.h"
 #include <iostream>
 using namespace std;
 
@@ -34,6 +36,8 @@ bool Ball::Start()
 	
 	ball->listener = this;
 	ball->ctype = ColliderType::BALL;
+
+	
 
 	LOG("Loading Ball");
 	return true;
@@ -134,6 +138,17 @@ update_status Ball::Update()
 			salvaVidesOn = false;
 		}
 	}
+
+	
+
+	
+
+	
+		int x, y;
+		ball->GetPosition(x, y);
+		App->renderer->Blit(App->player->ballText, x, y, NULL);
+		
+	
 
 	//cout << stoppedTimer << endl;
 	
