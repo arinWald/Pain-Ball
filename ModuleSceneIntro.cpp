@@ -354,9 +354,9 @@ bool ModuleSceneIntro::Start()
 	ricks.add(App->physics->CreateChain(0, 0, tubSortida, 24));
 	ricks.add(App->physics->CreateChain(0, 0, puntetDreta, 8));
 
-	ricks.add(App->physics->CreateChain(0 - 550, 0, colliderEspecialLeft, 12));
-	ricks.add(App->physics->CreateChain(0 - 550, 0, colliderEspecialRight, 8));
-	ricks.add(App->physics->CreateChain(0 - 550, 0, segonPis, 72));
+	ricks.add(App->physics->CreateChain(0 - 600, 0, colliderEspecialLeft, 12));
+	ricks.add(App->physics->CreateChain(0 - 600, 0, colliderEspecialRight, 8));
+	ricks.add(App->physics->CreateChain(0 - 600, 0, segonPis, 72));
 	}
 	
 	return ret;
@@ -407,7 +407,7 @@ update_status ModuleSceneIntro::Update()
 
 		while (item != nullptr)
 		{
-			item->data->body->SetTransform({ item->data->body->GetTransform().p.x + PIXEL_TO_METERS(550), 0 }, 0);
+			item->data->body->SetTransform({ item->data->body->GetTransform().p.x + PIXEL_TO_METERS(600), 0 }, 0);
 			item = item->next;
 		}
 		primerPis = false;
@@ -420,7 +420,7 @@ update_status ModuleSceneIntro::Update()
 
 		while (item != nullptr)
 		{
-			item->data->body->SetTransform({ item->data->body->GetTransform().p.x - PIXEL_TO_METERS(550), 0 }, 0);
+			item->data->body->SetTransform({ item->data->body->GetTransform().p.x - PIXEL_TO_METERS(600), 0 }, 0);
 			item = item->next;
 		}
 		primerPis = true;
