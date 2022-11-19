@@ -192,7 +192,7 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 	case(ColliderType::SENSORU2):
 		
-		break
+		break;
 
 	case(ColliderType::SENSORU3):
 		
