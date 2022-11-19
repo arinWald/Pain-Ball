@@ -52,7 +52,7 @@ bool ModulePlayer::Start()
 	flippers.add(f2);
 
 	barraCarga = App->textures->Load("Assets/carga.png");
-
+	playerText = App->textures->Load("Assets/Flipper.png");
 
 	return true;
 }
@@ -113,18 +113,19 @@ update_status ModulePlayer::Update()
 		App->ball->ball->body->ApplyLinearImpulse({ 0,-7 }, { 0,0 }, true);
 	}
 
-	//if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_REPEAT) {
-	//	p2List_item<Flipper*>* f = flippers.getFirst();
-	//	while (f != NULL)
-	//	{
-	//		int x, y;
-	//		f->data->Rect->GetPosition(x, y);
+	
+	
+		p2List_item<Flipper*>* f = flippers.getFirst();
+		while (f != NULL)
+		{
+			int x, y;
+			f->data->Rect->GetPosition(x, y);
 
-	//		App->renderer->Blit(playerText, x, y - 5, &rectSect, f->data->rightSide, 1.0f, f->data->Rect->GetRotation());
+			App->renderer->BlitFliper(playerText, x, y - 5, false, NULL, f->data->rightSide, 1.0f, f->data->Rect->GetRotation());
 
-	//		f = f->next;
-	//	}
-	//}
+			f = f->next;
+		}
+	
 
 	////Kicker inicial
 	if (App->gameManager->gameState == GameState::PLAYING && App->ball->bolaATub)

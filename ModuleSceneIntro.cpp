@@ -455,7 +455,7 @@ update_status ModuleSceneIntro::Update()
 
 		// If mouse is over this circle, paint the circle's texture
 		if(c->data->Contains(App->input->GetMouseX(), App->input->GetMouseY()))
-			App->renderer->Blit(circle, x, y, NULL, 1.0f, c->data->GetRotation());
+		
 
 		c = c->next;
 	}
@@ -468,7 +468,7 @@ update_status ModuleSceneIntro::Update()
 		c->data->GetPosition(x, y);
 
 		// Always paint boxes texture
-		App->renderer->Blit(box, x, y, NULL, 1.0f, c->data->GetRotation());
+		
 
 		// Are we hitting this box with the raycast?
 		if(ray_on)
@@ -481,15 +481,7 @@ update_status ModuleSceneIntro::Update()
 		c = c->next;
 	}
 
-	// Rick Heads
-	c = ricks.getFirst();
-	while(c != NULL)
-	{
-		int x, y;
-		c->data->GetPosition(x, y);
-		App->renderer->Blit(rick, x, y, NULL, 1.0f, c->data->GetRotation());
-		c = c->next;
-	}
+
 
 	// Raycasts -----------------
 	if(ray_on == true)
@@ -507,7 +499,7 @@ update_status ModuleSceneIntro::Update()
 			App->renderer->DrawLine(ray.x + destination.x, ray.y + destination.y, ray.x + destination.x + normal.x * 25.0f, ray.y + destination.y + normal.y * 25.0f, 100, 255, 100);
 	}
 
-	App->renderer->Blit(backgroundTexture, 0, 0, NULL);
+	//App->renderer->Blit(backgroundTexture, 0, 0, NULL);
 
 	// Keep playing
 	return UPDATE_CONTINUE;
