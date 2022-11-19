@@ -53,6 +53,30 @@ bool ModuleSceneIntro::Start()
 	u3Sensor = App->physics->CreateRectangleSensor(210, 55, 5, 5);
 	u3Sensor->ctype = ColliderType::SENSORU3;
 
+	d1Sensor = App->physics->CreateRectangleSensor(63, 184, 5, 5);
+	d1Sensor->ctype = ColliderType::SENSORD1;
+	d2Sensor = App->physics->CreateRectangleSensor(79, 187, 5, 5);
+	d2Sensor->ctype = ColliderType::SENSORD2;
+	d3Sensor = App->physics->CreateRectangleSensor(98, 196, 5, 5);
+	d3Sensor->ctype = ColliderType::SENSORD3;
+
+
+	salvD1Sensor = App->physics->CreateRectangleSensor(290, 171, 10, 10);
+	salvD1Sensor->ctype = ColliderType::SEGON;
+	salvD2Sensor = App->physics->CreateRectangleSensor(282, 126, 10, 10);
+	salvD2Sensor->ctype = ColliderType::SALVAVIDESCANVI;
+
+	salvD2Sensor = App->physics->CreateRectangleSensor(189, 230, 110, 10);
+	salvD2Sensor->ctype = ColliderType::SALVAVIDESCANVI;
+
+	cuadraditoSensor = App->physics->CreateRectangleSensor(262, 145, 10, 10);
+	cuadraditoSensor->ctype = ColliderType::CUADRADITO;
+	inicialSensor = App->physics->CreateRectangleSensor(215, 35, 10, 10);
+	inicialSensor->ctype = ColliderType::INICIAL;
+	segonSensor = App->physics->CreateRectangleSensor(152, 187, 10, 10);
+	segonSensor->ctype = ColliderType::SEGON;
+	segonFSensor = App->physics->CreateRectangleSensor(80, 300, 10, 10);
+	segonFSensor->ctype = ColliderType::SEGONF;
 	culdesacSensor = App->physics->CreateRectangleSensor(245, 55, 10, 10);
 	culdesacSensor->ctype = ColliderType::CULDESAC;
 
@@ -62,6 +86,15 @@ bool ModuleSceneIntro::Start()
 	LSalvaVides = App->physics->CreateRectangleSensor(40, 380, 10, 10);
 	LSalvaVides->ctype = ColliderType::SALVAVIDES;
 
+	App->ball->sensorU1 = false;
+	App->ball->sensorU2 = false;
+	App->ball->sensorU3 = false;
+
+	App->ball->sensorD1 = false;
+	App->ball->sensorD2 = false;
+	App->ball->sensorD3 = false;
+
+	primerPis = true;
 	// Create a big red sensor on the bottom of the screen.
 	// This sensor will not make other objects collide with it, but it can tell if it is "colliding" with something else
 	//lower_ground_sensor = App->physics->CreateRectangleSensor(SCREEN_WIDTH / 2, SCREEN_HEIGHT, SCREEN_WIDTH, 50);
@@ -409,8 +442,7 @@ update_status ModuleSceneIntro::Update()
 
 
 	//Alternar pisos edges
-	//Posar segon pis
-	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN && primerPis)
+	if ((App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN || App->ball->alternPis==true) && primerPis)
 	{
 		p2List_item<PhysBody*>* item;
 		item = ricks.getFirst();
@@ -421,9 +453,10 @@ update_status ModuleSceneIntro::Update()
 			item = item->next;
 		}
 		primerPis = false;
-	}	
+		App->ball->alternPis = false;
+	}
 	//Posar primer pis
-	if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN && !primerPis)
+	if ((App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN || App->ball->alternPis == true) && !primerPis)
 	{
 		p2List_item<PhysBody*>* item;
 		item = ricks.getFirst();
@@ -434,7 +467,9 @@ update_status ModuleSceneIntro::Update()
 			item = item->next;
 		}
 		primerPis = true;
+		App->ball->alternPis = false;
 	}
+	
 
 	// Prepare for raycast ------------------------------------------------------
 	
@@ -525,3 +560,4 @@ void ModuleSceneIntro::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 
 	// Do something else. You can also check which bodies are colliding (sensor? ball? player?)
 }
+

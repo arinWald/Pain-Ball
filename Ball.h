@@ -32,13 +32,24 @@ public:
 
 	bool ballReset;
 
+	bool sensorU1;
+	bool sensorU2;
+	bool sensorU3;
+
+	bool sensorD1;
+	bool sensorD2;
+	bool sensorD3;
+
 	//p2DynArray<PhysBody*> ballsContainer;
 
 	transformPosition teleport;
 
 	int stoppedTimer = 0;
-	bool salvaVidesOn = false;
-	bool culdesac = false;
+	bool salvaVidesOn;
+	bool culdesac;
+	bool cuadradito;
+	bool alternPis;
+	bool segonF;
 
 
 };

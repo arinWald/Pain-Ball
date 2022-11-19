@@ -23,6 +23,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
+	
 
 public:
 
@@ -34,6 +35,15 @@ public:
 	PhysBody* u1Sensor;
 	PhysBody* u2Sensor;
 	PhysBody* u3Sensor;
+	PhysBody* d1Sensor;
+	PhysBody* d2Sensor;
+	PhysBody* d3Sensor;
+	PhysBody* salvD1Sensor;
+	PhysBody* salvD2Sensor;
+	PhysBody* cuadraditoSensor;
+	PhysBody* inicialSensor;
+	PhysBody* segonSensor;
+	PhysBody* segonFSensor;
 	PhysBody* culdesacSensor;
 	PhysBody* RSalvaVides;
 	PhysBody* LSalvaVides;
@@ -58,5 +68,7 @@ public:
 	bool ray_on;
 
 	//Bool per alternar pisos amb tecla 5 o 6
-	bool primerPis = true;
+	bool primerPis;
+	bool veureSensor;
+
 };

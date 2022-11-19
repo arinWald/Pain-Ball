@@ -35,6 +35,13 @@ bool Ball::Start()
 	ball->listener = this;
 	ball->ctype = ColliderType::BALL;
 
+	stoppedTimer = 0;
+	salvaVidesOn = false;
+	culdesac = false;
+	cuadradito = false;
+	alternPis = false;
+	segonF = false;
+
 	LOG("Loading Ball");
 	return true;
 }
@@ -92,7 +99,7 @@ update_status Ball::Update()
 	int ballPositionYInPixels = METERS_TO_PIXELS(ballPosition.y);
 	
 	//Resetear la ball y disminuir una ball (de las 3 posibles que puede jugar el player en una partida) si la pelota cae al vac�o
-	if (ballPositionYInPixels > 400/*415*/ && !ballReset) 
+	if (ballPositionYInPixels > 410/*415*/ && !ballReset) 
 	{
 		App->player->ballCounter--;
 		ballReset = true;
@@ -134,6 +141,42 @@ update_status Ball::Update()
 		}
 	}
 
+	//CUADRADITO GIRATORIO
+	if (cuadradito)
+	{
+		if (stoppedTimer < 50)
+		{
+			++stoppedTimer;
+			//animacio cuadradito girando
+		}
+		else if (stoppedTimer == 50)
+		{
+			//animacio cuadradito quieto
+			stoppedTimer = 0;
+			cuadradito = false;
+		}
+	}
+
+	//SORTDIDA 2N PIS
+	if (segonF)
+	{
+		if (stoppedTimer < 50)
+		{
+			++stoppedTimer;
+			ball->body->SetLinearVelocity({ 0,0 });
+			ball->body->SetGravityScale(0.0f);
+			
+		}
+		else if (stoppedTimer == 50)
+		{
+			
+			ball->body->SetGravityScale(1.0f);
+			ball->body->ApplyForceToCenter(b2Vec2(0, 5), true);
+			stoppedTimer = 0;
+			segonF = false;
+		}
+	}
+
 
 	//SALVA VIDES LEFT I RIGHT
 	if (salvaVidesOn)
@@ -153,6 +196,23 @@ update_status Ball::Update()
 		}
 	}
 
+	//Combo 3 adalt sumar una bola
+	if (sensorU1 && sensorU2 && sensorU3) {
+		App->player->ballCounter++;
+		sensorU1 = false;
+		sensorU2 = false;
+		sensorU3 = false;
+		//desactivar animacio puntito amarillo
+	}
+
+	//Combo 3 2n pis sumar una bola
+	if (sensorD1 && sensorD2 && sensorD3) {
+		App->player->ballCounter++;
+		sensorD1 = false;
+		sensorD2 = false;
+		sensorD3 = false;
+		//desactivar animacio puntito amarillo
+	}
 	//cout << stoppedTimer << endl;
 	
 
@@ -182,20 +242,74 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		salvaVidesOn = true;
 		break;
 
+	case(ColliderType::SEGON):
+		App->scene_intro->veureSensor = true;
+		alternPis = true;
+		break;
+
+	case(ColliderType::SEGONF):
+		if (App->scene_intro->primerPis == false) {
+			alternPis = true;
+			segonF = true;
+		}
+		break;
+
+	case(ColliderType::SALVAVIDESCANVI):
+		if (App->scene_intro->primerPis == false) {
+			alternPis = true;
+		}
+		break;
+
 	case(ColliderType::CULDESAC):
 		culdesac = true;
 		break;
 
+	case(ColliderType::CUADRADITO):
+		cuadradito = true;
+		break;
+
+	//Sensor combo de 3 de adalt
 	case(ColliderType::SENSORU1):
-		
+		if (sensorU1 != true) {
+			sensorU1 = true;
+			//falta animacio puntito amarillo
+		}
 		break;
 
 	case(ColliderType::SENSORU2):
-		
+		if (sensorU2 != true) {
+			sensorU2 = true;
+			//falta animacio puntito amarillo
+		}
 		break;
 
 	case(ColliderType::SENSORU3):
-		
+		if (sensorU3 != true) {
+			sensorU3 = true;
+			//falta animacio puntito amarillo
+		}
+		break;
+
+	//Sensors combo de 3 2n pis
+	case(ColliderType::SENSORD1):
+		if (sensorD1 != true) {
+			sensorD1 = true;
+			//falta animacio puntito amarillo
+		}
+		break;
+
+	case(ColliderType::SENSORD2):
+		if (sensorD2 != true) {
+			sensorD2 = true;
+			//falta animacio puntito amarillo
+		}
+		break;
+
+	case(ColliderType::SENSORD3):
+		if (sensorD3 != true) {
+			sensorD3 = true;
+			//falta animacio puntito amarillo
+		}
 		break;
 
 	default:
