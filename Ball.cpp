@@ -92,7 +92,7 @@ update_status Ball::Update()
 	int ballPositionYInPixels = METERS_TO_PIXELS(ballPosition.y);
 	
 	//Resetear la ball y disminuir una ball (de las 3 posibles que puede jugar el player en una partida) si la pelota cae al vac�o
-	if (ballPositionYInPixels > 400/*415*/ && !ballReset) 
+	if (ballPositionYInPixels > 410 && !ballReset) 
 	{
 		App->player->ballCounter--;
 		ballReset = true;
