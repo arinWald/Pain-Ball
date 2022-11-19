@@ -135,7 +135,7 @@ update_status Ball::Update()
 		}
 	}
 
-	cout << stoppedTimer << endl;
+	//cout << stoppedTimer << endl;
 	
 
 	return UPDATE_CONTINUE;
