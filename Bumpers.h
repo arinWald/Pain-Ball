@@ -2,6 +2,7 @@
 #include "Module.h"
 #include "Globals.h"
 #include "p2Point.h"
+#include "Animation.h"
 #include <memory>
 #include <string>
 
@@ -26,4 +27,7 @@ public:
 
 	//std::unique_ptr<PhysBody*> ball;
 	p2List<BumperElement*> bumpersList;	
+	Animation* currentAnimation;
+
+	
 };

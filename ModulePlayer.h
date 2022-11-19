@@ -39,6 +39,9 @@ public:
 	bool isDead = false;
 
 	SDL_Texture* ballText;
+	SDL_Texture* BCtextures;
+	SDL_Texture* SCtextures;
+	SDL_Texture* Ttextures;
 
 	p2List<Flipper*> flippers;
 	SDL_Rect rectSect = { 48, 250, 64, 20 };

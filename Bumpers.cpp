@@ -3,6 +3,8 @@
 #include "Bumpers.h"
 #include "ModulePhysics.h"
 #include "ModuleInput.h"
+#include "ModuleRender.h"
+#include "ModulePlayer.h"
 #include "SDL\include\SDL.h"
 #include <iostream>
 
@@ -121,6 +123,7 @@ update_status Bumpers::Update()
 	{
 		p2List_item<BumperElement*>* iterador;
 		iterador = bumpersList.start;
+		
 
 		while (iterador != NULL)
 		{
@@ -134,6 +137,25 @@ update_status Bumpers::Update()
 		}
 	}
 	
+	p2List_item<BumperElement*>* iterador;
+	iterador = bumpersList.start;
+
+	p2List_item<PhysBody*>* c;
+
+
+
+	while (iterador != NULL)
+	{
+		int x, y;
+		
+		if (iterador->data->name == ("bigCircle1")) {
+
+			App->renderer->Blit(App->player->BCtextures, 112, 43, NULL);
+
+
+		}
+		iterador = iterador->next;
+	}
 
 
 	return UPDATE_CONTINUE;
