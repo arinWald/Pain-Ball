@@ -76,7 +76,7 @@ update_status ModulePlayer::Update()
 		{
 			if (f->data->rightSide == false)
 			{
-				f->data->Rect->body->ApplyForce({ -250,0 }, { 0,0 }, true);
+				f->data->Rect->body->ApplyForce({ -100,0 }, { 0,0 }, true);
 			}
 			f = f->next;
 		}
@@ -131,7 +131,7 @@ update_status ModulePlayer::Update()
 	{
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		{
-			if (ballPushForce < 500) { //max 100 de potència
+			if (ballPushForce < 300) { //max 100 de potència
 				ballPushForce += 10;
 				//App->audio->PlayFx(carga_fx);
 			}

@@ -48,4 +48,7 @@ public:
 	// Raycast
 	p2Point<int> ray;
 	bool ray_on;
+
+	//Bool per alternar pisos amb tecla 5 o 6
+	bool primerPis = true;
 };

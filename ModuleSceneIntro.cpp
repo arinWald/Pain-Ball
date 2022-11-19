@@ -34,7 +34,7 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	// Load textures
-	circle = App->textures->Load("Assets/wheel.png"); 
+	circle = App->textures->Load("Assets/wheel.png");
 	box = App->textures->Load("Assets/crate.png");
 	rick = App->textures->Load("Assets/rick_head.png");
 	bonus_fx = App->audio->LoadFx("Assets/bonus.wav");
@@ -51,21 +51,20 @@ bool ModuleSceneIntro::Start()
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
 	//lower_ground_sensor->listener = this;
 
-	
-
-
 	//Colliders - Bumpers
 
+	//EDGES
+	{	
 	//Colliders Pista EDGES 1r PIS
 	// Pivot 0, 0
-	{int base[12] = {
+	int base[12] = {
 		105, 406,
 		104, 467,
 		287, 470,
 		285, 412,
 		283, 453,
 		109, 453
-		};
+	};
 
 	// Pivot 0, 0
 	int exterior[64] = {
@@ -249,10 +248,10 @@ bool ModuleSceneIntro::Start()
 		292, 102,
 		278, 75,
 		260, 59,
-		246, 50,
-		226, 44,
-		224, 45,
-		247, 50,
+		250, 49,
+		235, 41,
+		229, 40,
+		249, 50,
 		265, 63,
 		277, 79,
 		287, 107,
@@ -319,10 +318,10 @@ bool ModuleSceneIntro::Start()
 
 	// Pivot 0, 0
 	int puntetDreta[8] = {
-		286, 262,
-		285, 254,
-		294, 253,
-		294, 261
+		286, 261,
+		285, 250,
+		293, 248,
+		294, 260
 	};
 
 
@@ -346,35 +345,10 @@ bool ModuleSceneIntro::Start()
 	ricks.add(App->physics->CreateChain(0, 0, tubSortida, 24));
 	ricks.add(App->physics->CreateChain(0, 0, puntetDreta, 8));
 
-	/*ricks.add(App->physics->CreateChain(0, 0, colliderEspecialLeft, 12));
-	ricks.add(App->physics->CreateChain(0, 0, colliderEspecialRight, 8));*/
-	/*ricks.add(App->physics->CreateChain(0, 0, segonPis, 72));*/
-
-	
-	//INACABAT!!!!!!
-	//Remove colliders 1r pis i crear els de 2n pis
-	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN)
-	{
-		//Remove colliders 1r pis
-		p2List_item<PhysBody*>* item;
-		item = ricks.getFirst();
-
-		while (item != nullptr)
-		{
-			delete item->data;
-			item = item->next;
-		}
-
-		ricks.clear();
-
-		ricks.add(App->physics->CreateChain(0, 0, colliderEspecialLeft, 12));
-		ricks.add(App->physics->CreateChain(0, 0, colliderEspecialRight, 8));
-		ricks.add(App->physics->CreateChain(0, 0, segonPis, 72));
-
+	ricks.add(App->physics->CreateChain(0 - 550, 0, colliderEspecialLeft, 12));
+	ricks.add(App->physics->CreateChain(0 - 550, 0, colliderEspecialRight, 8));
+	ricks.add(App->physics->CreateChain(0 - 550, 0, segonPis, 72));
 	}
-
-	}
-
 	
 	return ret;
 }
@@ -412,6 +386,35 @@ update_status ModuleSceneIntro::Update()
 	if(App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
 	{
 		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50));
+	}
+
+
+	//Alternar pisos edges
+	//Posar segon pis
+	if (App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN && primerPis)
+	{
+		p2List_item<PhysBody*>* item;
+		item = ricks.getFirst();
+
+		while (item != nullptr)
+		{
+			item->data->body->SetTransform({ item->data->body->GetTransform().p.x + PIXEL_TO_METERS(550), 0 }, 0);
+			item = item->next;
+		}
+		primerPis = false;
+	}	
+	//Posar primer pis
+	if (App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN && !primerPis)
+	{
+		p2List_item<PhysBody*>* item;
+		item = ricks.getFirst();
+
+		while (item != nullptr)
+		{
+			item->data->body->SetTransform({ item->data->body->GetTransform().p.x - PIXEL_TO_METERS(550), 0 }, 0);
+			item = item->next;
+		}
+		primerPis = true;
 	}
 
 
