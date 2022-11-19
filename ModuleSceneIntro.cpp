@@ -7,7 +7,7 @@
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
 #include "Ball.h"
-#include "Kicker.h"
+#include "GameManager.h"
 #include <iostream>
 using namespace std;
 
@@ -498,31 +498,34 @@ update_status ModuleSceneIntro::Update()
 	App->renderer->Blit(backgroundTexture, 0, 0, NULL);
 
 	////Kicker inicial
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	if (App->gameManager->gameState == GameState::PLAYING)
 	{
-		if (ballPushForce < 500) { //max 100 de potència
-			ballPushForce += 10;
-			//App->audio->PlayFx(carga_fx);
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		{
+			if (ballPushForce < 500) { //max 100 de potència
+				ballPushForce += 10;
+				//App->audio->PlayFx(carga_fx);
+			}
 		}
-	}
-	else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
-	{
-		App->ball->ball->body->ApplyForceToCenter(b2Vec2(0, -ballPushForce), true);
-		ballPushForce = 30; //min 30 de potència
-	}
+		else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+		{
+			App->ball->ball->body->ApplyForceToCenter(b2Vec2(0, -ballPushForce), true);
+			ballPushForce = 30; //min 30 de potència
+		}
 
-	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
-		App->renderer->Blit(barraCarga, 385, 335, NULL);
-		App->renderer->DrawQuad({ 385,335,21,cargablack }, 0, 0, 0);
-		if (cargablack > 0)
-			cargablack -= 1;
-	}
-	else
-	{
-		if (cargablack < 50)
-			cargablack += 10;
-	}
-	cout << "BallPushForce " << ballPushForce << endl;
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+			App->renderer->Blit(barraCarga, 385, 335, NULL);
+			App->renderer->DrawQuad({ 385,335,21,cargablack }, 0, 0, 0);
+			if (cargablack > 0)
+				cargablack -= 1;
+		}
+		else
+		{
+			if (cargablack < 50)
+				cargablack += 10;
+		}
+		cout << "BallPushForce " << ballPushForce << endl;
+	}	
 
 	// Keep playing
 	return UPDATE_CONTINUE;
