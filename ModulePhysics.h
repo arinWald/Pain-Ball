@@ -22,6 +22,7 @@ enum class ColliderType {
 	BUMPBIGCIRCLE,
 	TRIANGLE,
 	SALVAVIDES,
+	TUB,
 	UNKNOWN
 	// ..
 };

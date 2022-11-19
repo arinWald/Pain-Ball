@@ -164,6 +164,10 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		salvaVidesOn = true;
 		break;
 
+	case(ColliderType::TUB):
+		bolaATub = true;
+		break;
+
 	default:
 		break;
 	}

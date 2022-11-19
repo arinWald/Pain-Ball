@@ -127,7 +127,7 @@ update_status ModulePlayer::Update()
 	//}
 
 	////Kicker inicial
-	if (App->gameManager->gameState == GameState::PLAYING)
+	if (App->gameManager->gameState == GameState::PLAYING && App->ball->bolaATub)
 	{
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		{
@@ -140,6 +140,7 @@ update_status ModulePlayer::Update()
 		{
 			App->ball->ball->body->ApplyForceToCenter(b2Vec2(0, -ballPushForce), true);
 			ballPushForce = 30; //min 30 de potència
+			App->ball->bolaATub = false;
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {

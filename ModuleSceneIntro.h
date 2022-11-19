@@ -35,6 +35,7 @@ public:
 	PhysBody* LSalvaVides;
 
 	PhysBody* tubeSensor;
+	PhysBody* tubeSensor2;
 	
 	// Lower ground sensor (will kill all objects passig through it)
 	PhysBody* lower_ground_sensor;

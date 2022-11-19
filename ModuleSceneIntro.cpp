@@ -40,7 +40,7 @@ bool ModuleSceneIntro::Start()
 	bonus_fx = App->audio->LoadFx("Assets/bonus.wav");
 	backgroundTexture = App->textures->Load("Assets/pinball.png");
 
-	tubeSensor = App->physics->CreateRectangleSensor(290, 573, 20, 40);
+	
 
 	PhysBody* pbodySC3 = new PhysBody();
 	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.2f, b2_staticBody);
@@ -51,6 +51,11 @@ bool ModuleSceneIntro::Start()
 
 	LSalvaVides = App->physics->CreateRectangleSensor(40, 380, 10, 10);
 	LSalvaVides->ctype = ColliderType::SALVAVIDES;
+
+	tubeSensor = App->physics->CreateRectangleSensor(335, 370, 10, 10);
+	tubeSensor->ctype = ColliderType::TUB;
+	tubeSensor2 = App->physics->CreateRectangleSensor(335, 386, 10, 10);
+	tubeSensor2->ctype = ColliderType::TUB;
 
 	// Create a big red sensor on the bottom of the screen.
 	// This sensor will not make other objects collide with it, but it can tell if it is "colliding" with something else

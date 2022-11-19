@@ -38,6 +38,6 @@ public:
 
 	int stoppedTimer = 0;
 	bool salvaVidesOn = false;
-
+	bool bolaATub = true;
 
 };
