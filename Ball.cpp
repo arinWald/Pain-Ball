@@ -70,7 +70,7 @@ update_status Ball::Update()
 	std::cout << "Mouse Y - " << App->input->GetMouseY() << std::endl;
 	//cout << ball->body->GetMass() << endl;  
 
-	//Aumentar la fricci�n de la ball
+	//Aumentar la friccion de la ball
 	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT)
 	{
 		//std::cout <<"actual " << ball->body->GetFixtureList()->GetFriction() << std::endl;
@@ -79,7 +79,7 @@ update_status Ball::Update()
 		//std::cout << "cambiada " << ball->body->GetFixtureList()->GetFriction() << std::endl;
 	}
 	
-	//Disminuir la fricci�n de la ball
+	//Disminuir la friccion de la ball
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
 	{
 		float32 actualFriction = ball->body->GetFixtureList()->GetFriction();

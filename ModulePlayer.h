@@ -42,8 +42,9 @@ public:
 	SDL_Rect rectSect = { 48, 250, 64, 20 };
 
 	//Kicker
-	//SDL_Rect kickerSect = { 302,706,22,96 };
-	//SDL_Rect kickerSectBonus = { 1002,706,22,96 };
+	int ballPushForce = 0;
+	int cargablack = 50;
+	SDL_Texture* barraCarga;
 
 	uint clickFx;
 	uint kickerFx;

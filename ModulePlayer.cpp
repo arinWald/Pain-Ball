@@ -13,6 +13,9 @@
 
 #include "ModuleFonts.h"
 
+#include <iostream>
+using namespace std;
+
 ModulePlayer::ModulePlayer(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
 	//rightflipperAnimation->PushBack({ 0,0,43,35 });
@@ -48,6 +51,8 @@ bool ModulePlayer::Start()
 	App->physics->CreateRevoluteJoint(f2->Rect, a, f2->Circle, b, 35.0f);
 	flippers.add(f2);
 
+	barraCarga = App->textures->Load("Assets/carga.png");
+
 
 	return true;
 }
@@ -56,7 +61,6 @@ bool ModulePlayer::Start()
 bool ModulePlayer::CleanUp()
 {
 	LOG("Unloading player");
-
 	return true;
 }
 
@@ -72,7 +76,7 @@ update_status ModulePlayer::Update()
 		{
 			if (f->data->rightSide == false)
 			{
-				f->data->Rect->body->ApplyForce({ -25,0 }, { 0,0 }, true);
+				f->data->Rect->body->ApplyForce({ -250,0 }, { 0,0 }, true);
 			}
 			f = f->next;
 		}
@@ -121,6 +125,36 @@ update_status ModulePlayer::Update()
 	//		f = f->next;
 	//	}
 	//}
+
+	////Kicker inicial
+	if (App->gameManager->gameState == GameState::PLAYING)
+	{
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+		{
+			if (ballPushForce < 500) { //max 100 de potència
+				ballPushForce += 10;
+				//App->audio->PlayFx(carga_fx);
+			}
+		}
+		else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+		{
+			App->ball->ball->body->ApplyForceToCenter(b2Vec2(0, -ballPushForce), true);
+			ballPushForce = 30; //min 30 de potència
+		}
+
+		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+			App->renderer->Blit(barraCarga, 385, 335, NULL);
+			App->renderer->DrawQuad({ 385,335,21,cargablack }, 0, 0, 0);
+			if (cargablack > 0)
+				cargablack -= 1;
+		}
+		else
+		{
+			if (cargablack < 50)
+				cargablack += 10;
+		}
+		cout << "BallPushForce " << ballPushForce << endl;
+	}
 
 	
 
