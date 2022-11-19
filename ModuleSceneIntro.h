@@ -29,6 +29,8 @@ public:
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> ricks;
+
+	PhysBody* tubeSensor;
 	
 	// Lower ground sensor (will kill all objects passig through it)
 	PhysBody* lower_ground_sensor;
@@ -39,9 +41,14 @@ public:
 	SDL_Texture* box;
 	SDL_Texture* rick;
 	SDL_Texture* backgroundTexture = nullptr;
+	SDL_Texture* barraCarga;
 
 	// FX
 	uint bonus_fx;
+
+	//Kicker
+	int ballPushForce = 0;
+	int cargablack = 50;
 
 	// Raycast
 	p2Point<int> ray;

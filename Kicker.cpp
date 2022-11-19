@@ -8,6 +8,7 @@
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
 #include "Kicker.h"
+#include "Ball.h"
 
 Kicker::Kicker(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -23,10 +24,20 @@ bool Kicker::Start()
 
 	//kickerFx = App->audio->LoadFx("Game/pinball/audio/fx/Spring.wav");
 
-	//Kicker -----------------------------------------------------------------------------------------
-	pivot = App->physics->CreateRectangle(313, 894, 20, 8, b2_staticBody);
-	mobile = App->physics->CreateRectangle(304, 794, 22, 8, b2_dynamicBody);
-	App->physics->CreatePrismaticJoint(mobile, { 0,0 }, pivot, { 0,0 }, { 0,1 }, 1.9f);
+	////Kicker -----------------------------------------------------------------------------------------
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	{
+		if (ballPushForce < 100) { //max 100 de potència
+			ballPushForce += 1;
+			//App->audio->PlayFx(carga_fx);
+		}
+		else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+		{
+			App->ball->ball->body->ApplyForceToCenter(b2Vec2(0, -ballPushForce), true);
+			ballPushForce = 30; //min 30 de potència
+		}
+	}
+		
 
 	return true;
 }

@@ -7,7 +7,9 @@
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
 #include "Ball.h"
+#include "Kicker.h"
 #include <iostream>
+using namespace std;
 
 ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
@@ -32,11 +34,16 @@ bool ModuleSceneIntro::Start()
 	App->renderer->camera.x = App->renderer->camera.y = 0;
 
 	// Load textures
-	circle = App->textures->Load("pinball/wheel.png"); 
-	box = App->textures->Load("pinball/crate.png");
-	rick = App->textures->Load("pinball/rick_head.png");
-	bonus_fx = App->audio->LoadFx("pinball/bonus.wav");
+	circle = App->textures->Load("Assets/wheel.png"); 
+	box = App->textures->Load("Assets/crate.png");
+	rick = App->textures->Load("Assets/rick_head.png");
+	bonus_fx = App->audio->LoadFx("Assets/bonus.wav");
 	backgroundTexture = App->textures->Load("Assets/pinball.png");
+
+	barraCarga = App->textures->Load("Assets/carga.png");
+
+	tubeSensor = App->physics->CreateRectangleSensor(290, 573, 20, 40);
+
 
 	// Create a big red sensor on the bottom of the screen.
 	// This sensor will not make other objects collide with it, but it can tell if it is "colliding" with something else
@@ -45,6 +52,8 @@ bool ModuleSceneIntro::Start()
 	// Add this module (ModuleSceneIntro) as a listener for collisions with the sensor.
 	// In ModulePhysics::PreUpdate(), we iterate over all sensors and (if colliding) we call the function ModuleSceneIntro::OnCollision()
 	//lower_ground_sensor->listener = this;
+
+	
 
 
 	//Colliders - Bumpers
@@ -367,6 +376,8 @@ bool ModuleSceneIntro::Start()
 	}
 
 	}
+
+	
 	return ret;
 }
 
@@ -405,6 +416,8 @@ update_status ModuleSceneIntro::Update()
 		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50));
 	}
 
+
+	
 
 	// Prepare for raycast ------------------------------------------------------
 	
@@ -483,6 +496,33 @@ update_status ModuleSceneIntro::Update()
 	}
 
 	App->renderer->Blit(backgroundTexture, 0, 0, NULL);
+
+	////Kicker inicial
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
+	{
+		if (ballPushForce < 500) { //max 100 de potència
+			ballPushForce += 10;
+			//App->audio->PlayFx(carga_fx);
+		}
+	}
+	else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
+	{
+		App->ball->ball->body->ApplyForceToCenter(b2Vec2(0, -ballPushForce), true);
+		ballPushForce = 30; //min 30 de potència
+	}
+
+	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {
+		App->renderer->Blit(barraCarga, 385, 335, NULL);
+		App->renderer->DrawQuad({ 385,335,21,cargablack }, 0, 0, 0);
+		if (cargablack > 0)
+			cargablack -= 1;
+	}
+	else
+	{
+		if (cargablack < 50)
+			cargablack += 10;
+	}
+	cout << "BallPushForce " << ballPushForce << endl;
 
 	// Keep playing
 	return UPDATE_CONTINUE;

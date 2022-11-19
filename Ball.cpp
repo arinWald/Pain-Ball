@@ -70,7 +70,7 @@ update_status Ball::Update()
 	std::cout << "Mouse Y - " << App->input->GetMouseY() << std::endl;
 	//cout << ball->body->GetMass() << endl;  
 
-	//Aumentar la fricción de la ball
+	//Aumentar la fricciï¿½n de la ball
 	if (App->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT)
 	{
 		//std::cout <<"actual " << ball->body->GetFixtureList()->GetFriction() << std::endl;
@@ -79,7 +79,7 @@ update_status Ball::Update()
 		//std::cout << "cambiada " << ball->body->GetFixtureList()->GetFriction() << std::endl;
 	}
 	
-	//Disminuir la fricción de la ball
+	//Disminuir la fricciï¿½n de la ball
 	if (App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)
 	{
 		float32 actualFriction = ball->body->GetFixtureList()->GetFriction();
@@ -90,7 +90,7 @@ update_status Ball::Update()
 	b2Vec2 ballPosition = ball->body->GetPosition();
 	int ballPositionYInPixels = METERS_TO_PIXELS(ballPosition.y);
 	
-	//Resetear la ball y disminuir una ball (de las 3 posibles que puede jugar el player en una partida) si la pelota cae al vacío
+	//Resetear la ball y disminuir una ball (de las 3 posibles que puede jugar el player en una partida) si la pelota cae al vacï¿½o
 	if (ballPositionYInPixels > 400/*415*/ && !ballReset) 
 	{
 		App->player->ballCounter--;
