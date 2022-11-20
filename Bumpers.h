@@ -6,6 +6,8 @@
 #include <memory>
 #include <string>
 
+#include "SDL\include\SDL.h"
+
 struct BumperElement
 {
 	std::string name;
@@ -49,7 +51,9 @@ public:
 	Animation idleSC3;
 	Animation OnSC3;
 
-
+	SDL_Texture* BCtextures;
+	SDL_Texture* SCtextures;
+	SDL_Texture* Ttextures;
 
 	
 };
