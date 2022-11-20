@@ -45,6 +45,8 @@ https://alula.github.io/SpaceCadetPinball/
  - Efectos de sonido caseros.
  - Modificar parametros físicos de la bola.
  - Circuito simplificado.
+ - Control de la gravedad, FPS, restitución, fricción.
+ - Desplazar la bola con el ratón.
 
 ## License
 
