@@ -41,7 +41,7 @@ bool Ball::Start()
 	ball->ctype = ColliderType::BALL;
 	bumpersFxId = App->audio->LoadFx("Assets/SFX/bumper.wav");
 	
-
+	ballText = App->textures->Load("Assets/Ball.png");
 	LOG("Loading Ball");
 	return true;
 }
@@ -158,24 +158,22 @@ update_status Ball::Update()
 		else if (stoppedTimer == 100)
 		{
 			ball->body->SetGravityScale(1.0f);
-			ball->body->ApplyForceToCenter(b2Vec2(0, -500), true);
+			ball->body->ApplyForceToCenter(b2Vec2(0, -50), true);
 			stoppedTimer = 0;
 			salvaVidesOn = false;
 		}
 	}
-
-	
-
 	
 
 	
 		int x, y;
 		ball->GetPosition(x, y);
-		App->renderer->Blit(App->player->ballText, x, y, NULL);
+		App->renderer->Blit(ballText, x, y, NULL);
 
 		App->renderer->Blit(App->scene_intro->backgroundTopPlantTexture, 30, 5, NULL);
 		
 	
+
 
 	//cout << stoppedTimer << endl;
 	

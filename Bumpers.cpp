@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "SDL\include\SDL.h"
+#include "ModuleTextures.h"
 #include "Ball.h"
 #include <iostream>
 
@@ -99,11 +100,11 @@ bool Bumpers::Start()
 
 	//Bumpers - Triangles
 	PhysBody* pbodyT1 = new PhysBody();
-	pbodyT1 = App->physics->CreateRectangleWithBounciness(260, 310, 3, 63, 2.0f, 9.75f, b2_staticBody);
+	pbodyT1 = App->physics->CreateRectangleWithBounciness(260, 310, 3, 63, 1.4f, 9.75f, b2_staticBody);
 	pbodyT1->ctype = ColliderType::TRIANGLE;
 
 	PhysBody* pbodyT2 = new PhysBody();
-	pbodyT2 = App->physics->CreateRectangleWithBounciness(126, 310, 3, 63, 2.0f, -9.75f, b2_staticBody);
+	pbodyT2 = App->physics->CreateRectangleWithBounciness(126, 310, 3, 63, 1.4f, -9.75f, b2_staticBody);
 	pbodyT2->ctype = ColliderType::TRIANGLE;
 
 	BumperElement* triangleDret = new BumperElement{ "triangleDret", pbodyT1 };
@@ -112,7 +113,8 @@ bool Bumpers::Start()
 	bumpersList.add(triangleEsquerre);
 	
 	//bumpersList.findNode(&smallCircle1);
-
+	BCtextures = App->textures->Load("Assets/Circulos grandes.png");
+	SCtextures = App->textures->Load("Assets/Cercles petits.png");
 	return true;
 }
 
@@ -214,43 +216,43 @@ update_status Bumpers::Update()
 		
 		if (iterador->data->name == ("bigCircle1")) {
 
-			App->renderer->Blit(App->player->BCtextures, 100, 32, &rectBC1);
+			App->renderer->Blit(BCtextures, 100, 32, &rectBC1);
 			iterador = iterador->next;
 
 		}
 		if (iterador->data->name == ("bigCircle2")) {
 
-			App->renderer->Blit(App->player->BCtextures, 202, 77, &rectBC2);
+			App->renderer->Blit(BCtextures, 202, 77, &rectBC2);
 			iterador = iterador->next;
 
 		}
 		if (iterador->data->name == ("bigCircle3")) {
 
-			App->renderer->Blit(App->player->BCtextures, 180, 113, &rectBC3);
+			App->renderer->Blit(BCtextures, 180, 113, &rectBC3);
 			iterador = iterador->next;
 
 		}
 		if (iterador->data->name == ("bigCircle4")) {
 
-			App->renderer->Blit(App->player->BCtextures, 162, 85, &rectBC4);
+			App->renderer->Blit(BCtextures, 162, 85, &rectBC4);
 			iterador = iterador->next;
 
 		}
 		if (iterador->data->name == ("smallCircle1")) {
 
-			App->renderer->Blit(App->player->SCtextures, 53, 205, &rectSC1);
+			App->renderer->Blit(SCtextures, 53, 205, &rectSC1);
 			iterador = iterador->next;
 
 		}
 		if (iterador->data->name == ("smallCircle2")) {
 
-			App->renderer->Blit(App->player->SCtextures, 85, 217, &rectSC2);
+			App->renderer->Blit(SCtextures, 85, 217, &rectSC2);
 			iterador = iterador->next;
 
 		}
 		if (iterador->data->name == ("smallCircle3")) {
 
-			App->renderer->Blit(App->player->SCtextures, 60, 231, &rectSC3);
+			App->renderer->Blit(SCtextures, 60, 231, &rectSC3);
 			iterador = iterador->next;
 
 		}
@@ -260,10 +262,3 @@ update_status Bumpers::Update()
 
 	return UPDATE_CONTINUE;
 }
-
-
-
-
-
-	//App->audio->PlayFx(clickFx);
-

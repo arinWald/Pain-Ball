@@ -5,6 +5,9 @@
 #include "p2Point.h"
 #include "p2DynArray.h"
 #include "Animation.h"
+#include "SDL\include\SDL.h"
+
+
 
 struct transformPosition {
 	float posX;
@@ -35,6 +38,7 @@ public:
 	bool ballReset;
 	
 	//p2DynArray<PhysBody*> ballsContainer;
+	SDL_Texture* ballText;
 
 	int bumpersFxId;
 
