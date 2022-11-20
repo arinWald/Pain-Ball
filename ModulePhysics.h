@@ -95,6 +95,8 @@ public:
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
 
+	float32 timeSteps;
+
 private:
 
 	// Debug mode

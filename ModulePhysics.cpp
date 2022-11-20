@@ -7,6 +7,8 @@
 #include "p2Point.h"
 #include "math.h"
 
+#include <iostream>
+
 // Tell the compiler to reference the compiled Box2D libraries
 #ifdef _DEBUG
 	#pragma comment( lib, "Box2D/libx86/Debug/Box2D.lib" )
@@ -48,14 +50,32 @@ bool ModulePhysics::Start()
 	b2BodyDef bd;
 	ground = world->CreateBody(&bd); // Add the static ground body to the World
 
+	timeSteps = 60.0f;
+
 	return true;
 }
 
 update_status ModulePhysics::PreUpdate()
 {
+	std::cout << timeSteps << std::endl;
+	
+
+	if (App->input->GetKey(SDL_SCANCODE_F6) == KEY_DOWN && timeSteps <90)
+	{
+		timeSteps += 10.0f;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_F7) == KEY_DOWN && timeSteps >30)
+	{
+		timeSteps -= 10.0f;
+	}
+	if (App->input->GetKey(SDL_SCANCODE_F8) == KEY_DOWN)
+	{
+		timeSteps = 60.0f;
+	}
+
 	// Step (update) the World
 	// WARNING: WE ARE STEPPING BY CONSTANT 1/60 SECONDS!
-	world->Step(1.0f / 60.0f, 6, 2);
+	world->Step(1.0f / timeSteps, 6, 2);
 
 	// Because Box2D does not automatically broadcast collisions/contacts with sensors, 
 	// we have to manually search for collisions and "call" the equivalent to the ModulePhysics::BeginContact() ourselves...
