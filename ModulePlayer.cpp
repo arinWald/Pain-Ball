@@ -42,6 +42,10 @@ bool ModulePlayer::Start()
 	highScore = 0;
 	ballCounter = 3;
 
+	currentScore = 000;
+	previouScore = 000;
+	highestScore = 000;
+
 	// Flippers --------------------------------------------------------------
 	Flipper* f = new Flipper;
 	f->Circle = App->physics->CreateCircle(140, 382, 4, b2_staticBody);
