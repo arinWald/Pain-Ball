@@ -40,6 +40,12 @@ bool ModuleInGameUI::Start()
 	ball1 = App->textures->Load("Assets/1.png");
 	ball2 = App->textures->Load("Assets/2.png");
 	ball3 = App->textures->Load("Assets/3.png");
+	ball4 = App->textures->Load("Assets/4.png");
+	ball5 = App->textures->Load("Assets/5.png");
+	ball6 = App->textures->Load("Assets/6.png");
+	ball7 = App->textures->Load("Assets/7.png");
+	ball8 = App->textures->Load("Assets/8.png");
+	ball9 = App->textures->Load("Assets/9.png");
 
 	return true;
 }
@@ -116,6 +122,31 @@ void ModuleInGameUI::printBall()
 	{
 		App->renderer->Blit(ball3, 553, 153, NULL);
 	}
+	else if (App->player->ballCounter == 4)
+	{
+		App->renderer->Blit(ball4, 553, 153, NULL);
+	}
+	else if (App->player->ballCounter == 5)
+	{
+		App->renderer->Blit(ball5, 553, 153, NULL);
+	}
+	else if (App->player->ballCounter == 6)
+	{
+		App->renderer->Blit(ball6, 553, 153, NULL);
+	}
+	else if (App->player->ballCounter == 7)
+	{
+		App->renderer->Blit(ball7, 553, 153, NULL);
+	}
+	else if (App->player->ballCounter == 8)
+	{
+		App->renderer->Blit(ball8, 553, 153, NULL);
+	}
+	else if (App->player->ballCounter == 9)
+	{
+		App->renderer->Blit(ball9, 553, 153, NULL);
+	}
+
 }
 
 bool ModuleInGameUI::CleanUp()

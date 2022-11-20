@@ -46,6 +46,12 @@ public:
 	SDL_Texture* ball1;
 	SDL_Texture* ball2;
 	SDL_Texture* ball3;
+	SDL_Texture* ball4;
+	SDL_Texture* ball5;
+	SDL_Texture* ball6;
+	SDL_Texture* ball7;
+	SDL_Texture* ball8;
+	SDL_Texture* ball9;
 	
 };
 
