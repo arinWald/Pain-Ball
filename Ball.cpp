@@ -176,7 +176,7 @@ update_status Ball::Update()
 		else if (stoppedTimer == 100)
 		{
 			ball->body->SetGravityScale(1.0f);
-			ball->body->ApplyForceToCenter(b2Vec2(0, 1000), true);
+			ball->body->ApplyForceToCenter(b2Vec2(0, 300), true);
 			stoppedTimer = 0;
 			culdesac = false;
 		}
