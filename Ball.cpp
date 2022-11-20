@@ -34,8 +34,12 @@ bool Ball::Start()
 
 	/*ball->body->SetGravityScale(2.0f);*/
 
+	inicial = b2Vec2(PIXEL_TO_METERS(224), PIXEL_TO_METERS(34));
+	final = b2Vec2(PIXEL_TO_METERS(700), PIXEL_TO_METERS(34));
 	teleport.turn = false;
 	ballReset = false;
+	colliderInicial = false;
+
 	
 	ball->listener = this;
 	ball->ctype = ColliderType::BALL;
@@ -164,6 +168,7 @@ update_status Ball::Update()
 	//Resetear la ball y disminuir una ball (de las 3 posibles que puede jugar el player en una partida) si la pelota cae al vacio
 	if (ballPositionYInPixels > 410/*415*/ && !ballReset) 
 	{
+		App->scene_intro->colliderInicial->body->SetTransform(final, 0);
 		App->player->ballCounter--;
 		ballReset = true;
 	}
@@ -272,7 +277,9 @@ update_status Ball::Update()
 
 	//Combo 3 adalt sumar una bola
 	if (sensorU1 && sensorU2 && sensorU3) {
-		App->player->ballCounter++;
+		if (App->player->ballCounter < 9) {
+			App->player->ballCounter++;
+		}
 		sensorU1 = false;
 		sensorU2 = false;
 		sensorU3 = false;
@@ -281,7 +288,9 @@ update_status Ball::Update()
 
 	//Combo 3 2n pis sumar una bola
 	if (sensorD1 && sensorD2 && sensorD3) {
-		App->player->ballCounter++;
+		if (App->player->ballCounter < 9) {
+			App->player->ballCounter++;
+		}
 		sensorD1 = false;
 		sensorD2 = false;
 		sensorD3 = false;
@@ -289,6 +298,10 @@ update_status Ball::Update()
 	}
 	//cout << stoppedTimer << endl;
 	
+	if (colliderInicial) {
+		App->scene_intro->colliderInicial->body->SetTransform(inicial, 0);
+		colliderInicial = false;
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -356,6 +369,11 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	case(ColliderType::TUB):
 		bolaATub = true;
 		break;
+
+	case(ColliderType::INICIAL):
+		colliderInicial = true;
+		break;
+
 	case(ColliderType::SEGON):
 		App->scene_intro->veureSensor = true;
 		alternPis = true;
