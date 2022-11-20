@@ -15,7 +15,6 @@ ModuleSceneIntro::ModuleSceneIntro(Application* app, bool start_enabled) : Modul
 {
 
 	// Initialise all the internal class variables, at least to NULL pointer
-	circle = box = rick = NULL;
 	ray_on = false;
 	sensed = false;
 }
@@ -36,7 +35,6 @@ bool ModuleSceneIntro::Start()
 	// Load textures
 	circle = App->textures->Load("Assets/wheel.png");
 	box = App->textures->Load("Assets/crate.png");
-	rick = App->textures->Load("Assets/rick_head.png");
 	bonus_fx = App->audio->LoadFx("Assets/bonus.wav");
 	backgroundTexture = App->textures->Load("Assets/pinball.png");
 	backgroundTopPlantTexture = App->textures->Load("Assets/BackGroundTopPlant.png");
@@ -317,21 +315,19 @@ bool ModuleSceneIntro::Start()
 	};
 
 	// Pivot 0, 0
-	int colliderEspecialLeft[12] = {
-		49, 257,
-		75, 258,
-		88, 155,
-		75, 134,
-		66, 152,
-		50, 248
+	int colliderEspecialLeft[8] = {
+		296, 371,
+		301, 372,
+		276, 139,
+		272, 147
 	};
 
 	// Pivot 0, 0
 	int colliderEspecialRight[8] = {
-		284, 164,
-		298, 152,
-		289, 120,
-		277, 145
+		326, 378,
+		329, 378,
+		293, 116,
+		290, 117
 	};
 
 	// Pivot 0, 0
@@ -383,29 +379,28 @@ bool ModuleSceneIntro::Start()
 	};
 
 
+	edges.add(App->physics->CreateChain(0, 0, base, 12));
+	edges.add(App->physics->CreateChain(0, 0, exterior, 64));
+	edges.add(App->physics->CreateChain(0, 0, obstacleMig, 8));
+	edges.add(App->physics->CreateChain(0, 0, obstacleMigEsquerra, 12));
+	edges.add(App->physics->CreateChain(0, 0, obstacleMigDreta, 12));
+	edges.add(App->physics->CreateChain(0, 0, obstacleSuperiorDreta, 32));
+	edges.add(App->physics->CreateChain(0, 0, obstacleSuperiorEsquerra, 26));
+	edges.add(App->physics->CreateChain(0, 0, obstacleSuperiorMig, 10));
+	edges.add(App->physics->CreateChain(0, 0, rallaFlipperLeft, 10));
+	edges.add(App->physics->CreateChain(0, 0, rallaFlipperRight, 10));
+	edges.add(App->physics->CreateChain(0, 0, rallesLeft1, 6));
+	edges.add(App->physics->CreateChain(0, 0, rallesLeft2, 6));
+	edges.add(App->physics->CreateChain(0, 0, rallesUp1, 6));
+	edges.add(App->physics->CreateChain(0, 0, rallesUp2, 6));
+	edges.add(App->physics->CreateChain(0, 0, triangleLeft, 6));
+	edges.add(App->physics->CreateChain(0, 0, triangleRight, 6));
+	edges.add(App->physics->CreateChain(0, 0, tubSortida, 24));
+	edges.add(App->physics->CreateChain(0, 0, puntetDreta, 8));
 
-	ricks.add(App->physics->CreateChain(0, 0, base, 12));
-	ricks.add(App->physics->CreateChain(0, 0, exterior, 64));
-	ricks.add(App->physics->CreateChain(0, 0, obstacleMig, 8));
-	ricks.add(App->physics->CreateChain(0, 0, obstacleMigEsquerra, 12));
-	ricks.add(App->physics->CreateChain(0, 0, obstacleMigDreta, 12));
-	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorDreta, 32));
-	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorEsquerra, 26));
-	ricks.add(App->physics->CreateChain(0, 0, obstacleSuperiorMig, 10));
-	ricks.add(App->physics->CreateChain(0, 0, rallaFlipperLeft, 10));
-	ricks.add(App->physics->CreateChain(0, 0, rallaFlipperRight, 10));
-	ricks.add(App->physics->CreateChain(0, 0, rallesLeft1, 6));
-	ricks.add(App->physics->CreateChain(0, 0, rallesLeft2, 6));
-	ricks.add(App->physics->CreateChain(0, 0, rallesUp1, 6));
-	ricks.add(App->physics->CreateChain(0, 0, rallesUp2, 6));
-	ricks.add(App->physics->CreateChain(0, 0, triangleLeft, 6));
-	ricks.add(App->physics->CreateChain(0, 0, triangleRight, 6));
-	ricks.add(App->physics->CreateChain(0, 0, tubSortida, 24));
-	ricks.add(App->physics->CreateChain(0, 0, puntetDreta, 8));
-
-	ricks.add(App->physics->CreateChain(0 - 600, 0, colliderEspecialLeft, 12));
-	ricks.add(App->physics->CreateChain(0 - 600, 0, colliderEspecialRight, 8));
-	ricks.add(App->physics->CreateChain(0 - 600, 0, segonPis, 72));
+	edges.add(App->physics->CreateChain(0 - 600, 0, colliderEspecialLeft, 8));
+	edges.add(App->physics->CreateChain(0 - 600, 0, colliderEspecialRight, 8));
+	edges.add(App->physics->CreateChain(0 - 600, 0, segonPis, 72));
 	}
 	
 	return ret;
@@ -451,7 +446,7 @@ update_status ModuleSceneIntro::Update()
 	if ((App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN || App->ball->alternPis==true) && primerPis)
 	{
 		p2List_item<PhysBody*>* item;
-		item = ricks.getFirst();
+		item = edges.getFirst();
 
 		while (item != nullptr)
 		{
@@ -465,7 +460,7 @@ update_status ModuleSceneIntro::Update()
 	if ((App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN || App->ball->alternPis == true) && !primerPis)
 	{
 		p2List_item<PhysBody*>* item;
-		item = ricks.getFirst();
+		item = edges.getFirst();
 
 		while (item != nullptr)
 		{

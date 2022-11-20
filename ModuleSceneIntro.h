@@ -30,7 +30,7 @@ public:
 	// Lists of physics objects
 	p2List<PhysBody*> circles;
 	p2List<PhysBody*> boxes;
-	p2List<PhysBody*> ricks;
+	p2List<PhysBody*> edges;
 
 	PhysBody* u1Sensor;
 	PhysBody* u2Sensor;
@@ -58,7 +58,6 @@ public:
 	// Textures
 	SDL_Texture* circle;
 	SDL_Texture* box;
-	SDL_Texture* rick;
 	SDL_Texture* backgroundTexture = nullptr;
 	SDL_Texture* backgroundTopPlantTexture = nullptr;
 
