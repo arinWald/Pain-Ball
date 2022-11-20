@@ -9,6 +9,7 @@
 #include "Bumpers.h"
 #include "SDL\include\SDL.h"
 #include "ModuleRender.h"
+#include "ModuleAudio.h"
 #include <iostream>
 using namespace std;
 
@@ -37,7 +38,7 @@ bool Ball::Start()
 	
 	ball->listener = this;
 	ball->ctype = ColliderType::BALL;
-
+	bumpersFxId = App->audio->LoadFx("Assets/SFX/bumper.wav");
 	
 
 	LOG("Loading Ball");
@@ -190,6 +191,7 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		App->player->currentScore += 150;
 		App->bumpers->currentAnimationSC1 = &App->bumpers->OnSC1;
 		SC1Timer = 10;
+		App->audio->PlayFx(bumpersFxId);
 
 		break;
 	case(ColliderType::BUMPSMALLCIRCLE2):
@@ -197,38 +199,44 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		App->player->currentScore += 150;
 		App->bumpers->currentAnimationSC2 = &App->bumpers->OnSC2;
 		SC2Timer = 10;
+		App->audio->PlayFx(bumpersFxId);
 		break;
 	case(ColliderType::BUMPSMALLCIRCLE3):
 
 		App->player->currentScore += 150;
 		App->bumpers->currentAnimationSC3 = &App->bumpers->OnSC3;
 		SC3Timer = 10;
+		App->audio->PlayFx(bumpersFxId);
 		break;
 
 	case(ColliderType::BUMPBIGCIRCLE1):
 		App->player->currentScore += 100;
 		App->bumpers->currentAnimationBC1 = &App->bumpers->OnBC1;
 		BC1Timer = 10;
+		App->audio->PlayFx(bumpersFxId);
 		break;
 	case(ColliderType::BUMPBIGCIRCLE2):
 		App->player->currentScore += 100;
 		App->bumpers->currentAnimationBC2 = &App->bumpers->OnBC2;
 		BC2Timer = 10;
+		App->audio->PlayFx(bumpersFxId);
 		break;
 	case(ColliderType::BUMPBIGCIRCLE3):
 		App->player->currentScore += 100;
 		App->bumpers->currentAnimationBC3 = &App->bumpers->OnBC3;
 		BC3Timer = 10;
+		App->audio->PlayFx(bumpersFxId);
 		break;
 	case(ColliderType::BUMPBIGCIRCLE4):
 		App->player->currentScore += 100;
 		App->bumpers->currentAnimationBC4 = &App->bumpers->OnBC4;
 		BC4Timer = 10;
+		App->audio->PlayFx(bumpersFxId);
 		break;
 
 	case(ColliderType::TRIANGLE):
 		App->player->currentScore += 50;
-
+		App->audio->PlayFx(bumpersFxId);
 		break;
 	case(ColliderType::SALVAVIDES):
 		salvaVidesOn = true;

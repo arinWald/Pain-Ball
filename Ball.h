@@ -36,6 +36,7 @@ public:
 	
 	//p2DynArray<PhysBody*> ballsContainer;
 
+	int bumpersFxId;
 
 	transformPosition teleport;
 
