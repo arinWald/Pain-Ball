@@ -24,6 +24,8 @@ bool Kicker::Start()
 
 	//kickerFx = App->audio->LoadFx("Game/pinball/audio/fx/Spring.wav");
 
+	ballPushForce = 0;
+
 	////Kicker -----------------------------------------------------------------------------------------
 	if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 	{

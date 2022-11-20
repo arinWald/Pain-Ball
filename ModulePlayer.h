@@ -34,7 +34,7 @@ public:
 	Animation* leftflipperAnimation;
 
 	PhysBody* ball;
-	SDL_Rect ballSect = { 127, 317, 19, 21 };
+	SDL_Rect ballSect;
 	bool onceInit = true;
 	bool isDead = false;
 
@@ -42,11 +42,11 @@ public:
 
 
 	p2List<Flipper*> flippers;
-	SDL_Rect rectSect = { 48, 250, 64, 20 };
+	SDL_Rect rectSect;
 
 	//Kicker
-	int ballPushForce = 0;
-	int cargablack = 50;
+	int ballPushForce;
+	int cargablack;
 	SDL_Texture* barraCarga;
 
 	uint clickFx;
@@ -55,13 +55,13 @@ public:
 	bool onceBall = true;
 	//int currentScore = 0;
 	int previousScore;
-	int highScore = 0;
+	int highScore;
 
-	int ballCounter = 3;
+	int ballCounter;
 
 	// puntuacion del player
-	uint currentScore = 000;
-	uint previouScore = 000;
-	uint highestScore = 000;
+	uint currentScore;
+	uint previouScore;
+	uint highestScore;
 
 };
