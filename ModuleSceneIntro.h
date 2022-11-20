@@ -72,4 +72,5 @@ public:
 	bool primerPis;
 	bool veureSensor;
 
+
 };

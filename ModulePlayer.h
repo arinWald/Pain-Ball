@@ -49,7 +49,9 @@ public:
 	int ballPushForce;
 	int cargablack;
 	int flippersFxId;
-
+	
+	int kickerChargeFxId;
+	int kickerThrowFxId;
 	SDL_Texture* barraCarga;
 
 	uint clickFx;
