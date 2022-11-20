@@ -27,7 +27,7 @@ bool Ball::Start()
 	ball = App->physics->CreateCircle(334, 352, 7, b2_dynamicBody);
 	ball->body->GetFixtureList()->SetDensity(1.0f);
 	ball->body->GetFixtureList()->SetFriction(0.2f);
-	ball->body->SetGravityScale(0.5f);
+	ball->body->SetGravityScale(0.3f);
 	ball->body->ResetMassData();
 
 	//App->physics->CreateRectangle(300, 416, 600, 50, b2_staticBody);
@@ -104,7 +104,7 @@ update_status Ball::Update()
 	}
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
-		ball->body->SetGravityScale(0.5f);
+		ball->body->SetGravityScale(0.3f);
 	}
 
 
@@ -197,7 +197,7 @@ update_status Ball::Update()
 		}
 		else if (stoppedTimer == 100)
 		{
-			ball->body->SetGravityScale(1.0f);
+			ball->body->SetGravityScale(0.3f);
 			ball->body->ApplyForceToCenter(b2Vec2(0, 300), true);
 			stoppedTimer = 0;
 			culdesac = false;
@@ -233,7 +233,7 @@ update_status Ball::Update()
 		else if (stoppedTimer == 50)
 		{
 			
-			ball->body->SetGravityScale(1.0f);
+			ball->body->SetGravityScale(0.3f);
 			ball->body->ApplyForceToCenter(b2Vec2(0, 5), true);
 			stoppedTimer = 0;
 			segonF = false;
@@ -252,7 +252,7 @@ update_status Ball::Update()
 		}
 		else if (stoppedTimer == 100)
 		{
-			ball->body->SetGravityScale(1.0f);
+			ball->body->SetGravityScale(0.3f);
 			ball->body->ApplyForceToCenter(b2Vec2(0, -50), true);
 			stoppedTimer = 0;
 			salvaVidesOn = false;
