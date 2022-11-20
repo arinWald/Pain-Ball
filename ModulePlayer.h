@@ -45,8 +45,14 @@ public:
 	SDL_Rect rectSect;
 
 	//Kicker
+
 	int ballPushForce;
 	int cargablack;
+
+	int ballPushForce = 0;
+	int cargablack = 50;
+	int flippersFxId;
+
 	SDL_Texture* barraCarga;
 
 	uint clickFx;
