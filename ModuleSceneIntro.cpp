@@ -451,6 +451,35 @@ update_status ModuleSceneIntro::Update()
 		c = c->next;
 	}
 
+	//Alternar pisos edges
+	if (( App->ball->alternPis == true) && primerPis)
+	{
+		p2List_item<PhysBody*>* item;
+		item = edges.getFirst();
+
+		while (item != nullptr)
+		{
+			item->data->body->SetTransform({ item->data->body->GetTransform().p.x + PIXEL_TO_METERS(600), 0 }, 0);
+			item = item->next;
+		}
+		primerPis = false;
+		App->ball->alternPis = false;
+	}
+	//Posar primer pis
+	if ((App->ball->alternPis == true) && !primerPis)
+	{
+		p2List_item<PhysBody*>* item;
+		item = edges.getFirst();
+
+		while (item != nullptr)
+		{
+			item->data->body->SetTransform({ item->data->body->GetTransform().p.x - PIXEL_TO_METERS(600), 0 }, 0);
+			item = item->next;
+		}
+		primerPis = true;
+		App->ball->alternPis = false;
+	}
+
 	// Boxes
 	c = boxes.getFirst();
 	while(c != NULL)
