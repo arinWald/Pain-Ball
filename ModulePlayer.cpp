@@ -7,7 +7,6 @@
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
 #include "ModulePhysics.h"
-#include "Kicker.h"
 #include "Ball.h"
 #include "GameManager.h"
 

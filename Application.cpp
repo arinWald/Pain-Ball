@@ -9,7 +9,6 @@
 #include "ModulePhysics.h"
 #include "ModuleSceneIntro.h"
 #include "Ball.h"
-#include "Kicker.h"
 #include "Bumpers.h"
 #include "ModuleInGameUI.h"
 #include "ModuleFonts.h"
@@ -28,7 +27,6 @@ Application::Application()
 	scene_intro = new ModuleSceneIntro(this);
 	physics = new ModulePhysics(this);
 	ball = new Ball(this);
-	kicker = new Kicker(this);
 	bumpers = new Bumpers(this);
 	ingameUI = new ModuleInGameUI(this);
 	fonts = new ModuleFonts(this);
@@ -57,8 +55,6 @@ Application::Application()
 	AddModule(ball);
 	AddModule(bumpers);
 	
-	//Kicker
-	AddModule(kicker);
 	AddModule(gameManager);
 	AddModule(renderer);
 	AddModule(fonts);

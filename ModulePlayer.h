@@ -3,7 +3,6 @@
 #include "p2List.h"
 #include "Globals.h"
 #include "p2Point.h"
-#include "Kicker.h"
 #include "Animation.h"
 
 #include "SDL\include\SDL.h"
