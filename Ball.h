@@ -60,6 +60,7 @@ public:
 	int SalvaVidasFxId;
 	int kickerDisparaFxId;
 	int kickerCarregaFxId;
+	int BoletaEncesaId;
 
 	transformPosition teleport;
 	bool Tp;
