@@ -20,7 +20,7 @@ Tu objetivo es no dejar que la pelota pase por tus flippers e intentar durar el 
  - P para empezar la partida o para volver a jugar una vez se acaba (cuando se pierde).
  - L para telentrasportar la bola en la posición del ratón.
  - T para teletransportar la bola a la posición inicial.
- - Cuando clicas la ball con que botón izquierdo del ratón puedes desplazar la ball con el mouseJoint.
+ - Cuando clicas con el botón izquierdo del ratón, puedes desplazar la ball con un mouseJoint.
 
 ## Developers
  - Pau Argiz
