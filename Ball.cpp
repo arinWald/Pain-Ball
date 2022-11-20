@@ -142,13 +142,6 @@ update_status Ball::Update()
 	if (App->ball->SC3Timer > 0) {
 		SC3Timer--;
 	}
-	if (App->input->GetKey(SDL_SCANCODE_B) == KEY_DOWN)
-	{
-		ball = nullptr;
-		ball = App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 7, b2_dynamicBody);
-		ball->body->GetFixtureList()->SetDensity(10.0f);
-		ball->body->ResetMassData();
-	}
 
 	std::cout << "Mouse X - " << App->input->GetMouseX() << std::endl;
 	std::cout << "Mouse Y - " << App->input->GetMouseY() << std::endl;

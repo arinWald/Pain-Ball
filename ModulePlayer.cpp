@@ -86,11 +86,6 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-
-	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
-		App->audio->PlayFx(flippersFxId);
-	}
-
 	// Flippers --------------------------------------------------
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
@@ -105,18 +100,6 @@ update_status ModulePlayer::Update()
 			f = f->next;
 		}
 	}
-	//else
-	//{
-	//	p2List_item<Flipper*>* f = flippers.getFirst();
-	//	while (f != NULL)
-	//	{
-	//		if (f->data->rightSide == false)
-	//		{
-	//			f->data->Rect->body->ApplyForce({ 5,0 }, { 0,0 }, true);
-	//		}
-	//		f = f->next;
-	//	}
-	//}
 
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
 		App->audio->PlayFx(flippersFxId);
@@ -137,39 +120,27 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->gameManager->gameState ==PLAYING)
+	
+	
+	p2List_item<Flipper*>* f = flippers.getFirst();
+	while (f != NULL)
 	{
-		App->ball->ball->body->ApplyForce({ 0,-30 }, { 0,0 }, true);
-	}
-
-	
-	
-		p2List_item<Flipper*>* f = flippers.getFirst();
-		while (f != NULL)
-		{
-			int x, y;
-			f->data->Rect->GetPosition(x, y);
-
-			App->renderer->BlitFliper(playerText, x, y - 5, false, NULL, f->data->rightSide, 1.0f, f->data->Rect->GetRotation());
-
-			f = f->next;
-		}
 		int x, y;
+		f->data->Rect->GetPosition(x, y);
 
-	/*	App->renderer->Blit(ballText, x, y, NULL);*/
+		App->renderer->BlitFliper(playerText, x, y - 5, false, NULL, f->data->rightSide, 1.0f, f->data->Rect->GetRotation());
+
+		f = f->next;
+	}
+	int x, y;
 
 	////Kicker inicial
-		if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN) {
-			App->audio->PlayFx(kickerThrowFxId);
-		}
 	if (App->gameManager->gameState == GameState::PLAYING && App->ball->bolaATub)
 	{
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		{
-			if (ballPushForce < 50) { //max 100 de potència
+			if (ballPushForce < 50) { //max 50 de potència
 				ballPushForce += 1;
-				
-				//App->audio->PlayFx(carga_fx);
 			}
 		}
 		else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)

@@ -422,65 +422,6 @@ bool ModuleSceneIntro::CleanUp()
 
 update_status ModuleSceneIntro::Update()
 {
-	// If user presses SPACE, enable RayCast
-	if(App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN)
-	{
-		// Enable raycast mode
-		ray_on = !ray_on;
-
-		// Origin point of the raycast is be the mouse current position now (will not change)
-		ray.x = App->input->GetMouseX();
-		ray.y = App->input->GetMouseY();
-	}
-
-	// If user presses 1, create a new circle object
-	if(App->input->GetKey(SDL_SCANCODE_1) == KEY_REPEAT)
-	{
-		circles.add(App->physics->CreateCircle(App->input->GetMouseX(), App->input->GetMouseY(), 7));
-
-		// Add this module (ModuleSceneIntro) as a "listener" interested in collisions with circles.
-		// If Box2D detects a collision with this last generated circle, it will automatically callback the function ModulePhysics::BeginContact()
-		circles.getLast()->data->listener = this;
-	}
-
-	// If user presses 2, create a new box object
-	if(App->input->GetKey(SDL_SCANCODE_2) == KEY_DOWN)
-	{
-		boxes.add(App->physics->CreateRectangle(App->input->GetMouseX(), App->input->GetMouseY(), 100, 50));
-	}
-
-
-	//Alternar pisos edges
-	if ((App->input->GetKey(SDL_SCANCODE_5) == KEY_DOWN || App->ball->alternPis==true) && primerPis)
-	{
-		p2List_item<PhysBody*>* item;
-		item = edges.getFirst();
-
-		while (item != nullptr)
-		{
-			item->data->body->SetTransform({ item->data->body->GetTransform().p.x + PIXEL_TO_METERS(600), 0 }, 0);
-			item = item->next;
-		}
-		primerPis = false;
-		App->ball->alternPis = false;
-	}
-	//Posar primer pis
-	if ((App->input->GetKey(SDL_SCANCODE_6) == KEY_DOWN || App->ball->alternPis == true) && !primerPis)
-	{
-		p2List_item<PhysBody*>* item;
-		item = edges.getFirst();
-
-		while (item != nullptr)
-		{
-			item->data->body->SetTransform({ item->data->body->GetTransform().p.x - PIXEL_TO_METERS(600), 0 }, 0);
-			item = item->next;
-		}
-		primerPis = true;
-		App->ball->alternPis = false;
-	}
-
-	
-
 	// Prepare for raycast ------------------------------------------------------
 	
 	// The target point of the raycast is the mouse current position (will change over game time)
