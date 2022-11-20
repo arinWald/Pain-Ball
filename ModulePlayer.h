@@ -48,9 +48,6 @@ public:
 
 	int ballPushForce;
 	int cargablack;
-
-	int ballPushForce = 0;
-	int cargablack = 50;
 	int flippersFxId;
 
 	SDL_Texture* barraCarga;
