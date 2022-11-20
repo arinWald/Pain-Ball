@@ -24,8 +24,7 @@ Tu objetivo es no dejar que la pelota pase por tus flippers e intentar durar el 
  - F2 para eliminar la gravedad
  - F3/F4 para aumentar/disminuir la gravedad del juego.
  - F5 para volver a la gravedad inicial.
- - F6 para aumentar los FPS (hasta un máximo de 90).
- - F7 para disminuir los FPS (hasta un mínimo de 30).
+ - F6/F7 para aumentar/dimisnuir los FPS (hasta un máximo/mínimo de 90/30).
  - F8 para volver a los FPS predeterminados (60).
 
 ## Developers
