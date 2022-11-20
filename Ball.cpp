@@ -47,6 +47,7 @@ bool Ball::Start()
 	loseBallFxId = App->audio->LoadFx("Assets/SFX/BolaEsPerd.wav");
 	ExtraballFxId = App->audio->LoadFx("Assets/SFX/ExtraBall.wav");
 	SalvaVidasFxId = App->audio->LoadFx("Assets/SFX/SalvaVida.wav");
+	BoletaEncesaId = App->audio->LoadFx("Assets/SFX/BoletaEncesa.wav");
 
 	ballText = App->textures->Load("Assets/Ball.png");
 	LlumText = App->textures->Load("Assets/LlumBonus.png");
@@ -432,6 +433,7 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	case(ColliderType::SENSORU1):
 		if (sensorU1 != true) {
 			sensorU1 = true;
+			App->audio->PlayFx(BoletaEncesaId);
 			//falta animacio puntito amarillo
 		}
 		break;
@@ -439,6 +441,7 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	case(ColliderType::SENSORU2):
 		if (sensorU2 != true) {
 			sensorU2 = true;
+			App->audio->PlayFx(BoletaEncesaId);
 			//falta animacio puntito amarillo
 		}
 		break;
@@ -446,6 +449,7 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	case(ColliderType::SENSORU3):
 		if (sensorU3 != true) {
 			sensorU3 = true;
+			App->audio->PlayFx(BoletaEncesaId);
 			//falta animacio puntito amarillo
 		}
 		break;
@@ -454,6 +458,7 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	case(ColliderType::SENSORD1):
 		if (sensorD1 != true) {
 			sensorD1 = true;
+			App->audio->PlayFx(BoletaEncesaId);
 			//falta animacio puntito amarillo
 		}
 		break;
@@ -461,6 +466,7 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	case(ColliderType::SENSORD2):
 		if (sensorD2 != true) {
 			sensorD2 = true;
+			App->audio->PlayFx(BoletaEncesaId);
 			//falta animacio puntito amarillo
 		}
 		break;
@@ -468,6 +474,7 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 	case(ColliderType::SENSORD3):
 		if (sensorD3 != true) {
 			sensorD3 = true;
+			App->audio->PlayFx(BoletaEncesaId);
 			//falta animacio puntito amarillo
 		}
 		break;
