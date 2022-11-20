@@ -86,6 +86,10 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	// Flippers --------------------------------------------------
+	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_DOWN) {
+		App->audio->PlayFx(flippersFxId);
+
+	}
 	if (App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT)
 	{
 		p2List_item<Flipper*>* f = flippers.getFirst();

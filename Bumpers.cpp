@@ -48,19 +48,19 @@ bool Bumpers::Start()
 	currentAnimationSC3 = &idleSC3;
 	//Bumpers - Big Circles
 	PhysBody* pbodyBC1 = new PhysBody();
-	pbodyBC1 = App->physics->CreateCircleWithBounciness(112, 43, 10, 1.2f, b2_staticBody);
+	pbodyBC1 = App->physics->CreateCircleWithBounciness(112, 43, 9, 1.4f, b2_staticBody);
 	pbodyBC1->ctype = ColliderType::BUMPBIGCIRCLE1; 
 
 	PhysBody* pbodyBC2 = new PhysBody(); 
-	pbodyBC2 = App->physics->CreateCircleWithBounciness(215, 90, 10, 1.2f, b2_staticBody);
+	pbodyBC2 = App->physics->CreateCircleWithBounciness(215, 90, 9, 1.4f, b2_staticBody);
 	pbodyBC2->ctype = ColliderType::BUMPBIGCIRCLE2;
 
 	PhysBody* pbodyBC3 = new PhysBody();
-	pbodyBC3 = App->physics->CreateCircleWithBounciness(191, 123, 9, 1.2f, b2_staticBody);
+	pbodyBC3 = App->physics->CreateCircleWithBounciness(191, 123, 9, 1.4f, b2_staticBody);
 	pbodyBC3->ctype = ColliderType::BUMPBIGCIRCLE3;
 
 	PhysBody* pbodyBC4 = new PhysBody();
-	pbodyBC4 = App->physics->CreateCircleWithBounciness(173, 96, 9, 1.2f, b2_staticBody);
+	pbodyBC4 = App->physics->CreateCircleWithBounciness(173, 96, 9, 1.4f, b2_staticBody);
 	pbodyBC4->ctype = ColliderType::BUMPBIGCIRCLE4;
 
 
@@ -77,15 +77,15 @@ bool Bumpers::Start()
 
 	//Bumpers - Small Circles
 	PhysBody* pbodySC1 = new PhysBody();
-	pbodySC1 = App->physics->CreateCircleWithBounciness(63, 217, 5, 1.2f, b2_staticBody);
+	pbodySC1 = App->physics->CreateCircleWithBounciness(63, 217, 5, 1.4f, b2_staticBody);
 	pbodySC1->ctype = ColliderType::BUMPSMALLCIRCLE1;
 
 	PhysBody* pbodySC2 = new PhysBody();
-	pbodySC2 = App->physics->CreateCircleWithBounciness(95, 227, 5, 1.2f, b2_staticBody);
+	pbodySC2 = App->physics->CreateCircleWithBounciness(95, 227, 5, 1.4f, b2_staticBody);
 	pbodySC2->ctype = ColliderType::BUMPSMALLCIRCLE2;
 
 	PhysBody* pbodySC3 = new PhysBody();
-	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.2f, b2_staticBody);
+	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.4f, b2_staticBody);
 	pbodySC3->ctype = ColliderType::BUMPSMALLCIRCLE3;
 
 
