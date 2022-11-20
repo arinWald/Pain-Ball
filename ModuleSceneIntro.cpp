@@ -45,7 +45,7 @@ bool ModuleSceneIntro::Start()
 
 	PhysBody* pbodySC3 = new PhysBody();
 	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.2f, b2_staticBody);
-	pbodySC3->ctype = ColliderType::BUMPSMALLCIRCLE;
+	pbodySC3->ctype = ColliderType::BUMPSMALLCIRCLE1;
 
 	RSalvaVides = App->physics->CreateRectangleSensor(310, 380, 10, 10);
 	RSalvaVides->ctype = ColliderType::SALVAVIDES;

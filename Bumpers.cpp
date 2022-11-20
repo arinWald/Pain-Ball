@@ -6,6 +6,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer.h"
 #include "SDL\include\SDL.h"
+#include "Ball.h"
 #include <iostream>
 
 Bumpers::Bumpers(Application* app, bool start_enabled) : Module(app, start_enabled)
@@ -18,6 +19,16 @@ Bumpers::Bumpers(Application* app, bool start_enabled) : Module(app, start_enabl
 	idleSC1.PushBack({ 0,0,20,20 });
 	idleSC3.PushBack({ 43,0,21,21 });
 	idleSC2.PushBack({ 87,1,20,20 });
+
+
+	OnBC1.PushBack({ 23,3,22,20 });
+	OnBC4.PushBack({ 76,28,23,22 });
+	OnBC2.PushBack({ 25,29,23,22 });
+	OnBC3.PushBack({ 76,3,24,18 });
+
+	OnSC1.PushBack({ 22,0,19,18 });
+	OnSC3.PushBack({ 66,0,19,19 });
+	OnSC2.PushBack({ 109,1,19,19 });
 }
 
 Bumpers::~Bumpers()
@@ -37,19 +48,19 @@ bool Bumpers::Start()
 	//Bumpers - Big Circles
 	PhysBody* pbodyBC1 = new PhysBody();
 	pbodyBC1 = App->physics->CreateCircleWithBounciness(112, 43, 10, 1.2f, b2_staticBody);
-	pbodyBC1->ctype = ColliderType::BUMPBIGCIRCLE; 
+	pbodyBC1->ctype = ColliderType::BUMPBIGCIRCLE1; 
 
 	PhysBody* pbodyBC2 = new PhysBody(); 
 	pbodyBC2 = App->physics->CreateCircleWithBounciness(215, 90, 10, 1.2f, b2_staticBody);
-	pbodyBC2->ctype = ColliderType::BUMPBIGCIRCLE;
+	pbodyBC2->ctype = ColliderType::BUMPBIGCIRCLE2;
 
 	PhysBody* pbodyBC3 = new PhysBody();
 	pbodyBC3 = App->physics->CreateCircleWithBounciness(191, 123, 10, 1.2f, b2_staticBody);
-	pbodyBC3->ctype = ColliderType::BUMPBIGCIRCLE;
+	pbodyBC3->ctype = ColliderType::BUMPBIGCIRCLE3;
 
 	PhysBody* pbodyBC4 = new PhysBody();
 	pbodyBC4 = App->physics->CreateCircleWithBounciness(173, 96, 10, 1.2f, b2_staticBody);
-	pbodyBC4->ctype = ColliderType::BUMPBIGCIRCLE;
+	pbodyBC4->ctype = ColliderType::BUMPBIGCIRCLE4;
 
 
 	BumperElement* bigCircle1 = new BumperElement{ "bigCircle1", pbodyBC1 };
@@ -66,15 +77,15 @@ bool Bumpers::Start()
 	//Bumpers - Small Circles
 	PhysBody* pbodySC1 = new PhysBody();
 	pbodySC1 = App->physics->CreateCircleWithBounciness(63, 217, 5, 1.2f, b2_staticBody);
-	pbodySC1->ctype = ColliderType::BUMPSMALLCIRCLE;
+	pbodySC1->ctype = ColliderType::BUMPSMALLCIRCLE1;
 
 	PhysBody* pbodySC2 = new PhysBody();
 	pbodySC2 = App->physics->CreateCircleWithBounciness(95, 227, 5, 1.2f, b2_staticBody);
-	pbodySC2->ctype = ColliderType::BUMPSMALLCIRCLE;
+	pbodySC2->ctype = ColliderType::BUMPSMALLCIRCLE2;
 
 	PhysBody* pbodySC3 = new PhysBody();
 	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.2f, b2_staticBody);
-	pbodySC3->ctype = ColliderType::BUMPSMALLCIRCLE;
+	pbodySC3->ctype = ColliderType::BUMPSMALLCIRCLE3;
 
 
 	BumperElement* smallCircle1 = new BumperElement{ "smallCircle1", pbodySC1 };
@@ -116,7 +127,36 @@ bool Bumpers::CleanUp()
 // Update: draw background
 update_status Bumpers::Update()
 {
+	if (App->ball->BC1Timer == 0) {
+		currentAnimationBC1 = &idleBC1;
+	}
+	if (App->ball->BC2Timer == 0) {
+		currentAnimationBC2 = &idleBC2;
+	}
+	if (App->ball->BC3Timer == 0) {
+		currentAnimationBC3 = &idleBC3;
+	}
+	if (App->ball->BC4Timer == 0) {
+		currentAnimationBC4 = &idleBC4;
+	}
+	if (App->ball->SC1Timer == 0) {
+		currentAnimationSC1 = &idleSC1;
+	}
+	if (App->ball->SC2Timer == 0) {
+		currentAnimationSC2 = &idleSC2;
+	}
+	if (App->ball->SC3Timer == 0) {
+		currentAnimationSC3 = &idleSC3;
+	}
 	currentAnimationBC1->Update();
+	currentAnimationBC2->Update();
+	currentAnimationBC3->Update();
+	currentAnimationBC4->Update();
+	currentAnimationSC1->Update();
+	currentAnimationSC2->Update();
+	currentAnimationSC3->Update();
+
+
 	//Aumentar el coeficiente de Restitución de los Bumpers
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
 	{
@@ -221,4 +261,9 @@ update_status Bumpers::Update()
 	return UPDATE_CONTINUE;
 }
 
+
+
+
+
+	//App->audio->PlayFx(clickFx);
 

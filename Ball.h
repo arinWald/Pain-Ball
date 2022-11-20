@@ -42,6 +42,12 @@ public:
 	int stoppedTimer = 0;
 	bool salvaVidesOn = false;
 	bool bolaATub = true;
-	
+	int BC1Timer = 0;
+	int BC2Timer = 0;
+	int BC3Timer = 0;
+	int BC4Timer = 0;
+	int SC1Timer = 0;
+	int SC2Timer = 0;
+	int SC3Timer = 0;
 
 };

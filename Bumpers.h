@@ -29,18 +29,25 @@ public:
 	p2List<BumperElement*> bumpersList;	
 	Animation* currentAnimationBC1;
 	Animation idleBC1;
+	Animation OnBC1;
 	Animation* currentAnimationBC2;
 	Animation idleBC2;
+	Animation OnBC2;
 	Animation* currentAnimationBC3;
 	Animation idleBC3;
+	Animation OnBC3;
 	Animation* currentAnimationBC4;
 	Animation idleBC4;
+	Animation OnBC4;
 	Animation* currentAnimationSC1;
 	Animation idleSC1;
+	Animation OnSC1;
 	Animation* currentAnimationSC2;
 	Animation idleSC2;
+	Animation OnSC2;
 	Animation* currentAnimationSC3;
 	Animation idleSC3;
+	Animation OnSC3;
 
 
 
