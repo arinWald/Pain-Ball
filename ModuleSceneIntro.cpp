@@ -88,9 +88,9 @@ bool ModuleSceneIntro::Start()
 	LSalvaVides = App->physics->CreateRectangleSensor(40, 380, 10, 10);
 	LSalvaVides->ctype = ColliderType::SALVAVIDES;
 
-	tubeSensor = App->physics->CreateRectangleSensor(335, 370, 10, 10);
-	tubeSensor->ctype = ColliderType::TUB;
-	tubeSensor2 = App->physics->CreateRectangleSensor(335, 386, 10, 10);
+	//tubeSensor = App->physics->CreateRectangleSensor(335, 370, 10, 10);
+	//tubeSensor->ctype = ColliderType::TUB;
+	tubeSensor2 = App->physics->CreateRectangleSensor(335, 386, 20, 10);
 	tubeSensor2->ctype = ColliderType::TUB;
 
 	App->ball->sensorU1 = false;
