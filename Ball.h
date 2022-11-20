@@ -53,7 +53,6 @@ public:
 	transformPosition teleport;
 
 	int stoppedTimer = 0;
-	bool salvaVidesOn = false;
 	bool bolaATub = true;
 	int BC1Timer = 0;
 	int BC2Timer = 0;

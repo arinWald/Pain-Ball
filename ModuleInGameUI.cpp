@@ -30,6 +30,10 @@ ModuleInGameUI::~ModuleInGameUI()
 bool ModuleInGameUI::Start()
 {
 	
+	numFont = -1;
+
+	alphabetFont = -1;
+
 	char lookupTable[] = { "0123456789" };
 	numFont = App->fonts->Load("Assets/ScoreFont.png", "0123456789",1);
 

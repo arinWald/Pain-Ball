@@ -50,6 +50,17 @@ bool Ball::Start()
 	alternPis = false;
 	segonF = false;
 
+	bolaATub = true;
+	BC1Timer = 0;
+	BC2Timer = 0;
+	BC3Timer = 0;
+	BC4Timer = 0;
+	SC1Timer = 0;
+	SC2Timer = 0;
+	SC3Timer = 0;
+
+
+
 	LOG("Loading Ball");
 	return true;
 }

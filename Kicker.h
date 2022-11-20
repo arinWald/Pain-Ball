@@ -16,7 +16,7 @@ public:
 
 public:
 
-	int ballPushForce = 0;
+	int ballPushForce;
 
 	uint kickerFx;
 };

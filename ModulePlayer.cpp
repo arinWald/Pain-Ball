@@ -34,6 +34,14 @@ bool ModulePlayer::Start()
 	b2Vec2 a = { -0.44, 0 };
 	b2Vec2 b = { 0, 0 };
 
+	ballSect = { 127, 317, 19, 21 };
+	rectSect = { 48, 250, 64, 20 };
+
+	ballPushForce = 0;
+	cargablack = 50;
+	highScore = 0;
+	ballCounter = 3;
+
 	// Flippers --------------------------------------------------------------
 	Flipper* f = new Flipper;
 	f->Circle = App->physics->CreateCircle(140, 382, 4, b2_staticBody);

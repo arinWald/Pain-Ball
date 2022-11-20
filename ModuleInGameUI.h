@@ -37,10 +37,10 @@ public:
 
 public:
 	
-	int numFont = -1;
+	int numFont;
 	char scoreText[10] = { "\0" };
 	
-	int alphabetFont = -1;
+	int alphabetFont;
 
 	SDL_Texture* ball0;
 	SDL_Texture* ball1;
