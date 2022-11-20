@@ -32,6 +32,8 @@ Tu objetivo es no dejar que la pelota pase por tus flippers e intentar durar el 
  - Xiao Shan Costajussà
  - Arnau González 
  - Oriol Martín Corella
+ 
+## [Link al repositorio](https://github.com/arinWald/Pain-Ball)
 
 ## License
 
