@@ -58,6 +58,8 @@ public:
 	int loseBallFxId;
 	int ExtraballFxId;
 	int SalvaVidasFxId;
+	int kickerDisparaFxId;
+	int kickerCarregaFxId;
 
 	transformPosition teleport;
 	bool Tp;
@@ -75,6 +77,8 @@ public:
 	bool cuadradito;
 	bool alternPis;
 	bool segonF;
+
+	bool audioCarrega;
 
 
 };

@@ -39,6 +39,7 @@ bool Ball::Start()
 	teleport.turn = false;
 	ballReset = false;
 	colliderInicial = false;
+	audioCarrega = true;
 
 	
 	ball->listener = this;
@@ -48,6 +49,8 @@ bool Ball::Start()
 	ExtraballFxId = App->audio->LoadFx("Assets/SFX/ExtraBall.wav");
 	SalvaVidasFxId = App->audio->LoadFx("Assets/SFX/SalvaVida.wav");
 	BoletaEncesaId = App->audio->LoadFx("Assets/SFX/BoletaEncesa.wav");
+	kickerDisparaFxId = App->audio->LoadFx("Assets/SFX/kickerDispara.wav");
+	kickerCarregaFxId = App->audio->LoadFx("Assets/SFX/SalvaVida.wav");
 
 	ballText = App->textures->Load("Assets/Ball.png");
 	LlumText = App->textures->Load("Assets/LlumBonus.png");
@@ -205,13 +208,20 @@ update_status Ball::Update()
 			++stoppedTimer;
 			ball->body->SetLinearVelocity({ 0,0 });
 			ball->body->SetGravityScale(0.0f);
+			if (audioCarrega)
+			{
+				App->audio->PlayFx(kickerCarregaFxId);
+				audioCarrega = false;
+			}
 		}
 		else if (stoppedTimer == 100)
 		{
 			ball->body->SetGravityScale(0.3f);
+			App->audio->PlayFx(kickerDisparaFxId);
 			ball->body->ApplyForceToCenter(b2Vec2(0, 300), true);
 			stoppedTimer = 0;
 			culdesac = false;
+			audioCarrega = true;
 		}
 	}
 
@@ -260,13 +270,20 @@ update_status Ball::Update()
 			++stoppedTimer;
 			ball->body->SetLinearVelocity({ 0,0 });
 			ball->body->SetGravityScale(0.0f);
+			if (audioCarrega)
+			{
+				App->audio->PlayFx(kickerCarregaFxId);
+				audioCarrega = false;
+			}
 		}
 		else if (stoppedTimer == 100)
 		{
 			ball->body->SetGravityScale(0.3f);
 			ball->body->ApplyForceToCenter(b2Vec2(0, -50), true);
+			App->audio->PlayFx(kickerDisparaFxId);
 			stoppedTimer = 0;
 			salvaVidesOn = false;
+			audioCarrega = true;
 		}
 	}
 	
