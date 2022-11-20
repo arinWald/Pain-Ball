@@ -400,3 +400,6 @@ FodyWeavers.xsd
 #Not Ignore Box2D
 !/Box2D
 !/Box2D/*
+!/SDL/*
+!Box2D|libx86\Debug
+!Box2D|libx86\Release
