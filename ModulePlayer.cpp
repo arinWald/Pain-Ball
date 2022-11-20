@@ -79,7 +79,7 @@ update_status ModulePlayer::Update()
 		{
 			if (f->data->rightSide == false)
 			{
-				f->data->Rect->body->ApplyForce({ -100,0 }, { 0,0 }, true);
+				f->data->Rect->body->ApplyForce({ -10,0 }, { 0,0 }, true);
 			}
 			f = f->next;
 		}
@@ -104,7 +104,7 @@ update_status ModulePlayer::Update()
 		{
 			if (f->data->rightSide == true)
 			{
-				f->data->Rect->body->ApplyForce({ 25,0 }, { 0,0 }, true);
+				f->data->Rect->body->ApplyForce({ 10,0 }, { 0,0 }, true);
 			}
 			f = f->next;
 		}
@@ -137,15 +137,15 @@ update_status ModulePlayer::Update()
 	{
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		{
-			if (ballPushForce < 300) { //max 100 de potència
-				ballPushForce += 10;
+			if (ballPushForce < 50) { //max 100 de potència
+				ballPushForce += 1;
 				//App->audio->PlayFx(carga_fx);
 			}
 		}
 		else if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_UP)
 		{
 			App->ball->ball->body->ApplyForceToCenter(b2Vec2(0, -ballPushForce), true);
-			ballPushForce = 30; //min 30 de potència
+			ballPushForce = 3; //min 30 de potència
 			App->ball->bolaATub = false;
 		}
 

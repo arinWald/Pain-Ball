@@ -24,7 +24,7 @@ bool Ball::Start()
 {
 
 	ball = App->physics->CreateCircle(334, 352, 7, b2_dynamicBody);
-	ball->body->GetFixtureList()->SetDensity(7.0f);
+	ball->body->GetFixtureList()->SetDensity(1.0f);
 	ball->body->GetFixtureList()->SetFriction(0.2f);
 	ball->body->SetGravityScale(0.5f);
 	ball->body->ResetMassData();
