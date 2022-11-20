@@ -39,7 +39,7 @@ bool Kicker::Start()
 			ballPushForce = 30; //min 30 de potència
 		}
 	}
-		
+
 
 	return true;
 }

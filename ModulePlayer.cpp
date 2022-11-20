@@ -66,6 +66,9 @@ bool ModulePlayer::Start()
 	barraCarga = App->textures->Load("Assets/carga.png");
 	playerText = App->textures->Load("Assets/Flipper.png");
 
+	kickerChargeFxId = App->audio->LoadFx("Assets/SFX/kickerCarrega.wav");
+	kickerThrowFxId = App->audio->LoadFx("Assets/SFX/kickerDispara.wav");
+
 	flippersFxId = App->audio->LoadFx("Assets/SFX/flipperUp.wav");
 
 	return true;
@@ -115,6 +118,7 @@ update_status ModulePlayer::Update()
 
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_DOWN) {
 		App->audio->PlayFx(flippersFxId);
+		
 	}
 
 	if (App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT)
@@ -153,12 +157,16 @@ update_status ModulePlayer::Update()
 	/*	App->renderer->Blit(ballText, x, y, NULL);*/
 
 	////Kicker inicial
+		if (App->input->GetKey(SDL_SCANCODE_X) == KEY_DOWN) {
+			App->audio->PlayFx(kickerThrowFxId);
+		}
 	if (App->gameManager->gameState == GameState::PLAYING && App->ball->bolaATub)
 	{
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT)
 		{
 			if (ballPushForce < 50) { //max 100 de potència
 				ballPushForce += 1;
+				
 				//App->audio->PlayFx(carga_fx);
 			}
 		}
@@ -167,6 +175,7 @@ update_status ModulePlayer::Update()
 			App->ball->ball->body->ApplyForceToCenter(b2Vec2(0, -ballPushForce), true);
 			ballPushForce = 3; //min 30 de potència
 			App->ball->bolaATub = false;
+			App->audio->PlayFx(kickerThrowFxId);
 		}
 
 		if (App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) {

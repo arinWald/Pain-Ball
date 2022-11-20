@@ -38,7 +38,6 @@ bool ModuleSceneIntro::Start()
 	bonus_fx = App->audio->LoadFx("Assets/bonus.wav");
 	backgroundTexture = App->textures->Load("Assets/pinball.png");
 	backgroundTopPlantTexture = App->textures->Load("Assets/BackGroundTopPlant.png");
-
 	
 
 	PhysBody* pbodySC3 = new PhysBody();
