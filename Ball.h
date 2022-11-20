@@ -36,7 +36,15 @@ public:
 	PhysBody* ball;
 	
 	bool ballReset;
-	
+
+	bool sensorU1;
+	bool sensorU2;
+	bool sensorU3;
+
+	bool sensorD1;
+	bool sensorD2;
+	bool sensorD3;
+
 	//p2DynArray<PhysBody*> ballsContainer;
 	SDL_Texture* ballText;
 
@@ -54,5 +62,11 @@ public:
 	int SC1Timer = 0;
 	int SC2Timer = 0;
 	int SC3Timer = 0;
+	bool salvaVidesOn;
+	bool culdesac;
+	bool cuadradito;
+	bool alternPis;
+	bool segonF;
+
 
 };
