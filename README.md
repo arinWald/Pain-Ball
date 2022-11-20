@@ -1,5 +1,5 @@
 # PAINBALL!
-### Fisica II - Pinball
+### Fisica II - Pinball - C++, SDL & Box2D 
 
 ## Description
 
@@ -29,9 +29,9 @@ Tu objetivo es no dejar que la pelota pase por tus flippers e intentar durar el 
  - F8 para volver a los FPS predeterminados (60).
 
 ## Developers
- - Pau Argiz
+ - Pau Argiz Gutiérrez
  - Xiao Shan Costajussà
- - Arnau González 
+ - Arnau González Acosta
  - Oriol Martín Corella
 
 ## Link al repositorio
