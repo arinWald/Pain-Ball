@@ -36,6 +36,11 @@ bool ModuleInGameUI::Start()
 	char lookupTable2[] = { "ABCDEFGHIJLMOPRSTUVWabcdeghijklmnoprstuvwyz " };
 	alphabetFont = App->fonts->Load("Assets/TextFont.png", lookupTable2, 1);
 
+	ball0 = App->textures->Load("Assets/0.png");
+	ball1 = App->textures->Load("Assets/1.png");
+	ball2 = App->textures->Load("Assets/2.png");
+	ball3 = App->textures->Load("Assets/3.png");
+
 	return true;
 }
 
@@ -65,6 +70,7 @@ update_status ModuleInGameUI::PostUpdate()
 	case(PLAYING)://mostrando la currentpuntuación en real-time
 		sprintf_s(scoreText, 10, "%7d", App->player->currentScore);
 		App->fonts->BlitText(432, 356, numFont, scoreText);
+		printBall();
 		break;
 
 	case(END): //Mostrando current, previous y highest score al acabar una partida
@@ -92,7 +98,25 @@ update_status ModuleInGameUI::PostUpdate()
 	return UPDATE_CONTINUE;
 }
 
-
+void ModuleInGameUI::printBall()
+{
+	if (App->player->ballCounter == 0)
+	{
+		App->renderer->Blit(ball0, 553, 153, NULL);
+	}
+	else if (App->player->ballCounter == 1)
+	{
+		App->renderer->Blit(ball1, 553, 153, NULL);
+	}
+	else if (App->player->ballCounter == 2)
+	{
+		App->renderer->Blit(ball2, 553, 153, NULL);
+	}
+	else if (App->player->ballCounter == 3)
+	{
+		App->renderer->Blit(ball3, 553, 153, NULL);
+	}
+}
 
 bool ModuleInGameUI::CleanUp()
 {

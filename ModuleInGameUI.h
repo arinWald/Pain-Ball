@@ -30,6 +30,8 @@ public:
 	// Performs the render call of all the parts of the scene's background
 	update_status PostUpdate() override;
 
+	void printBall();
+
 	// Disables the ui
 	bool CleanUp();
 
@@ -39,6 +41,11 @@ public:
 	char scoreText[10] = { "\0" };
 	
 	int alphabetFont = -1;
+
+	SDL_Texture* ball0;
+	SDL_Texture* ball1;
+	SDL_Texture* ball2;
+	SDL_Texture* ball3;
 	
 };
 
