@@ -10,6 +10,14 @@
 
 Bumpers::Bumpers(Application* app, bool start_enabled) : Module(app, start_enabled)
 {
+	idleBC1.PushBack({ 0,1,22,23 });
+	idleBC4.PushBack({ 51,28,23,25 });
+	idleBC2.PushBack({ 0,29,23,24 });
+	idleBC3.PushBack({ 50,3,24,19 });
+
+	idleSC1.PushBack({ 0,0,20,20 });
+	idleSC3.PushBack({ 43,0,21,21 });
+	idleSC2.PushBack({ 87,1,20,20 });
 }
 
 Bumpers::~Bumpers()
@@ -18,6 +26,14 @@ Bumpers::~Bumpers()
 // Load assets
 bool Bumpers::Start()
 {
+	currentAnimationBC1 = &idleBC1;
+	currentAnimationBC2 = &idleBC2;
+	currentAnimationBC3 = &idleBC3;
+	currentAnimationBC4 = &idleBC4;
+
+	currentAnimationSC1 = &idleSC1;
+	currentAnimationSC2 = &idleSC2;
+	currentAnimationSC3 = &idleSC3;
 	//Bumpers - Big Circles
 	PhysBody* pbodyBC1 = new PhysBody();
 	pbodyBC1 = App->physics->CreateCircleWithBounciness(112, 43, 10, 1.2f, b2_staticBody);
@@ -100,6 +116,7 @@ bool Bumpers::CleanUp()
 // Update: draw background
 update_status Bumpers::Update()
 {
+	currentAnimationBC1->Update();
 	//Aumentar el coeficiente de Restitución de los Bumpers
 	if (App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN)
 	{
@@ -142,7 +159,14 @@ update_status Bumpers::Update()
 
 	p2List_item<PhysBody*>* c;
 
+	SDL_Rect rectBC1 = currentAnimationBC1->GetCurrentFrame();
+	SDL_Rect rectBC2 = currentAnimationBC2->GetCurrentFrame();
+	SDL_Rect rectBC3 = currentAnimationBC3->GetCurrentFrame();
+	SDL_Rect rectBC4 = currentAnimationBC4->GetCurrentFrame();
 
+	SDL_Rect rectSC1 = currentAnimationSC1->GetCurrentFrame();
+	SDL_Rect rectSC2 = currentAnimationSC2->GetCurrentFrame();
+	SDL_Rect rectSC3 = currentAnimationSC3->GetCurrentFrame();
 
 	while (iterador != NULL)
 	{
@@ -150,8 +174,44 @@ update_status Bumpers::Update()
 		
 		if (iterador->data->name == ("bigCircle1")) {
 
-			App->renderer->Blit(App->player->BCtextures, 112, 43, NULL);
+			App->renderer->Blit(App->player->BCtextures, 100, 32, &rectBC1);
+			iterador = iterador->next;
 
+		}
+		if (iterador->data->name == ("bigCircle2")) {
+
+			App->renderer->Blit(App->player->BCtextures, 202, 77, &rectBC2);
+			iterador = iterador->next;
+
+		}
+		if (iterador->data->name == ("bigCircle3")) {
+
+			App->renderer->Blit(App->player->BCtextures, 180, 113, &rectBC3);
+			iterador = iterador->next;
+
+		}
+		if (iterador->data->name == ("bigCircle4")) {
+
+			App->renderer->Blit(App->player->BCtextures, 162, 85, &rectBC4);
+			iterador = iterador->next;
+
+		}
+		if (iterador->data->name == ("smallCircle1")) {
+
+			App->renderer->Blit(App->player->SCtextures, 53, 205, &rectSC1);
+			iterador = iterador->next;
+
+		}
+		if (iterador->data->name == ("smallCircle2")) {
+
+			App->renderer->Blit(App->player->SCtextures, 85, 217, &rectSC2);
+			iterador = iterador->next;
+
+		}
+		if (iterador->data->name == ("smallCircle3")) {
+
+			App->renderer->Blit(App->player->SCtextures, 60, 231, &rectSC3);
+			iterador = iterador->next;
 
 		}
 		iterador = iterador->next;

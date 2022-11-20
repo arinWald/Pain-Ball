@@ -39,6 +39,7 @@ bool ModuleSceneIntro::Start()
 	rick = App->textures->Load("Assets/rick_head.png");
 	bonus_fx = App->audio->LoadFx("Assets/bonus.wav");
 	backgroundTexture = App->textures->Load("Assets/pinball.png");
+	backgroundTopPlantTexture = App->textures->Load("Assets/BackGroundTopPlant.png");
 
 	
 
@@ -500,7 +501,8 @@ update_status ModuleSceneIntro::Update()
 	}
 
 	App->renderer->Blit(backgroundTexture, 0, 0, NULL);
-
+	
+	App->renderer->Blit(App->scene_intro->backgroundTopPlantTexture, 30, 5, NULL);
 	// Keep playing
 	return UPDATE_CONTINUE;
 }

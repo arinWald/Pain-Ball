@@ -55,6 +55,7 @@ bool ModulePlayer::Start()
 	playerText = App->textures->Load("Assets/Flipper.png");
 	ballText = App->textures->Load("Assets/Ball.png");
 	BCtextures = App->textures->Load("Assets/Circulos grandes.png");
+	SCtextures = App->textures->Load("Assets/Cercles petits.png");
 
 	return true;
 }

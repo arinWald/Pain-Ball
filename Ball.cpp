@@ -147,6 +147,8 @@ update_status Ball::Update()
 		int x, y;
 		ball->GetPosition(x, y);
 		App->renderer->Blit(App->player->ballText, x, y, NULL);
+
+		App->renderer->Blit(App->scene_intro->backgroundTopPlantTexture, 30, 5, NULL);
 		
 	
 

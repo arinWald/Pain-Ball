@@ -46,6 +46,7 @@ public:
 	SDL_Texture* box;
 	SDL_Texture* rick;
 	SDL_Texture* backgroundTexture = nullptr;
+	SDL_Texture* backgroundTopPlantTexture = nullptr;
 
 	// FX
 	uint bonus_fx;
