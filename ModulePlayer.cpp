@@ -70,7 +70,9 @@ bool ModulePlayer::Start()
 	kickerThrowFxId = App->audio->LoadFx("Assets/SFX/kickerDispara.wav");
 
 	flippersFxId = App->audio->LoadFx("Assets/SFX/flipperUp.wav");
+	pinballMusicPath = ("Assets/Music/music.ogg");
 
+	App->audio->PlayMusic(pinballMusicPath, 0);
 	return true;
 }
 
@@ -191,7 +193,8 @@ update_status ModulePlayer::Update()
 		}
 		cout << "BallPushForce " << ballPushForce << endl;
 	}
-
+	
+		
 	
 
 	return UPDATE_CONTINUE;

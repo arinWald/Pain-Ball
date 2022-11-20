@@ -52,6 +52,7 @@ public:
 	
 	int kickerChargeFxId;
 	int kickerThrowFxId;
+	const char* pinballMusicPath;
 	SDL_Texture* barraCarga;
 
 	uint clickFx;

@@ -56,7 +56,7 @@ update_status GameManager::Update()
 
 	if(App->player->ballCounter == 0)
 	{
-		App->audio->PlayFx(loseFxId,1);
+		App->audio->PlayFx(loseFxId);
 		gameState = END;
 
 	}
