@@ -47,11 +47,15 @@ public:
 
 	//p2DynArray<PhysBody*> ballsContainer;
 	SDL_Texture* ballText;
+	SDL_Texture* LlumText;
 
 	int bumpersFxId;
+	int loseBallFxId;
+	int ExtraballFxId;
+	int SalvaVidasFxId;
 
 	transformPosition teleport;
-
+	bool Tp;
 	int stoppedTimer = 0;
 	bool bolaATub = true;
 	int BC1Timer = 0;

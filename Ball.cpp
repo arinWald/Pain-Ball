@@ -40,8 +40,12 @@ bool Ball::Start()
 	ball->listener = this;
 	ball->ctype = ColliderType::BALL;
 	bumpersFxId = App->audio->LoadFx("Assets/SFX/bumper.wav");
-	
+	loseBallFxId = App->audio->LoadFx("Assets/SFX/BolaEsPerd.wav");
+	ExtraballFxId = App->audio->LoadFx("Assets/SFX/ExtraBall.wav");
+	SalvaVidasFxId = App->audio->LoadFx("Assets/SFX/SalvaVida.wav");
+
 	ballText = App->textures->Load("Assets/Ball.png");
+	LlumText = App->textures->Load("Assets/LlumBonus.png");
 
 	stoppedTimer = 0;
 	salvaVidesOn = false;
@@ -164,6 +168,7 @@ update_status Ball::Update()
 	//Resetear la ball y disminuir una ball (de las 3 posibles que puede jugar el player en una partida) si la pelota cae al vacio
 	if (ballPositionYInPixels > 410/*415*/ && !ballReset) 
 	{
+		App->audio->PlayFx(loseBallFxId);
 		App->player->ballCounter--;
 		ballReset = true;
 	}
@@ -264,9 +269,9 @@ update_status Ball::Update()
 		int x, y;
 		ball->GetPosition(x, y);
 		App->renderer->Blit(ballText, x, y, NULL);
-
-		App->renderer->Blit(App->scene_intro->backgroundTopPlantTexture, 30, 5, NULL);
-		
+		if (alternPis == false) {
+			App->renderer->Blit(App->scene_intro->backgroundTopPlantTexture, 30, 5, NULL);
+		}
 	
 
 
@@ -276,6 +281,7 @@ update_status Ball::Update()
 		sensorU1 = false;
 		sensorU2 = false;
 		sensorU3 = false;
+		App->audio->PlayFx(ExtraballFxId);
 		//desactivar animacio puntito amarillo
 	}
 
@@ -285,10 +291,30 @@ update_status Ball::Update()
 		sensorD1 = false;
 		sensorD2 = false;
 		sensorD3 = false;
+		App->audio->PlayFx(ExtraballFxId);
 		//desactivar animacio puntito amarillo
 	}
-	//cout << stoppedTimer << endl;
 	
+	
+	if (sensorU1 == true) {
+		App->renderer->Blit(LlumText, 172, 50, NULL);
+	}
+	if (sensorU2 == true) {
+		App->renderer->Blit(LlumText, 189, 48, NULL);
+	}
+	if (sensorU3 == true) {
+		App->renderer->Blit(LlumText, 205, 50, NULL);
+	}
+	if (sensorD1 == true) {
+		App->renderer->Blit(LlumText, 65, 182, NULL);
+	}
+	if (sensorD2 == true) {
+		App->renderer->Blit(LlumText, 79, 185, NULL);
+	}
+	if (sensorD3 == true) {
+		App->renderer->Blit(LlumText, 94, 189, NULL);
+	}
+
 
 	return UPDATE_CONTINUE;
 }
@@ -351,6 +377,7 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		break;
 	case(ColliderType::SALVAVIDES):
 		salvaVidesOn = true;
+		App->audio->PlayFx(SalvaVidasFxId);
 		break;
 
 	case(ColliderType::TUB):
