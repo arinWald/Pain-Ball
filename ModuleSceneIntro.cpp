@@ -216,10 +216,10 @@ bool ModuleSceneIntro::Start()
 		98, 132,
 		114, 160,
 		124, 158,
-		138, 192,
-		140, 184,
-		161, 177,
-		168, 184,
+		138, 201,
+		138, 181,
+		155, 171,
+		174, 188,
 		143, 141,
 		107, 125,
 		98, 109,
@@ -257,16 +257,16 @@ bool ModuleSceneIntro::Start()
 
 	// Pivot 0, 0
 	int rallesLeft1[6] = {
-		70, 185,
+		70, 186,
 		70, 195,
-		72, 186
+		71, 186
 	};
 
 	// Pivot 0, 0
 	int rallesLeft2[6] = {
-		86, 189,
+		87, 190,
 		87, 198,
-		90, 190
+		88, 190
 	};
 
 	// Pivot 0, 0
@@ -331,8 +331,8 @@ bool ModuleSceneIntro::Start()
 	};
 
 	// Pivot 0, 0
-	int segonPis[72] = {
-		137, 192,
+	int segonPis[74] = {
+		131, 191,
 		130, 167,
 		119, 154,
 		111, 150,
@@ -344,7 +344,7 @@ bool ModuleSceneIntro::Start()
 		90, 169,
 		98, 174,
 		105, 182,
-		107, 203,
+		106, 221,
 		103, 247,
 		91, 261,
 		87, 290,
@@ -352,10 +352,10 @@ bool ModuleSceneIntro::Start()
 		74, 297,
 		67, 291,
 		69, 266,
-		60, 258,
-		50, 244,
-		62, 155,
-		69, 143,
+		48, 234,
+		58, 210,
+		52, 203,
+		58, 155,
 		80, 134,
 		92, 131,
 		110, 130,
@@ -363,12 +363,14 @@ bool ModuleSceneIntro::Start()
 		134, 140,
 		145, 150,
 		154, 160,
-		162, 175,
-		166, 182,
+		164, 176,
+		173, 180,
 		180, 171,
-		172, 242,
-		122, 203
+		172, 234,
+		122, 203,
+		132, 195
 	};
+
 
 	// Pivot 0, 0
 	int puntetDreta[8] = {
@@ -389,8 +391,6 @@ bool ModuleSceneIntro::Start()
 	edges.add(App->physics->CreateChain(0, 0, obstacleSuperiorMig, 10));
 	edges.add(App->physics->CreateChain(0, 0, rallaFlipperLeft, 10));
 	edges.add(App->physics->CreateChain(0, 0, rallaFlipperRight, 10));
-	edges.add(App->physics->CreateChain(0, 0, rallesLeft1, 6));
-	edges.add(App->physics->CreateChain(0, 0, rallesLeft2, 6));
 	edges.add(App->physics->CreateChain(0, 0, rallesUp1, 6));
 	edges.add(App->physics->CreateChain(0, 0, rallesUp2, 6));
 	edges.add(App->physics->CreateChain(0, 0, triangleLeft, 6));
@@ -401,6 +401,8 @@ bool ModuleSceneIntro::Start()
 	edges.add(App->physics->CreateChain(0 - 600, 0, colliderEspecialLeft, 8));
 	edges.add(App->physics->CreateChain(0 - 600, 0, colliderEspecialRight, 8));
 	edges.add(App->physics->CreateChain(0 - 600, 0, segonPis, 72));
+	edges.add(App->physics->CreateChain(0 - 600, 0, rallesLeft1, 6));
+	edges.add(App->physics->CreateChain(0 - 600, 0, rallesLeft2, 6));
 	}
 	
 	return ret;

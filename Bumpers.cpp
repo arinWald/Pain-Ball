@@ -56,11 +56,11 @@ bool Bumpers::Start()
 	pbodyBC2->ctype = ColliderType::BUMPBIGCIRCLE2;
 
 	PhysBody* pbodyBC3 = new PhysBody();
-	pbodyBC3 = App->physics->CreateCircleWithBounciness(191, 123, 10, 1.2f, b2_staticBody);
+	pbodyBC3 = App->physics->CreateCircleWithBounciness(191, 123, 9, 1.2f, b2_staticBody);
 	pbodyBC3->ctype = ColliderType::BUMPBIGCIRCLE3;
 
 	PhysBody* pbodyBC4 = new PhysBody();
-	pbodyBC4 = App->physics->CreateCircleWithBounciness(173, 96, 10, 1.2f, b2_staticBody);
+	pbodyBC4 = App->physics->CreateCircleWithBounciness(173, 96, 9, 1.2f, b2_staticBody);
 	pbodyBC4->ctype = ColliderType::BUMPBIGCIRCLE4;
 
 

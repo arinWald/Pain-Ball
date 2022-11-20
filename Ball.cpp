@@ -104,7 +104,7 @@ update_status Ball::Update()
 	}
 	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
 	{
-		ball->body->SetGravityScale(1.0f);
+		ball->body->SetGravityScale(0.5f);
 	}
 
 
