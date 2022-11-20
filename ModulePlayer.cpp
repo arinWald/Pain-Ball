@@ -110,7 +110,6 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->gameManager->gameState ==PLAYING)
 	{
 		App->ball->ball->body->ApplyForce({ 0,-30 }, { 0,0 }, true);

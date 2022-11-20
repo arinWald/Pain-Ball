@@ -163,19 +163,12 @@ update_status Ball::Update()
 			salvaVidesOn = false;
 		}
 	}
-
 	
+	int x, y;
+	ball->GetPosition(x, y);
+	App->renderer->Blit(App->player->ballText, x, y, NULL);
 
-	
-
-	
-		int x, y;
-		ball->GetPosition(x, y);
-		App->renderer->Blit(App->player->ballText, x, y, NULL);
-
-		App->renderer->Blit(App->scene_intro->backgroundTopPlantTexture, 30, 5, NULL);
-		
-	
+	App->renderer->Blit(App->scene_intro->backgroundTopPlantTexture, 30, 5, NULL);
 
 	//cout << stoppedTimer << endl;
 	

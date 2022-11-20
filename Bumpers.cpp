@@ -260,10 +260,3 @@ update_status Bumpers::Update()
 
 	return UPDATE_CONTINUE;
 }
-
-
-
-
-
-	//App->audio->PlayFx(clickFx);
-
