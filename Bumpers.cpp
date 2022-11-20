@@ -99,11 +99,11 @@ bool Bumpers::Start()
 
 	//Bumpers - Triangles
 	PhysBody* pbodyT1 = new PhysBody();
-	pbodyT1 = App->physics->CreateRectangleWithBounciness(260, 310, 3, 63, 2.0f, 9.75f, b2_staticBody);
+	pbodyT1 = App->physics->CreateRectangleWithBounciness(260, 310, 3, 63, 1.4f, 9.75f, b2_staticBody);
 	pbodyT1->ctype = ColliderType::TRIANGLE;
 
 	PhysBody* pbodyT2 = new PhysBody();
-	pbodyT2 = App->physics->CreateRectangleWithBounciness(126, 310, 3, 63, 2.0f, -9.75f, b2_staticBody);
+	pbodyT2 = App->physics->CreateRectangleWithBounciness(126, 310, 3, 63, 1.4f, -9.75f, b2_staticBody);
 	pbodyT2->ctype = ColliderType::TRIANGLE;
 
 	BumperElement* triangleDret = new BumperElement{ "triangleDret", pbodyT1 };
