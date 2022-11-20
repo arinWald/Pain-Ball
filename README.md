@@ -15,6 +15,7 @@ Tu objetivo es no dejar que la pelota pase por tus flippers e intentar durar el 
  - Flechas izquierda y derecha para desplazar los flippers.
  - Flecha para abajo para disparar la bola con el kicker.
  - F1 para mostrar/quitar los colliders.
+ - F2/F3/F4 para modificar la gravedad del juego.
  - W/S para aumentar/disminuir el coeficiente de restitution de los bumpers.
  - Q/A para aumentar/disminuir el coeficiente de fricción de la ball.
  - P para empezar la partida o para volver a jugar una vez se acaba (cuando se pierde).
