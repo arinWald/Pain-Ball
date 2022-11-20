@@ -542,8 +542,7 @@ update_status ModuleSceneIntro::Update()
 	}
 
 	App->renderer->Blit(backgroundTexture, 0, 0, NULL);
-	
-	App->renderer->Blit(App->scene_intro->backgroundTopPlantTexture, 30, 5, NULL);
+
 	// Keep playing
 	return UPDATE_CONTINUE;
 }
