@@ -32,6 +32,7 @@ public:
 	p2List<PhysBody*> boxes;
 	p2List<PhysBody*> edges;
 
+	PhysBody* colliderInicial;
 	PhysBody* u1Sensor;
 	PhysBody* u2Sensor;
 	PhysBody* u3Sensor;

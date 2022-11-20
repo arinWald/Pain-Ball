@@ -45,6 +45,11 @@ public:
 	bool sensorD2;
 	bool sensorD3;
 
+	bool colliderInicial;
+	b2Vec2 inicial;
+	b2Vec2 final;
+
+
 	//p2DynArray<PhysBody*> ballsContainer;
 	SDL_Texture* ballText;
 	SDL_Texture* LlumText;

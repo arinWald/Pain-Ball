@@ -44,6 +44,10 @@ bool ModuleSceneIntro::Start()
 	pbodySC3 = App->physics->CreateCircleWithBounciness(73, 241, 5, 1.2f, b2_staticBody);
 	pbodySC3->ctype = ColliderType::BUMPSMALLCIRCLE1;
 
+
+	colliderInicial = App->physics->CreateRectangle(700, 34, 3, 10, b2_staticBody);
+	
+
 	u1Sensor = App->physics->CreateRectangleSensor(177, 55, 5, 5);
 	u1Sensor->ctype = ColliderType::SENSORU1;
 	u2Sensor = App->physics->CreateRectangleSensor(193, 55, 5, 5);
@@ -64,14 +68,14 @@ bool ModuleSceneIntro::Start()
 	salvD2Sensor = App->physics->CreateRectangleSensor(282, 126, 10, 10);
 	salvD2Sensor->ctype = ColliderType::SALVAVIDESCANVI;
 
-	salvD2Sensor = App->physics->CreateRectangleSensor(189, 230, 110, 10);
+	salvD2Sensor = App->physics->CreateRectangleSensor(189, 220, 110, 10);
 	salvD2Sensor->ctype = ColliderType::SALVAVIDESCANVI;
 
 	cuadraditoSensor = App->physics->CreateRectangleSensor(262, 145, 10, 10);
 	cuadraditoSensor->ctype = ColliderType::CUADRADITO;
 	inicialSensor = App->physics->CreateRectangleSensor(215, 35, 10, 10);
 	inicialSensor->ctype = ColliderType::INICIAL;
-	segonSensor = App->physics->CreateRectangleSensor(152, 187, 10, 10);
+	segonSensor = App->physics->CreateRectangleSensor(152, 187, 15, 15);
 	segonSensor->ctype = ColliderType::SEGON;
 	segonFSensor = App->physics->CreateRectangleSensor(80, 300, 10, 10);
 	segonFSensor->ctype = ColliderType::SEGONF;
@@ -471,6 +475,7 @@ update_status ModuleSceneIntro::Update()
 		primerPis = true;
 		App->ball->alternPis = false;
 	}
+
 	
 
 	// Prepare for raycast ------------------------------------------------------
