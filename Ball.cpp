@@ -86,6 +86,28 @@ void Ball::ChangePosition(int x, int y)
 update_status Ball::Update()
 {
 
+	if (App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN)
+	{
+		ball->body->SetGravityScale(0.0f);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN)
+	{
+		float gravetat = ball->body->GetGravityScale();
+		gravetat += 0.2f;
+		ball->body->SetGravityScale(gravetat);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_F4) == KEY_DOWN)
+	{
+		float gravetat = ball->body->GetGravityScale();
+		gravetat -= 0.2f;
+		ball->body->SetGravityScale(gravetat);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_F5) == KEY_DOWN)
+	{
+		ball->body->SetGravityScale(1.0f);
+	}
+
+
 	if (App->ball->BC1Timer > 0) {
 		BC1Timer--;
 	}
