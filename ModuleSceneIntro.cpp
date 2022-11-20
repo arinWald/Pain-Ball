@@ -93,6 +93,9 @@ bool ModuleSceneIntro::Start()
 	tubeSensor2 = App->physics->CreateRectangleSensor(335, 386, 20, 10);
 	tubeSensor2->ctype = ColliderType::TUB;
 
+	/*Tpsensor = App->physics->CreateRectangleSensor(270,230, 10, 10);
+	Tpsensor->ctype = ColliderType::TP;*/
+
 	App->ball->sensorU1 = false;
 	App->ball->sensorU2 = false;
 	App->ball->sensorU3 = false;

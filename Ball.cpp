@@ -6,6 +6,7 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleSceneIntro.h"
+#include "GameManager.h"
 #include "Bumpers.h"
 #include "SDL\include\SDL.h"
 #include "ModuleRender.h"
@@ -177,7 +178,13 @@ update_status Ball::Update()
 	if (ballPositionYInPixels > 410/*415*/ && !ballReset) 
 	{
 		App->scene_intro->colliderInicial->body->SetTransform(final, 0);
-		App->audio->PlayFx(loseBallFxId);
+		
+		if (App->player->ballCounter ==1) {
+			App->audio->PlayFx(App->gameManager->loseFxId);
+		}
+		else {
+			App->audio->PlayFx(loseBallFxId);
+		}
 		App->player->ballCounter--;
 		ballReset = true;
 	}
@@ -287,7 +294,30 @@ update_status Ball::Update()
 		}
 	}
 	
+	//Tp ball
+	if (Tp) {
 
+
+		if (stoppedTimer < 100) {
+
+			++stoppedTimer;
+			ball->body->SetLinearVelocity({ 0,0 });
+			ball->body->SetGravityScale(0.0f);
+			b2Vec2 resetPos = b2Vec2(PIXEL_TO_METERS(teleport.posX), PIXEL_TO_METERS(teleport.posY));
+			ball->body->SetTransform(resetPos, 0);
+		}
+		else if (stoppedTimer == 100)
+		{
+			ball->body->SetGravityScale(0.3f);
+			ball->body->ApplyForceToCenter(b2Vec2(5, 5), true);
+			stoppedTimer = 0;
+			Tp = false;
+				b2Vec2 resetPos = b2Vec2(PIXEL_TO_METERS(teleport.posX), PIXEL_TO_METERS(teleport.posY));
+			ball->body->SetTransform(resetPos, 0);
+		}
+
+
+	}
 	
 		int x, y;
 		ball->GetPosition(x, y);
@@ -495,6 +525,10 @@ void Ball::OnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			//falta animacio puntito amarillo
 		}
 		break;
+	case(ColliderType::TP):
+
+			Tp = true;
+			break;
 
 	default:
 		break;

@@ -47,6 +47,7 @@ update_status GameManager::Update()
 			{
 				App->player->previouScore = App->player->currentScore;
 			}
+			
 			gameState = PLAYING;
 			App->player->ballCounter = 3;
 			App->player->currentScore = 0;
@@ -56,7 +57,7 @@ update_status GameManager::Update()
 
 	if(App->player->ballCounter == 0)
 	{
-		App->audio->PlayFx(loseFxId);
+		
 		gameState = END;
 
 	}

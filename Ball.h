@@ -45,6 +45,7 @@ public:
 	bool sensorD2;
 	bool sensorD3;
 
+
 	bool colliderInicial;
 	b2Vec2 inicial;
 	b2Vec2 final;

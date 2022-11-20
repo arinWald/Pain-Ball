@@ -40,7 +40,9 @@ enum class ColliderType {
 	SEGON,
 	SEGONF,
 	SALVAVIDESCANVI,
+	TP,
 	UNKNOWN
+	
 	// ..
 };
 
