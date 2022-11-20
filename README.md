@@ -34,7 +34,16 @@ Tu objetivo es no dejar que la pelota pase por tus flippers e intentar durar el 
  - Oriol Martín Corella
 
 ## Link al repositorio
- https://github.com/arinWald/Pain-Ball
+https://github.com/arinWald/Pain-Ball
+ 
+## Link al juego original
+https://alula.github.io/SpaceCadetPinball/
+
+## Diferencias respecto al original
+
+ - Efectos de sonido caseros.
+ - Modificar parametros físicos de la bola.
+ - Circuito simplificado.
 
 ## License
 
