@@ -1,7 +1,7 @@
 #include "GameManager.h"
 #include "Application.h"
 #include "ModuleInput.h"
-
+#include "ModuleAudio.h"
 #include "SDL/include/SDL.h"
 
 #include "ModulePlayer.h"
@@ -19,6 +19,7 @@ bool GameManager::Start()
 {
 
 	gameState = START;
+	loseFxId = App->audio->LoadFx("Assets/SFX/youLose.wav");
 	return true;
 }
 
@@ -39,6 +40,7 @@ update_status GameManager::Update()
 		{
 			if (firstGame)
 			{
+				
 				App->player->previouScore = 0;
 			}
 			else
@@ -48,11 +50,13 @@ update_status GameManager::Update()
 			gameState = PLAYING;
 			App->player->ballCounter = 3;
 			App->player->currentScore = 0;
+			
 		}
 	}
 
 	if(App->player->ballCounter == 0)
 	{
+		App->audio->PlayFx(loseFxId,1);
 		gameState = END;
 
 	}
