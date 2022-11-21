@@ -279,7 +279,7 @@ update_status Ball::Update()
 		else if (stoppedTimer == 100)
 		{
 			ball->body->SetGravityScale(0.5f);
-			ball->body->ApplyForceToCenter(b2Vec2(0, -50), true);
+			ball->body->ApplyForceToCenter(b2Vec2(0, -30), true);
 			App->audio->PlayFx(kickerDisparaFxId);
 			stoppedTimer = 0;
 			salvaVidesOn = false;
